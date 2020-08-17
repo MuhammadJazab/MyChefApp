@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MyChefApp.Views.Skills"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundImageSource="skills">
+    <ContentPage.Content>
+        <StackLayout
+            Orientation="Vertical"
+            Spacing="20"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Margin="20,50">
+            <Label 
+                TextColor="White"
+                FontSize="Title"
+                HorizontalTextAlignment="Start"
+                Text="{StaticResource SkillLevelMessage}"/>
+            <ScrollView>
+                <StackLayout
+                    Spacing="20">
+                    <Frame
+                        CornerRadius="30"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        IsClippedToBounds="True"
+                        HasShadow="True"
+                        BackgroundColor="{DynamicResource ColorFreshMeat}"
+                        Padding="20">
+                        <Label 
+                            TextColor="White"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="Start"
+                            Text="{StaticResource FreshMeat}"/>
+                    </Frame>
+                    <Frame
+                        CornerRadius="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="End"
+                        IsClippedToBounds="True"
+                        HasShadow="True"
+                        BackgroundColor="{DynamicResource ColorSeasonedCook}"
+                        Padding="20">
+                        <Label 
+                            TextColor="White"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="End"
+                            Text="{StaticResource SeasonedCook}"/>
+                    </Frame>
+                    <Frame
+                        CornerRadius="30"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        IsClippedToBounds="True"
+                        HasShadow="True"
+                        BackgroundColor="{DynamicResource ColorPrepCook}"
+                        Padding="20">
+                        <Label 
+                            TextColor="Black"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="End"
+                            Text="{StaticResource PrepCook}"/>
+                    </Frame>
+                    <Frame
+                        CornerRadius="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="End"
+                        IsClippedToBounds="True"
+                        HasShadow="True"
+                        BackgroundColor="{DynamicResource ColorLineCook}"
+                        Padding="20">
+                        <Label 
+                            TextColor="Black"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="End"
+                            Text="{StaticResource LineCook}"/>
+                    </Frame>
+                    <Frame
+                        CornerRadius="30"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        IsClippedToBounds="True"
+                        HasShadow="True"
+                        BackgroundColor="{DynamicResource ColorSousChef}"
+                        Padding="20">
+                        <Label 
+                            TextColor="Black"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="End"
+                            Text="{StaticResource SousCook}"/>
+                    </Frame>
+                    <Frame
+                        CornerRadius="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="End"
+                        IsClippedToBounds="True"
+                        HasShadow="True"
+                        BackgroundColor="{DynamicResource ColorExecutiveChef}"
+                        Padding="20">
+                        <Label 
+                            TextColor="Black"
+                            FontSize="Small"
+                            FontAttributes="Bold"
+                            VerticalTextAlignment="End"
+                            Text="{StaticResource ExecutiveChef}"/>
+                    </Frame>
+                    <Button
+                        HorizontalOptions="End"
+                        CornerRadius="30"
+                        Text="Next"
+                        TextColor="White"
+                        FontSize="Medium"
+                        BackgroundColor="{DynamicResource ColorBlue}"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

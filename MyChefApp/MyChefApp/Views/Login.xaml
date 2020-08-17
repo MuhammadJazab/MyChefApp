@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    x:Class="MyChefApp.Views.Login"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundImageSource="main">
+    <ContentPage.Content>
+        <StackLayout 
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                Margin="20,50"
+                Orientation="Vertical">
+                <Label 
+                    Text="MYCHEF APP" 
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="Subtitle"/>
+                <Label 
+                    Text="Welcome"
+                    FontFamily="Samantha"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="Header"/>
+            </StackLayout>
+            <StackLayout 
+                Margin="30,0"
+                HorizontalOptions="Fill">
+                <Label 
+                    HorizontalTextAlignment="Center"
+                    Text="SIGN UP"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="Body"/>
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    Padding="5,0"
+                    BackgroundColor="{DynamicResource Yellow}">
+                    <Grid>
+                        <Button 
+                            Grid.Column="1"
+                            Text="EMAIL"
+                            BackgroundColor="{DynamicResource Yellow}"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="SignupClick"/>
+                        <Image
+                            Grid.Column="2"
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            Source="ArrowFarword">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SignupClick"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </StackLayout>
+                <StackLayout
+                    Margin="0,20">
+                    <Label 
+                        HorizontalTextAlignment="Center"
+                        Text="SIGN IN"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="Body"/>
+                    
+                    <inputLayout:SfTextInputLayout
+                        Hint="EMAIL"
+                        EnableFloating="False"
+                        ContainerBackgroundColor="{StaticResource Yellow}"
+                        FocusedColor="{StaticResource Yellow}"
+                        UnfocusedColor="Black"
+                        ContainerType="Outlined">
+                        <Entry 
+                            x:Name="txtEmail"
+                            Keyboard="Email"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout
+                        Hint="PASSWORD" 
+                        EnableFloating="False"
+                        ContainerBackgroundColor="{StaticResource Yellow}"
+                        FocusedColor="{StaticResource Yellow}"
+                        UnfocusedColor="Black"
+                        EnablePasswordVisibilityToggle="True"
+                        ContainerType="Outlined">
+                        <Entry  
+                            x:Name="txtPassword"
+                            IsPassword="True"
+                            Keyboard="Plain"/>
+                        <inputLayout:SfTextInputLayout.TrailingView>
+                            <ImageButton 
+                                BackgroundColor="{DynamicResource Yellow}"
+                                Source="ArrowFarword"
+                                Clicked="LoginClick"/>
+                        </inputLayout:SfTextInputLayout.TrailingView>
+                    </inputLayout:SfTextInputLayout>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                VerticalOptions="FillAndExpand">
+                <Button
+                    VerticalOptions="EndAndExpand"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    Text="FORGOT PASSWORD OR USERNAME"
+                    Clicked="ForgotUserPasswordClick"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
