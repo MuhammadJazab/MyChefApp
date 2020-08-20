@@ -38,23 +38,19 @@
                     Orientation="Horizontal"
                     Padding="5,0"
                     BackgroundColor="{DynamicResource Yellow}">
-                    <Grid>
-                        <Button 
-                            Grid.Column="1"
-                            Text="EMAIL"
-                            BackgroundColor="{DynamicResource Yellow}"
-                            HorizontalOptions="FillAndExpand"
-                            Clicked="SignupClick"/>
-                        <Image
-                            Grid.Column="2"
-                            HeightRequest="25"
-                            HorizontalOptions="End"
-                            Source="ArrowFarword">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="SignupClick"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </Grid>
+                    <Button 
+                        Text="EMAIL"
+                        BackgroundColor="{DynamicResource Yellow}"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="SignupClick"/>
+                    <Image
+                        HeightRequest="25"
+                        HorizontalOptions="End"
+                        Source="ArrowFarword">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SignupClick"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
                 <StackLayout
                     Margin="0,20">

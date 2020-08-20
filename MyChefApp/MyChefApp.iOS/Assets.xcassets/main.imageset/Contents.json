@@ -4,19 +4,19 @@
       "appearances": [],
       "scale": "1x",
       "idiom": "universal",
-      "filename": "main.png"
+      "filename": "main3.png"
     },
     {
       "appearances": [],
       "scale": "2x",
       "idiom": "universal",
-      "filename": "main1.png"
+      "filename": "main@2x.png"
     },
     {
       "appearances": [],
       "scale": "3x",
       "idiom": "universal",
-      "filename": "main2.png"
+      "filename": "main@3x.png"
     }
   ],
   "properties": {},

@@ -9,8 +9,8 @@
         <StackLayout
             Orientation="Vertical"
             Spacing="20"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
             Margin="20,50">
             <Label 
                 TextColor="White"
@@ -111,7 +111,7 @@
                             Text="{StaticResource ExecutiveChef}"/>
                     </Frame>
                     <Button
-                        HorizontalOptions="End"
+                        HorizontalOptions="EndAndExpand"
                         CornerRadius="30"
                         Text="Next"
                         TextColor="White"

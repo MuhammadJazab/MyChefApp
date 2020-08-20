@@ -70,25 +70,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\account.imageset\account.png">
+    <ImageAsset Include="Assets.xcassets\account.imageset\account3.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\account.imageset\account1.png">
+    <ImageAsset Include="Assets.xcassets\account.imageset\account@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\account.imageset\account2.png">
+    <ImageAsset Include="Assets.xcassets\account.imageset\account@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\account.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\ArrowFarword.imageset\ArrowFarword.png">
+    <ImageAsset Include="Assets.xcassets\ArrowFarword.imageset\ArrowFarword3.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\ArrowFarword.imageset\ArrowFarword1.png">
+    <ImageAsset Include="Assets.xcassets\ArrowFarword.imageset\ArrowFarword@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\ArrowFarword.imageset\ArrowFarword2.png">
+    <ImageAsset Include="Assets.xcassets\ArrowFarword.imageset\ArrowFarword@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\ArrowFarword.imageset\Contents.json">
@@ -97,25 +97,25 @@
     <ImageAsset Include="Assets.xcassets\main.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\main.imageset\main3.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\main.imageset\main@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\main.imageset\main@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\skills.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\main.imageset\main.png">
+    <ImageAsset Include="Assets.xcassets\skills.imageset\skills3.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\main.imageset\main1.png">
+    <ImageAsset Include="Assets.xcassets\skills.imageset\skills@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\main.imageset\main2.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\skills.imageset\skills.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\skills.imageset\skills1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\skills.imageset\skills2.png">
+    <ImageAsset Include="Assets.xcassets\skills.imageset\skills@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

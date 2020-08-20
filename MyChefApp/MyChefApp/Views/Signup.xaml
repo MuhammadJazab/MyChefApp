@@ -77,6 +77,7 @@
                     Orientation="Horizontal"
                     BackgroundColor="RoyalBlue">
                     <CheckBox
+                        HorizontalOptions="StartAndExpand"
                         Color="Black"
                         Scale="2"
                         x:Name="CheckEULI"/>
@@ -86,8 +87,10 @@
                         TextColor="Black"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center"
+                        HorizontalOptions="CenterAndExpand"
                         Text="{StaticResource EULIText}"/>
                     <ImageButton
+                        HorizontalOptions="EndAndExpand"
                         Scale="0.78"
                         BackgroundColor="RoyalBlue"
                         Source="ArrowFarword"

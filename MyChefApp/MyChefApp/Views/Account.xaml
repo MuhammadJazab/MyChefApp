@@ -34,6 +34,7 @@
                             FontSize="Title"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
+                            FontFamily="Samantha"
                             Text="MyAccount"/>
                         <Image
                             Source="ArrowFarword"/>
