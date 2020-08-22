@@ -134,7 +134,7 @@
                         HorizontalOptions="CenterAndExpand"
                         VerticalTextAlignment="Center"
                         FontSize="Medium"
-                        Text="{StaticResource PremiumTitle}"/>
+                        Text="{StaticResource FKPremiumTitle}"/>
                     <Image
                         Scale="0.78"
                         BackgroundColor="LightGreen"
