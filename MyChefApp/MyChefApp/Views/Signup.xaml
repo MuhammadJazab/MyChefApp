@@ -21,12 +21,19 @@
                     Text="Welcome"
                     FontFamily="Samantha"
                     TextColor="White"
-                    FontAttributes="Bold"
-                    FontSize="Header"/>
+                    FontAttributes="Bold">
+                    <Label.FontSize>
+                        <OnPlatform 
+                            x:TypeArguments="x:Double" 
+                            Android="100"
+                            iOS="24"/>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
             <StackLayout 
                  Margin="30,0"
-                HorizontalOptions="Fill">
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="FillAndExpand">
                 <Label 
                     HorizontalTextAlignment="Center"
                     Text="SIGN UP"

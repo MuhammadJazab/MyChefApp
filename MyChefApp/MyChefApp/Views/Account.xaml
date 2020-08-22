@@ -29,15 +29,24 @@
                         Orientation="Horizontal"
                         HorizontalOptions="CenterAndExpand">
                         <Image
-                            Source="ArrowFarword"/>
+                            HeightRequest="85"
+                            Source="chilli"/>
                         <Label 
-                            FontSize="Title"
-                            HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="Gray"
                             FontFamily="Samantha"
-                            Text="MyAccount"/>
+                            Text="My Account">
+                            <Label.FontSize>
+                                <OnPlatform 
+                            x:TypeArguments="x:Double" 
+                            Android="50"
+                            iOS="24"/>
+                            </Label.FontSize>
+                        </Label>
                         <Image
-                            Source="ArrowFarword"/>
+                            HeightRequest="85"
+                            Source="fork_knife"/>
                     </StackLayout>
                     <StackLayout
                         Orientation="Vertical">
