@@ -21,37 +21,43 @@
                     Text="Welcome"
                     FontFamily="Samantha"
                     TextColor="White"
-                    FontAttributes="Bold"
-                    FontSize="Header"/>
+                    FontAttributes="Bold">
+                    <Label.FontSize>
+                        <OnPlatform 
+                            x:TypeArguments="x:Double" 
+                            Android="100"
+                            iOS="24"/>
+                    </Label.FontSize>
+                </Label>
             </StackLayout>
             <StackLayout 
                 Margin="30,0"
-                HorizontalOptions="Fill">
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="FillAndExpand">
                 <Label 
                     HorizontalTextAlignment="Center"
                     Text="SIGN UP"
                     TextColor="White"
                     FontAttributes="Bold"
                     FontSize="Body"/>
-                <StackLayout
-                    HorizontalOptions="FillAndExpand"
-                    Orientation="Horizontal"
-                    Padding="5,0"
-                    BackgroundColor="{DynamicResource Yellow}">
+                <Grid
+                    HorizontalOptions="FillAndExpand">
                     <Button 
                         Text="EMAIL"
+                        TextColor="Black"
                         BackgroundColor="{DynamicResource Yellow}"
                         HorizontalOptions="FillAndExpand"
                         Clicked="SignupClick"/>
                     <Image
                         HeightRequest="25"
                         HorizontalOptions="End"
+                        Margin="0,0,5,0"
                         Source="ArrowFarword">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="SignupClick"/>
                         </Image.GestureRecognizers>
                     </Image>
-                </StackLayout>
+                </Grid>
                 <StackLayout
                     Margin="0,20">
                     <Label 
@@ -60,7 +66,7 @@
                         TextColor="White"
                         FontAttributes="Bold"
                         FontSize="Body"/>
-                    
+
                     <inputLayout:SfTextInputLayout
                         Hint="EMAIL"
                         EnableFloating="False"
@@ -94,16 +100,13 @@
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
             </StackLayout>
-            <StackLayout
-                VerticalOptions="FillAndExpand">
-                <Button
-                    VerticalOptions="EndAndExpand"
-                    FontAttributes="Bold"
-                    TextColor="White"
-                    BackgroundColor="Transparent"
-                    Text="FORGOT PASSWORD OR USERNAME"
-                    Clicked="ForgotUserPasswordClick"/>
-            </StackLayout>
+            <Button
+                VerticalOptions="End"
+                FontAttributes="Bold"
+                TextColor="White"
+                BackgroundColor="Transparent"
+                Text="FORGOT PASSWORD OR USERNAME"
+                Clicked="ForgotUserPasswordClick"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
