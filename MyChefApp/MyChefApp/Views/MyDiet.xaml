@@ -1,33 +1,275 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
     x:Class="MyChefApp.Views.MyDiet"
     NavigationPage.HasNavigationBar="False"    
     BackgroundImageSource="account">
     <ContentPage.Content>
-        <StackLayout
-            Orientation="Vertical">
+        <StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="22*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="22*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="22*"/>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="22*"/>
+                    <RowDefinition Height="25*"/>
                 </Grid.RowDefinitions>
             </Grid>
-            <StackLayout 
-                Orientation="Horizontal"
-                HorizontalOptions="CenterAndExpand">
-                <Label 
-                    FontSize="Title"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    FontFamily="Samantha"
-                    Text="MyAccount"/>
+            <StackLayout
+                Margin="20,60"
+                Spacing="15"
+                Orientation="Vertical">
+                <StackLayout
+                    Grid.Row="0"
+                    Orientation="Vertical">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="CenterAndExpand">
+                        <Image
+                            HeightRequest="85"
+                            Source="chilli"/>
+                        <Label 
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            TextColor="Gray"
+                            FontFamily="Samantha"
+                            Text="My Diet">
+                            <Label.FontSize>
+                                <OnPlatform 
+                                    x:TypeArguments="x:Double" 
+                                    Android="50"
+                                    iOS="24"/>
+                            </Label.FontSize>
+                        </Label>
+                        <Image
+                            HeightRequest="85"
+                            Source="fork_knife"/>
+                    </StackLayout>
+                    <ScrollView>
+                        <StackLayout
+                            Orientation="Vertical">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                TextColor="Black"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                Text="{StaticResource DietMessage}"/>
+                            <syncfusion:SfExpander
+                                HeaderIconPosition="Start"
+                                HeaderBackgroundColor="Transparent">
+                                <syncfusion:SfExpander.Header>
+                                    <Label 
+                                        Text="MY PROTEINS" 
+                                        FontSize="Large"
+                                        BackgroundColor="Transparent"
+                                        VerticalTextAlignment="Center" 
+                                        HorizontalTextAlignment="Center"/>
+                                </syncfusion:SfExpander.Header>
+                                <syncfusion:SfExpander.Content>
+                                    <ListView
+                                        x:Name="listView"
+                                CachingStrategy="RecycleElement"
+                                HasUnevenRows="True"
+                                Margin="10"
+                                BackgroundColor="Transparent"
+                                IsPullToRefreshEnabled="True"
+                                SelectionMode="None"
+                                RefreshControlColor="{DynamicResource Green}"
+                                Refreshing="listView_Refreshing"
+                                ItemTapped="listView_ItemTapped"
+                                SeparatorVisibility="None"
+                                ItemAppearing="listView_ItemAppearing">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout
+HorizontalOptions="FillAndExpand"
+VerticalOptions="StartAndExpand"
+BackgroundColor="Transparent">
+                                                        <yummy:PancakeView
+Padding="15"
+CornerRadius="5"
+HasShadow="True"
+BackgroundColor="White"
+HorizontalOptions="FillAndExpand"
+VerticalOptions="FillAndExpand"
+Margin="10">
+                                                            <StackLayout
+HorizontalOptions="FillAndExpand"
+VerticalOptions="FillAndExpand">
+                                                                <StackLayout
+Orientation="Horizontal"
+HorizontalOptions="FillAndExpand">
+                                                                    <Label
+FontSize="Medium"
+MaxLines="1"
+LineBreakMode="TailTruncation"
+VerticalTextAlignment="Start"
+FontAttributes="Bold"
+TextColor="Black"
+FontFamily="{DynamicResource Fontorkney_bold}"
+Text="{Binding Title}"
+HorizontalOptions="FillAndExpand"/>
+                                                                    <AbsoluteLayout
+HorizontalOptions="End">
+                                                                        <Frame
+AbsoluteLayout.LayoutFlags="SizeProportional"
+AbsoluteLayout.LayoutBounds="0,0,1,1"
+Margin="2,8,1,0"
+Padding="10,2"
+BorderColor="{DynamicResource blueTextColor}"
+BackgroundColor="White"
+HasShadow="true"
+CornerRadius="10">
+                                                                            <Label
+BackgroundColor="Transparent"
+VerticalOptions="FillAndExpand"
+FontSize="Micro"
+Text="InProgress"
+HorizontalTextAlignment="Start"
+VerticalTextAlignment="Center"
+TextColor="Black"
+HorizontalOptions="Start">
+                                                                            </Label>
+                                                                        </Frame>
+                                                                        <Frame
+AbsoluteLayout.LayoutFlags="PositionProportional"
+CornerRadius="30"
+AbsoluteLayout.LayoutBounds="0,0,13,13"
+BackgroundColor="DarkBlue"
+Padding="0"
+VerticalOptions="Fill"
+HorizontalOptions="Fill">
+                                                                        </Frame>
+                                                                    </AbsoluteLayout>
+                                                                </StackLayout>
+                                                                <StackLayout
+HorizontalOptions="FillAndExpand"
+VerticalOptions="FillAndExpand"
+Spacing="3"
+Orientation="Horizontal">
+                                                                    <Image Source="refer.png"/>
+                                                                    <Label
+FontSize="Small"
+MaxLines="1"
+LineBreakMode="TailTruncation"
+VerticalTextAlignment="Center"
+FontAttributes="Bold"
+TextColor="Gray"
+FontFamily="{DynamicResource Myriadpro_bold}"
+Text="{Binding JobQuotationId, StringFormat='Ref# {0}'}"
+HorizontalOptions="FillAndExpand"/>
+                                                                    <Image
+HorizontalOptions="End"
+Source="man.png"/>
+                                                                    <Label
+Text="{Binding CreatedOn,StringFormat='Posted: \{0:dd/MM/yy}'}"
+HorizontalOptions="End"
+VerticalTextAlignment="Center"
+FontFamily="{DynamicResource Fontorkney_bold}"
+MaxLines="1"
+LineBreakMode="TailTruncation"
+FontSize="Small"
+TextColor="Gray"/>
+                                                                </StackLayout>
+                                                                <Label
+TextColor="{DynamicResource blueTextColor}"
+FontSize="Small"
+FontAttributes="Bold"
+FontFamily="{DynamicResource Myriadpro_bold}"
+Text="Assigned to"/>
+                                                                <Frame
+Padding="10"
+BackgroundColor="{DynamicResource LightBlueButtonColor}"
+CornerRadius="5"
+HorizontalOptions="FillAndExpand"
+HasShadow="False">
+                                                                    <StackLayout
+Orientation="Horizontal">
+                                                                        <StackLayout
+Orientation="Vertical"
+HorizontalOptions="FillAndExpand"
+VerticalOptions="CenterAndExpand">
+                                                                            <Label
+TextColor="Black"
+FontSize="Small"
+VerticalTextAlignment="Center"
+FontFamily="{DynamicResource Myriadpro_bold}"
+Text="Assigned to">
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Text="{Binding TradesmanName}"/>
+                                                                                        <Span Text=" "/>
+                                                                                        <Span Text="{Binding LastName}"/>
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                            <Button
+Text="View Profile"
+CornerRadius="30"
+HeightRequest="25"
+Padding="20,0"
+HorizontalOptions="Start"
+FontSize="9"
+Clicked="Button_Clicked"
+CommandParameter="{Binding TradesmanId}"
+FontFamily="{DynamicResource Myriadpro_bold}"
+TextColor="{DynamicResource blueButtonColor}"
+BackgroundColor="White"/>
+                                                                        </StackLayout>
+                                                                        <ffimageloading:CachedImage
+HeightRequest="40"
+WidthRequest="40"
+Source="person"
+VerticalOptions="Center"
+HorizontalOptions="EndAndExpand">
+                                                                            <ffimageloading:CachedImage.Transformations>
+                                                                                <ffImageLoadingTransformation:RoundedTransformation Radius="300"/>
+                                                                            </ffimageloading:CachedImage.Transformations>
+                                                                            <ffimageloading:CachedImage.Triggers>
+                                                                                <DataTrigger
+TargetType="ffimageloading:CachedImage"
+Binding="{Binding TradesmanImage,
+Converter={StaticResource NullCheck}}"
+Value="true">
+                                                                                    <Setter
+Property="Source"
+Value="{Binding TradesmanImage,
+Converter={StaticResource ByteArrayToImage}}"/>
+                                                                                </DataTrigger>
+                                                                            </ffimageloading:CachedImage.Triggers>
+                                                                        </ffimageloading:CachedImage>
+                                                                    </StackLayout>
+                                                                </Frame>
+                                                            </StackLayout>
+                                                            <yummy:PancakeView.Shadow>
+                                                                <yummy:DropShadow Color="Gray"/>
+                                                            </yummy:PancakeView.Shadow>
+
+                                                        </yummy:PancakeView>
+                                                        <Image Source="leave_feedback"/>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                        <ListView.Footer>
+                                            <Grid
+IsVisible="False"
+Padding="6"
+x:Name="LoaderGrid">
+                                                <ActivityIndicator
+HeightRequest="40"
+HorizontalOptions="FillAndExpand"
+VerticalOptions="FillAndExpand"
+x:Name="activityIndicator"
+Color="{DynamicResource Green}"
+IsRunning="True" />
+                                            </Grid>
+                                        </ListView.Footer>
+                                    </ListView>
+                                </syncfusion:SfExpander.Content>
+                            </syncfusion:SfExpander>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

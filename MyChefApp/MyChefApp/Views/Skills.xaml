@@ -116,6 +116,7 @@
                         Text="Next"
                         TextColor="White"
                         FontSize="Medium"
+                        Clicked="SelectSkill"
                         BackgroundColor="{DynamicResource ColorBlue}"/>
                 </StackLayout>
             </ScrollView>

@@ -20,6 +20,9 @@
         <x:String x:Key="PremiumMessage">Premium - users can enjoy weekly menus, full MyChef community experience, and MyGoals.</x:String>
         <x:String x:Key="FKPremiumTitle">F&amp;K PREMIUM $7.99</x:String>
         <x:String x:Key="FKPremiumMessage">Fork &amp; Knife Premium - users can enjoy all features available on MyChef app, +1 refresh token/month.</x:String>
+        
+        <x:String x:Key="DietMessage">CHOOSE YOUR FAVORITE FOODS AND ALLERGIES/RESTRICTIONS</x:String>
+        
         <x:String x:Key="SkillLevelMessage">Choose Your Skill Level</x:String>
         <x:String x:Key="FreshMeat">Fresh Meat - basic to no cooking experience</x:String>
         <x:String x:Key="SeasonedCook">Seasoned Cook - basic home cooking experience</x:String>

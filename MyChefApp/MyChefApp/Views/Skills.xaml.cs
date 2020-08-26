@@ -16,5 +16,10 @@ namespace MyChefApp.Views
         {
             InitializeComponent();
         }
+
+        private async void SelectSkill(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyDiet());
+        }
     }
 }
