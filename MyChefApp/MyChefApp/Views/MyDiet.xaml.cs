@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MyChefApp.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,13 @@ namespace MyChefApp.Views
         public MyDiet()
         {
             InitializeComponent();
+
+            listView_MyProteins.ItemsSource = new Protien().GetProtiens(); ;
+        }
+        
+        private void ItemTapped_MyProtein(System.Object sender, ItemTappedEventArgs e)
+        {
+
         }
     }
 }

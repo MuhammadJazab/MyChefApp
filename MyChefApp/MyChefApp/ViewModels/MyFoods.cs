@@ -8,36 +8,47 @@ namespace MyChefApp.ViewModels
     public class Protien
     {
         public string Title { get; set; }
+        public bool IsSelected { get; set; }
 
-        public Protien()
+        ObservableCollection<Protien> protiens;
+
+        public ObservableCollection<Protien> GetProtiens()
         {
-            ObservableCollection<Protien> Protiens = new ObservableCollection<Protien>
+            protiens = new ObservableCollection<Protien>()
             {
-                new Protien
+                new Protien()
                 {
-                    Title = "Beef"
+                    Title = "Beef",
+                    IsSelected = false
                 },
-                new Protien
+                new Protien()
                 {
-                    Title = "Chicken"
+                    Title = "Chicken",
+                    IsSelected = false
                 },
-                new Protien
+                new Protien()
                 {
-                    Title = "Fish"
+                    Title = "Fish",
+                    IsSelected = false
                 },
-                new Protien
+                new Protien()
                 {
-                    Title = "Shellfish"
+                    Title = "Shellfish",
+                    IsSelected = false
                 },
-                new Protien
+                new Protien()
                 {
-                    Title = "Turkey"
+                    Title = "Turkey",
+                    IsSelected = false
                 },
-                new Protien
+                new Protien()
                 {
-                    Title = "Pork"
+                    Title = "Pork",
+                    IsSelected = false
                 }
             };
+
+            return protiens;
         }
     }
 
@@ -45,43 +56,47 @@ namespace MyChefApp.ViewModels
     {
         public string Title { get; set; }
 
-        public Grain()
+        public ObservableCollection<Grain> grains;
+
+        public ObservableCollection<Grain> GetGrain()
         {
-            ObservableCollection<Grain> Grains = new ObservableCollection<Grain>
+            grains = new ObservableCollection<Grain>()
             {
-                new Grain
+                new Grain()
                 {
                     Title = "Rice"
                 },
-                new Grain
+                new Grain()
                 {
                     Title = "Corn"
                 },
-                new Grain
+                new Grain()
                 {
                     Title = "Pasta"
                 },
-                new Grain
+                new Grain()
                 {
                     Title = "Quinoa"
                 },
-                new Grain
+                new Grain()
                 {
                     Title = "Couscous"
                 },
-                new Grain
+                new Grain()
                 {
                     Title = "Beans"
                 },
-                new Grain
+                new Grain()
                 {
                     Title = "Lentile"
                 },
-                new Grain
+                new Grain()
                 {
                     Title = "Peas"
                 }
             };
+
+            return grains;
         }
     }
 
@@ -89,91 +104,95 @@ namespace MyChefApp.ViewModels
     {
         public string Title { get; set; }
 
-        public Veggie()
+        public ObservableCollection<Veggie> veggies;
+
+        public ObservableCollection<Veggie> GetVeggie()
         {
-            ObservableCollection<Veggie> veggies = new ObservableCollection<Veggie>
+            veggies = new ObservableCollection<Veggie>()
             {
-                new Veggie
+                new Veggie()
                 {
                     Title = "Asparagus"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Broccoli"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Cabbage"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Carrots"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Leafy Greens"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Mushrooms"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Onion"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Peppers"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Tomatoes"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Potato"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Yams"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Sweet Potato"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Squash"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Brussel"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Sprouts"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Celery"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Couliflower"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Green beans"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Cucumbers"
                 },
-                new Veggie
+                new Veggie()
                 {
                     Title = "Garlic"
                 }
             };
+
+            return veggies;
         }
     }
 
@@ -181,47 +200,51 @@ namespace MyChefApp.ViewModels
     {
         public string Title { get; set; }
 
-        public AllergieAndRestriction()
+        public ObservableCollection<AllergieAndRestriction> allergiesAndRestrictions;
+
+        public ObservableCollection<AllergieAndRestriction> GetAllergieAndRestrictions()
         {
-            ObservableCollection<AllergieAndRestriction> allergiesAndRestrictions = new ObservableCollection<AllergieAndRestriction> 
+            allergiesAndRestrictions = new ObservableCollection<AllergieAndRestriction>()
             {
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Peanuts"
                 },
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Dairy"
                 },
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Gluten"
                 },
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Sugar"
                 },
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Salt"
                 },
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Spicy"
                 },
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Soy"
                 },
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Shellfish"
                 },
-                new AllergieAndRestriction
+                new AllergieAndRestriction()
                 {
                     Title = "Tree Nuts"
                 }
             };
+
+            return allergiesAndRestrictions;
         }
     }
 }

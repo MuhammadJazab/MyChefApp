@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyChefApp.App">
+<Application 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyChefApp.ControlHelpers"
+    x:Class="MyChefApp.App">
+    
     <Application.Resources>
         <Color x:Key="Yellow">#f7b86a</Color>
         <Color x:Key="ColorFreshMeat">#777778</Color>
@@ -35,5 +37,9 @@
             <On Platform="Android" Value="Quamaine#Quamaine"/>
             <On Platform="iOS" Value="Quamaine"/>
         </OnPlatform>
+
+
+        <local:ExpanderIconConverter x:Key="ExpanderIconConverter"/>
+
     </Application.Resources>
 </Application>

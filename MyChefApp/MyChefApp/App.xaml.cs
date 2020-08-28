@@ -13,7 +13,8 @@ namespace MyChefApp
 
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Login());
+            //MainPage = new NavigationPage(new Login());
+            MainPage = new NavigationPage(new MyDiet());
         }
 
         protected override void OnStart()
