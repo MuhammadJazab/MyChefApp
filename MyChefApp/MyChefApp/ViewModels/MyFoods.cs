@@ -55,6 +55,7 @@ namespace MyChefApp.ViewModels
     public class Grain
     {
         public string Title { get; set; }
+        public bool IsSelected { get; set; }
 
         public ObservableCollection<Grain> grains;
 
@@ -64,35 +65,43 @@ namespace MyChefApp.ViewModels
             {
                 new Grain()
                 {
-                    Title = "Rice"
+                    Title = "Rice",
+                    IsSelected = false
                 },
                 new Grain()
                 {
-                    Title = "Corn"
+                    Title = "Corn",
+                    IsSelected = false
                 },
                 new Grain()
                 {
-                    Title = "Pasta"
+                    Title = "Pasta",
+                    IsSelected = false
                 },
                 new Grain()
                 {
-                    Title = "Quinoa"
+                    Title = "Quinoa",
+                    IsSelected = false
                 },
                 new Grain()
                 {
-                    Title = "Couscous"
+                    Title = "Couscous",
+                    IsSelected = false
                 },
                 new Grain()
                 {
-                    Title = "Beans"
+                    Title = "Beans",
+                    IsSelected = false
                 },
                 new Grain()
                 {
-                    Title = "Lentile"
+                    Title = "Lentile",
+                    IsSelected = false
                 },
                 new Grain()
                 {
-                    Title = "Peas"
+                    Title = "Peas",
+                    IsSelected = false
                 }
             };
 
@@ -103,6 +112,7 @@ namespace MyChefApp.ViewModels
     public class Veggie
     {
         public string Title { get; set; }
+        public bool IsSelected { get; set; }
 
         public ObservableCollection<Veggie> veggies;
 
@@ -112,83 +122,103 @@ namespace MyChefApp.ViewModels
             {
                 new Veggie()
                 {
-                    Title = "Asparagus"
+                    Title = "Asparagus",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Broccoli"
+                    Title = "Broccoli",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Cabbage"
+                    Title = "Cabbage",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Carrots"
+                    Title = "Carrots",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Leafy Greens"
+                    Title = "Leafy Greens",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Mushrooms"
+                    Title = "Mushrooms",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Onion"
+                    Title = "Onion",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Peppers"
+                    Title = "Peppers",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Tomatoes"
+                    Title = "Tomatoes",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Potato"
+                    Title = "Potato",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Yams"
+                    Title = "Yams",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Sweet Potato"
+                    Title = "Sweet Potato",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Squash"
+                    Title = "Squash",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Brussel"
+                    Title = "Brussel",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Sprouts"
+                    Title = "Sprouts",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Celery"
+                    Title = "Celery",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Couliflower"
+                    Title = "Couliflower",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Green beans"
+                    Title = "Green beans",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Cucumbers"
+                    Title = "Cucumbers",
+                    IsSelected = false
                 },
                 new Veggie()
                 {
-                    Title = "Garlic"
+                    Title = "Garlic",
+                    IsSelected = false
                 }
             };
 
@@ -199,6 +229,7 @@ namespace MyChefApp.ViewModels
     public class AllergieAndRestriction
     {
         public string Title { get; set; }
+        public bool IsSelected { get; set; }
 
         public ObservableCollection<AllergieAndRestriction> allergiesAndRestrictions;
 
@@ -208,39 +239,48 @@ namespace MyChefApp.ViewModels
             {
                 new AllergieAndRestriction()
                 {
-                    Title = "Peanuts"
+                    Title = "Peanuts",
+                    IsSelected = false
                 },
                 new AllergieAndRestriction()
                 {
-                    Title = "Dairy"
+                    Title = "Dairy",
+                    IsSelected = false
                 },
                 new AllergieAndRestriction()
                 {
-                    Title = "Gluten"
+                    Title = "Gluten",
+                    IsSelected = false
                 },
                 new AllergieAndRestriction()
                 {
-                    Title = "Sugar"
+                    Title = "Sugar",
+                    IsSelected = false
                 },
                 new AllergieAndRestriction()
                 {
-                    Title = "Salt"
+                    Title = "Salt",
+                    IsSelected = false
                 },
                 new AllergieAndRestriction()
                 {
-                    Title = "Spicy"
+                    Title = "Spicy",
+                    IsSelected = false
                 },
                 new AllergieAndRestriction()
                 {
-                    Title = "Soy"
+                    Title = "Soy",
+                    IsSelected = false
                 },
                 new AllergieAndRestriction()
                 {
-                    Title = "Shellfish"
+                    Title = "Shellfish",
+                    IsSelected = false
                 },
                 new AllergieAndRestriction()
                 {
-                    Title = "Tree Nuts"
+                    Title = "Tree Nuts",
+                    IsSelected = false
                 }
             };
 

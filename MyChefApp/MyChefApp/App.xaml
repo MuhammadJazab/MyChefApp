@@ -13,6 +13,8 @@
         <Color x:Key="ColorSousChef">#ffe826</Color>
         <Color x:Key="ColorExecutiveChef">#ffd522</Color>
         <Color x:Key="ColorBlue">#3f87e6</Color>
+        <Color x:Key="BadgeColor">#f7cbbb</Color>
+        <Color x:Key="SlatBlack">#162535</Color>
 
         <x:String x:Key="EULIText">READ &amp; AGREE TO TERMS &amp; CONDITIONS</x:String>
         <x:String x:Key="AccountMessage">THESE USER OPTIONS CAN CHANGED AT ANYTIME VIA SETTINGS.</x:String>
@@ -33,13 +35,22 @@
         <x:String x:Key="SousCook">Sous Chef - advance knowlege &amp; restaurant experience</x:String>
         <x:String x:Key="ExecutiveChef">Executive Chef - professional knowlege &amp; cooking experience</x:String>
 
-        <OnPlatform x:TypeArguments="x:String" x:Key="Quamaine">
-            <On Platform="Android" Value="Quamaine#Quamaine"/>
-            <On Platform="iOS" Value="Quamaine"/>
-        </OnPlatform>
+        <x:String x:Key="ThisWeekMenu">This Week's Menu</x:String>
+
+
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Samantha" />
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Samantha" />
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
 
 
         <local:ExpanderIconConverter x:Key="ExpanderIconConverter"/>
+        <local:DayTemplateSelector x:Key="DayTemplateSelector"/>
 
     </Application.Resources>
 </Application>

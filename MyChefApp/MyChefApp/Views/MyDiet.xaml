@@ -51,65 +51,268 @@
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
                             Text="{StaticResource DietMessage}"/>
-                        <ScrollView>
-                            <StackLayout>
-                                <syncfusion:SfExpander
-                                    x:Name="Expender_MyProteins"
-                                    HeaderBackgroundColor="Transparent">
-                                    <syncfusion:SfExpander.Header>
-                                        <StackLayout>
-                                            <Label 
-                                                Text="MY PROTEINS" 
-                                                FontSize="Large"
-                                                VerticalTextAlignment="Center" 
-                                                HorizontalTextAlignment="Center"/>
-                                            <Image 
-                                                Source="{Binding IsExpanded,
-                                                Source={x:Reference Expender_MyProteins},
-                                                Converter={StaticResource ExpanderIconConverter}}"/>
-                                        </StackLayout>
-                                    </syncfusion:SfExpander.Header>
-                                    <syncfusion:SfExpander.Content>
+                        <StackLayout x:Name="ContainerExpender"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <syncfusion:SfExpander
+                                x:Name="Expender_MyProteins"
+                                HeaderIconPosition="Start"
+                                HeaderBackgroundColor="Transparent">
+                                <syncfusion:SfExpander.Header>
+                                    <StackLayout
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="Center"
+                                        Orientation="Horizontal">
+                                        <Image 
+                                            Source="{Binding IsExpanded,
+                                            Source={x:Reference Expender_MyProteins},
+                                            Converter={StaticResource ExpanderIconConverter}}"/>
+                                        <Label 
+                                            Text="MY PROTEINS" 
+                                            FontSize="Large"
+                                            VerticalTextAlignment="Center" 
+                                            HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </syncfusion:SfExpander.Header>
+                                <syncfusion:SfExpander.Content>
+                                <ScrollView>
+                                    <ListView 
+                                        x:Name="listView_MyProteins"
+                                        CachingStrategy="RecycleElement"
+                                        HasUnevenRows="True"
+                                        Margin="10"
+                                        BackgroundColor="Transparent"
+                                        IsPullToRefreshEnabled="False"
+                                        SelectionMode="None"
+                                        RefreshControlColor="{DynamicResource Green}"
+                                        ItemTapped="ItemTapped_MyProtein"
+                                        SeparatorVisibility="None">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout
+                                                        Margin="5"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Orientation="Horizontal">
+                                                        <Image
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            HeightRequest="100"
+                                                            WidthRequest="100"
+                                                            BackgroundColor="Black"
+                                                            IsVisible="{Binding IsSelected}"
+                                                            Source="Selected"/>
+                                                        <Label
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            FontSize="Large"
+                                                            BackgroundColor="#67785c"
+                                                            Text="{Binding Title}"/>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </ScrollView>
+                                </syncfusion:SfExpander.Content>
+                            </syncfusion:SfExpander>
+                            <syncfusion:SfExpander
+                                x:Name="Expender_MyGrains"
+                                HeaderIconPosition="Start"
+                                HeaderBackgroundColor="Transparent">
+                                <syncfusion:SfExpander.Header>
+                                    <StackLayout
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="Center"
+                                        Orientation="Horizontal">
+                                        <Image 
+                                            Source="{Binding IsExpanded,
+                                            Source={x:Reference Expender_MyGrains},
+                                            Converter={StaticResource ExpanderIconConverter}}"/>
+                                        <Label 
+                                            Text="MY GRAINS" 
+                                            FontSize="Large"
+                                            VerticalTextAlignment="Center" 
+                                            HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </syncfusion:SfExpander.Header>
+                                <syncfusion:SfExpander.Content>
+                                    <ScrollView>
                                         <ListView 
-                                            x:Name="listView_MyProteins"
-                                            CachingStrategy="RecycleElement"
-                                            HasUnevenRows="True"
-                                            Margin="10"
-                                            BackgroundColor="Transparent"
-                                            IsPullToRefreshEnabled="False"
-                                            SelectionMode="None"
-                                            RefreshControlColor="{DynamicResource Green}"
-                                            ItemTapped="ItemTapped_MyProtein"
-                                            SeparatorVisibility="None">
+                                        x:Name="listView_MyGrains"
+                                        CachingStrategy="RecycleElement"
+                                        HasUnevenRows="True"
+                                        Margin="10"
+                                        BackgroundColor="Transparent"
+                                        IsPullToRefreshEnabled="False"
+                                        SelectionMode="None"
+                                        RefreshControlColor="{DynamicResource Green}"
+                                        ItemTapped="ItemTapped_MyGrains"
+                                        SeparatorVisibility="None">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
                                                         <StackLayout
-                                                            Margin="5"
-                                                            Orientation="Horizontal">
+                                                        Margin="5"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Orientation="Horizontal">
                                                             <Image
-                                                                HorizontalOptions="Start"
-                                                                VerticalOptions="Center"
-                                                                HeightRequest="100"
-                                                                WidthRequest="100"
-                                                                BackgroundColor="Black"
-                                                                IsEnabled="{Binding IsSelected}"
-                                                                Source="Selected"/>
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            HeightRequest="100"
+                                                            WidthRequest="100"
+                                                            BackgroundColor="Black"
+                                                            IsVisible="{Binding IsSelected}"
+                                                            Source="Selected"/>
                                                             <Label
-                                                                HorizontalOptions="Start"
-                                                                VerticalOptions="Center"
-                                                                FontSize="Large"
-                                                                BackgroundColor="#67785c"
-                                                                Text="{Binding Title}"/>
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            FontSize="Large"
+                                                            BackgroundColor="#67785c"
+                                                            Text="{Binding Title}"/>
                                                         </StackLayout>
                                                     </ViewCell>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
-                                    </syncfusion:SfExpander.Content>
-                                </syncfusion:SfExpander>
-                            </StackLayout>
-                        </ScrollView>
+                                    </ScrollView>
+                                </syncfusion:SfExpander.Content>
+                            </syncfusion:SfExpander>
+                            <syncfusion:SfExpander
+                                x:Name="Expender_MyVeggies"
+                                HeaderIconPosition="Start"
+                                HeaderBackgroundColor="Transparent">
+                                <syncfusion:SfExpander.Header>
+                                    <StackLayout
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="Center"
+                                        Orientation="Horizontal">
+                                        <Image 
+                                            Source="{Binding IsExpanded,
+                                            Source={x:Reference Expender_MyVeggies},
+                                            Converter={StaticResource ExpanderIconConverter}}"/>
+                                        <Label 
+                                            Text="MY VEGGIES" 
+                                            FontSize="Large"
+                                            VerticalTextAlignment="Center" 
+                                            HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </syncfusion:SfExpander.Header>
+                                <syncfusion:SfExpander.Content>
+                                    <ScrollView>
+                                        <ListView 
+                                        x:Name="listView_MyVeggies"
+                                        CachingStrategy="RecycleElement"
+                                        HasUnevenRows="True"
+                                        Margin="10"
+                                        BackgroundColor="Transparent"
+                                        IsPullToRefreshEnabled="False"
+                                        SelectionMode="None"
+                                        RefreshControlColor="{DynamicResource Green}"
+                                        ItemTapped="ItemTapped_MyVeggies"
+                                        SeparatorVisibility="None">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <StackLayout
+                                                        Margin="5"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Orientation="Horizontal">
+                                                            <Image
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            HeightRequest="100"
+                                                            WidthRequest="100"
+                                                            BackgroundColor="Black"
+                                                            IsVisible="{Binding IsSelected}"
+                                                            Source="Selected"/>
+                                                            <Label
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            FontSize="Large"
+                                                            BackgroundColor="#67785c"
+                                                            Text="{Binding Title}"/>
+                                                        </StackLayout>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </ScrollView>
+                                </syncfusion:SfExpander.Content>
+                            </syncfusion:SfExpander>
+                            <syncfusion:SfExpander
+                                x:Name="Expender_AllergieAndRestrictions"
+                                HeaderIconPosition="Start"
+                                HeaderBackgroundColor="Transparent">
+                                <syncfusion:SfExpander.Header>
+                                    <StackLayout
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="Center"
+                                        Orientation="Horizontal">
+                                        <Image 
+                                            Source="{Binding IsExpanded,
+                                            Source={x:Reference Expender_AllergieAndRestrictions},
+                                            Converter={StaticResource ExpanderIconConverter}}"/>
+                                        <Label 
+                                            Text="Allergie And Restrictions" 
+                                            FontSize="Large"
+                                            VerticalTextAlignment="Center" 
+                                            HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </syncfusion:SfExpander.Header>
+                                <syncfusion:SfExpander.Content>
+                                    <ScrollView>
+                                        <ListView 
+                                        x:Name="listView_AllergieAndRestrictions"
+                                        CachingStrategy="RecycleElement"
+                                        HasUnevenRows="True"
+                                        Margin="10"
+                                        BackgroundColor="Transparent"
+                                        IsPullToRefreshEnabled="False"
+                                        SelectionMode="None"
+                                        RefreshControlColor="{DynamicResource Green}"
+                                        ItemTapped="ItemTapped_AllergieAndRestrictions"
+                                        SeparatorVisibility="None">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <StackLayout
+                                                        Margin="5"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        Orientation="Horizontal">
+                                                            <Image
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            HeightRequest="100"
+                                                            WidthRequest="100"
+                                                            BackgroundColor="Black"
+                                                            IsVisible="{Binding IsSelected}"
+                                                            Source="Selected"/>
+                                                            <Label
+                                                            HorizontalOptions="Start"
+                                                            VerticalOptions="Center"
+                                                            FontSize="Large"
+                                                            BackgroundColor="#67785c"
+                                                            Text="{Binding Title}"/>
+                                                        </StackLayout>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </ScrollView>
+                                </syncfusion:SfExpander.Content>
+                            </syncfusion:SfExpander>
+                        </StackLayout>
+                        <Button
+                            Text="NEXT"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            CornerRadius="20"
+                            Clicked="ClickedNext"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

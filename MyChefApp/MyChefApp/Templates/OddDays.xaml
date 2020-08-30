@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MyChefApp.Templates.OddDays">
+  <ViewCell.View>
+        <StackLayout
+            Spacing="-20"
+            Orientation="Vertical">
+            <StackLayout
+                HorizontalOptions="End"
+                Orientation="Horizontal"
+                Spacing="-5">
+                <StackLayout
+                    VerticalOptions="Center">
+                    <Label 
+                        x:Name="Label_OddMenuItem"
+                        Padding="10"
+                        WidthRequest="200"
+                        MinimumWidthRequest="200"
+                        BackgroundColor="White"
+                        Text="{Binding Title}"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout>
+                    <Frame
+                        CornerRadius="100"
+                        HeightRequest="50"
+                        WidthRequest="50">
+                        <Image
+                            Source="Next"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <Label 
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{Binding Day}"/>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

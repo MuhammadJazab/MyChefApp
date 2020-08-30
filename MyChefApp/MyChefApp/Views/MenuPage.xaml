@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    NavigationPage.HasNavigationBar="False"    
+    BackgroundImageSource="Menu"
+    x:Class="MyChefApp.Views.MenuPage">
+    <ContentPage.Content>
+        <StackLayout
+            Orientation="Vertical"
+            Margin="30,80"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="StartAndExpand"
+            Spacing="30">
+            <Label 
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                Text="{StaticResource ThisWeekMenu}"/>
+            <ScrollView>
+                <ListView
+                    x:Name="ListView_WeeklyMenu"
+                    ItemTemplate="{DynamicResource DayTemplateSelector}"
+                    HasUnevenRows="True"
+                    SeparatorColor="Transparent"
+                    ItemTapped="ItemTapped_WeeklyMenu"/>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -18,12 +18,36 @@ namespace MyChefApp.Views
         {
             InitializeComponent();
 
-            listView_MyProteins.ItemsSource = new Protien().GetProtiens(); ;
+            listView_MyProteins.ItemsSource = new Protien().GetProtiens();
+            listView_MyGrains.ItemsSource = new Grain().GetGrain();
+            listView_MyVeggies.ItemsSource = new Veggie().GetVeggie();
+            listView_AllergieAndRestrictions.ItemsSource = new AllergieAndRestriction().GetAllergieAndRestrictions();
+
         }
         
-        private void ItemTapped_MyProtein(System.Object sender, ItemTappedEventArgs e)
+        private void ItemTapped_MyProtein(object sender, ItemTappedEventArgs e)
         {
+            var selectedItem = (Protien)e.Item;
+        }
 
+        private void ItemTapped_MyGrains(object sender, ItemTappedEventArgs e)
+        {
+            var selectedItem = (Grain)e.Item;
+        }
+
+        private void ItemTapped_MyVeggies(object sender, ItemTappedEventArgs e)
+        {
+            var selectedItem = (Veggie)e.Item;
+        }
+
+        private void ItemTapped_AllergieAndRestrictions(object sender, ItemTappedEventArgs e)
+        {
+            var selectedItem = (AllergieAndRestriction)e.Item;
+        }
+
+        private async void ClickedNext(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WeeklyMenu());
         }
     }
 }
