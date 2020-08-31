@@ -1,16 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 
 namespace MyChefApp.ViewModels
 {
-    public class Protien
+    public class Protien : INotifyPropertyChanged
     {
         public string Title { get; set; }
-        public bool IsSelected { get; set; }
+
+        private bool isSelected;
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                isSelected = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("IsSelected"));
+            }
+        }
+
 
         ObservableCollection<Protien> protiens;
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public ObservableCollection<Protien> GetProtiens()
         {
@@ -52,12 +67,26 @@ namespace MyChefApp.ViewModels
         }
     }
 
-    public class Grain
+    public class Grain : INotifyPropertyChanged
     {
         public string Title { get; set; }
-        public bool IsSelected { get; set; }
+
+        private bool isSelected;
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                isSelected = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("IsSelected"));
+            }
+        }
+
 
         public ObservableCollection<Grain> grains;
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public ObservableCollection<Grain> GetGrain()
         {
@@ -109,12 +138,25 @@ namespace MyChefApp.ViewModels
         }
     }
 
-    public class Veggie
+    public class Veggie : INotifyPropertyChanged
     {
         public string Title { get; set; }
-        public bool IsSelected { get; set; }
+
+        private bool isSelected;
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                isSelected = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("IsSelected"));
+            }
+        }
 
         public ObservableCollection<Veggie> veggies;
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public ObservableCollection<Veggie> GetVeggie()
         {
@@ -226,12 +268,25 @@ namespace MyChefApp.ViewModels
         }
     }
 
-    public class AllergieAndRestriction
+    public class AllergieAndRestriction : INotifyPropertyChanged
     {
         public string Title { get; set; }
-        public bool IsSelected { get; set; }
+
+        private bool isSelected;
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                isSelected = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("IsSelected"));
+            }
+        }
 
         public ObservableCollection<AllergieAndRestriction> allergiesAndRestrictions;
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         public ObservableCollection<AllergieAndRestriction> GetAllergieAndRestrictions()
         {

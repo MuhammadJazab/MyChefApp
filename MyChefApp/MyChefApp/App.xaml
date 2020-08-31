@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application 
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyChefApp.ControlHelpers"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:MyChefApp.ControlHelpers"
     x:Class="MyChefApp.App">
     
     <Application.Resources>
@@ -38,7 +39,7 @@
         <x:String x:Key="ThisWeekMenu">This Week's Menu</x:String>
 
 
-        <Style TargetType="Button">
+        <!--<Style TargetType="Button">
             <Setter Property="FontFamily" Value="Samantha" />
             <Setter Property="FontSize" Value="Large"/>
         </Style>
@@ -46,11 +47,13 @@
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Samantha" />
             <Setter Property="FontSize" Value="Large"/>
-        </Style>
+        </Style>-->
 
 
         <local:ExpanderIconConverter x:Key="ExpanderIconConverter"/>
-        <local:DayTemplateSelector x:Key="DayTemplateSelector"/>
+        <local:DayTemplateSelector 
+            x:Key="DayTemplateSelector"
+            />
 
     </Application.Resources>
 </Application>

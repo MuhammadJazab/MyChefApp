@@ -9,6 +9,7 @@ namespace MyChefApp.ViewModels
     {
         public string Day { get; set; }
         public string Title { get; set; }
+        public bool IsEven { get; set; }
 
         ObservableCollection<WeekMenu> menus;
 
@@ -19,37 +20,44 @@ namespace MyChefApp.ViewModels
                 new WeekMenu()
                 {
                     Day = "Monday",
-                    Title = "Menu 1"
+                    Title = "Menu 1",
+                    IsEven = false
                 },
                 new WeekMenu()
                 {
                     Day = "Tuesday",
-                    Title = "Menu 2"
+                    Title = "Menu 2",
+                    IsEven = true
                 },
                 new WeekMenu()
                 {
                     Day = "Wednesday",
-                    Title = "Menu 3"
+                    Title = "Menu 3",
+                    IsEven = false
                 },
                 new WeekMenu()
                 {
                     Day = "Thursday",
-                    Title = "Menu 4"
+                    Title = "Menu 4",
+                    IsEven = true
                 },
                 new WeekMenu()
                 {
                     Day = "Friday",
-                    Title = "Menu 5"
+                    Title = "Menu 5",
+                    IsEven = false
                 },
                 new WeekMenu()
                 {
                     Day = "Saturday",
-                    Title = "Menu 6"
+                    Title = "Menu 6",
+                    IsEven = true
                 },
                 new WeekMenu()
                 {
                     Day = "Sunday",
-                    Title = "Menu 7"
+                    Title = "Menu 7",
+                    IsEven = false
                 }
             };
 

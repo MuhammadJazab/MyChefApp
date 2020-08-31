@@ -9,12 +9,9 @@ namespace MyChefApp.ControlHelpers
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if ((bool)value)
-            {
-                var aa = ImageSource.FromResource("Add.png");
-                return ImageSource.FromResource("Add.png");
-            }
+                return ImageSource.FromFile("Add");
             else
-                return ImageSource.FromResource("Sub.png");
+                return ImageSource.FromFile("Sub");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

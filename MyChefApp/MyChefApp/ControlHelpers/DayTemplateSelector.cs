@@ -1,4 +1,5 @@
 ﻿using MyChefApp.Templates;
+using MyChefApp.ViewModels;
 using System;
 using Xamarin.Forms;
 
@@ -8,8 +9,6 @@ namespace MyChefApp.ControlHelpers
     {
         DataTemplate EvenMenuItem, OddMenuItem;
 
-        int dayCounter = 0;
-
         public DayTemplateSelector()
         {
             EvenMenuItem = new DataTemplate(typeof(EvenDays));
@@ -18,9 +17,10 @@ namespace MyChefApp.ControlHelpers
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            ++dayCounter;
+            if (item == null)
+                return EvenMenuItem;
 
-            return dayCounter % 2 == 0 ? EvenMenuItem : OddMenuItem;
+            return ((WeekMenu)item).IsEven ? EvenMenuItem : OddMenuItem;
         }
     }
 }

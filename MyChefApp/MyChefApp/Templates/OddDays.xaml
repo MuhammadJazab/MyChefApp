@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="MyChefApp.Templates.OddDays">
+<ViewCell 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="MyChefApp.Templates.OddDays">
   <ViewCell.View>
         <StackLayout
+            Margin="5"
             Spacing="-20"
             Orientation="Vertical">
             <StackLayout
-                HorizontalOptions="End"
+                HorizontalOptions="EndAndExpand"
                 Orientation="Horizontal"
                 Spacing="-5">
                 <StackLayout
@@ -18,8 +20,8 @@
                     <Label 
                         x:Name="Label_OddMenuItem"
                         Padding="10"
-                        WidthRequest="200"
-                        MinimumWidthRequest="200"
+                        WidthRequest="150"
+                        MinimumWidthRequest="150"
                         BackgroundColor="White"
                         Text="{Binding Title}"
                         HorizontalTextAlignment="Center"

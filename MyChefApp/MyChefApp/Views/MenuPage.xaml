@@ -20,12 +20,23 @@
                 HorizontalTextAlignment="Center"
                 Text="{StaticResource ThisWeekMenu}"/>
             <ScrollView>
-                <ListView
-                    x:Name="ListView_WeeklyMenu"
-                    ItemTemplate="{DynamicResource DayTemplateSelector}"
-                    HasUnevenRows="True"
-                    SeparatorColor="Transparent"
-                    ItemTapped="ItemTapped_WeeklyMenu"/>
+                <Grid 
+                    RowSpacing="0" 
+                    ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ListView
+                        x:Name="ListView_WeeklyMenu"
+                        Margin="0"
+                        ItemTemplate="{StaticResource DayTemplateSelector}"
+                        HasUnevenRows="True"
+                        SelectionMode="None"
+                        SeparatorColor="Transparent"
+                        ItemTapped="ItemTapped_WeeklyMenu"/>
+                </Grid>
             </ScrollView>
         </StackLayout>
     </ContentPage.Content>

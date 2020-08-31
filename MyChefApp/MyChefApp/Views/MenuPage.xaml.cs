@@ -20,9 +20,9 @@ namespace MyChefApp.Views
             ListView_WeeklyMenu.ItemsSource = new WeekMenu().GetMenu();
         }
 
-        private void ItemTapped_WeeklyMenu(object sender, ItemTappedEventArgs e)
+        private async void ItemTapped_WeeklyMenu(object sender, ItemTappedEventArgs e)
         {
-
+            await Navigation.PushAsync(new MenuRecipe());
         }
     }
 }

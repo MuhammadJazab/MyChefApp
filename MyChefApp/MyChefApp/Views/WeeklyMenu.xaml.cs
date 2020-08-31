@@ -19,9 +19,9 @@ namespace MyChefApp.Views
             //Application.Current.Resources["resourceName"]
         }
 
-        private void WeekMenu(object sender, EventArgs e)
+        private async void WeekMenu(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new MenuPage());
         }
     }
 }

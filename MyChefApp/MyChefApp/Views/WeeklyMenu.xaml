@@ -28,27 +28,30 @@
                 <Grid>
                     <Image
                         Aspect="AspectFill"
-                        Source=""/>
+                        Source="one"/>
                     <Button
                         CornerRadius="30"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource SlatBlack}"
                         TextColor="White"
+                        FontFamily="Samantha"
+                        FontSize="30"
                         Text="This Week's Menu"
                         Clicked="WeekMenu"/>
                 </Grid>
             </StackLayout>
             <StackLayout
                 Grid.Row="1"
-                Orientation="Vertical"
-                Background="two">
+                Orientation="Vertical">
                 <Grid>
                     <Image
                         Aspect="AspectFill"
                         Source="two"/>
                     <Button
                         CornerRadius="30"
+                        FontFamily="Samantha"
+                        FontSize="30"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource SlatBlack}"
@@ -68,12 +71,15 @@
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         TextColor="{DynamicResource BadgeColor}"
-                        FontSize="Title"
+                        FontFamily="Samantha"
+                        FontSize="55"
                         Text="Welcome, Raspy"/>
                     <Button
                         Grid.Row="1"
                         x:Name="ButtonXPLevel"
                         CornerRadius="30"
+                        FontSize="Title"
+                        FontFamily="Samantha"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource BadgeColor}"
@@ -89,6 +95,8 @@
                         Aspect="AspectFill"
                         Source="four"/>
                     <Button
+                        FontSize="30"
+                        FontFamily="Samantha"
                         CornerRadius="30"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
@@ -105,6 +113,8 @@
                         Aspect="AspectFill"
                         Source="five"/>
                     <Button
+                        FontFamily="Samantha"
+                        FontSize="30"
                         CornerRadius="30"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
