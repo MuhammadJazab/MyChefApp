@@ -8,6 +8,11 @@
     NavigationPage.HasNavigationBar="False"    
     BackgroundImageSource="Menu"
     x:Class="MyChefApp.Views.MenuPage">
+    <ContentPage.BackgroundImageSource>
+        <OnPlatform x:TypeArguments="FileImageSource">
+            <On Platform="iOS" Value="MenuOne"/>
+        </OnPlatform>
+    </ContentPage.BackgroundImageSource>
     <ContentPage.Content>
         <StackLayout
             Orientation="Vertical"
@@ -30,6 +35,7 @@
                     </Grid.RowDefinitions>
                     <ListView
                         x:Name="ListView_WeeklyMenu"
+                        BackgroundColor="Transparent"
                         Margin="0"
                         ItemTemplate="{StaticResource DayTemplateSelector}"
                         HasUnevenRows="True"

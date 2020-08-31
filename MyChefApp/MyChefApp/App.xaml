@@ -39,21 +39,25 @@
         <x:String x:Key="ThisWeekMenu">This Week's Menu</x:String>
 
 
-        <!--<Style TargetType="Button">
-            <Setter Property="FontFamily" Value="Samantha" />
-            <Setter Property="FontSize" Value="Large"/>
+        <Style TargetType="Button">
+            <Setter Property="CornerRadius" >
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="5"/>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Padding">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="20,0"/>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
         </Style>
-
-        <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="Samantha" />
-            <Setter Property="FontSize" Value="Large"/>
-        </Style>-->
-
-
+        
         <local:ExpanderIconConverter x:Key="ExpanderIconConverter"/>
-        <local:DayTemplateSelector 
-            x:Key="DayTemplateSelector"
-            />
+        <local:DayTemplateSelector x:Key="DayTemplateSelector"/>
 
     </Application.Resources>
 </Application>

@@ -117,7 +117,8 @@
                         TextColor="White"
                         FontSize="Medium"
                         Clicked="SelectSkill"
-                        BackgroundColor="{DynamicResource ColorBlue}"/>
+                        BackgroundColor="{DynamicResource ColorBlue}">
+                    </Button>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

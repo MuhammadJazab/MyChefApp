@@ -150,6 +150,9 @@
     <ImageAsset Include="Assets.xcassets\four.imageset\four2.jpg">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MenuOne.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\menu.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -160,6 +163,15 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\menu.imageset\Menu2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MenuOne.imageset\MenuOne.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MenuOne.imageset\MenuOne1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MenuOne.imageset\MenuOne2.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\one.imageset\Contents.json">

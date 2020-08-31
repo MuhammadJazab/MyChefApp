@@ -333,6 +333,8 @@
                             HorizontalOptions="End"
                             VerticalOptions="End"
                             CornerRadius="20"
+                            TextColor="Black"
+                            FontAttributes="Bold"
                             Clicked="ClickedNext"/>
                     </StackLayout>
                 </StackLayout>
