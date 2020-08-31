@@ -33,7 +33,7 @@
                         WidthRequest="50">
                         <Frame.CornerRadius>
                             <OnPlatform x:TypeArguments="x:Single">
-                                <On Platform="iOS" Value="100"/>
+                                <On Platform="Android" Value="100"/>
                                 <On Platform="iOS" Value="500"/>
                             </OnPlatform>
                         </Frame.CornerRadius>

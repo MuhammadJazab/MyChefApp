@@ -172,9 +172,8 @@
                                                                 <Image
                                                                     HorizontalOptions="Start"
                                                                     VerticalOptions="Center"
-                                                                    HeightRequest="100"
-                                                                    WidthRequest="100"
-                                                                    BackgroundColor="Black"
+                                                                    HeightRequest="30"
+                                                                    WidthRequest="30"
                                                                     IsVisible="{Binding IsSelected}"
                                                                     Source="Selected"/>
                                                                 <Label
@@ -239,9 +238,8 @@
                                                                 <Image
                                                                     HorizontalOptions="Start"
                                                                     VerticalOptions="Center"
-                                                                    HeightRequest="100"
-                                                                    WidthRequest="100"
-                                                                    BackgroundColor="Black"
+                                                                    HeightRequest="30"
+                                                                    WidthRequest="30"
                                                                     IsVisible="{Binding IsSelected}"
                                                                     Source="Selected"/>
                                                                 <Label
@@ -306,9 +304,8 @@
                                                                 <Image
                                                                     HorizontalOptions="Start"
                                                                     VerticalOptions="Center"
-                                                                    HeightRequest="100"
-                                                                    WidthRequest="100"
-                                                                    BackgroundColor="Black"
+                                                                    HeightRequest="30"
+                                                                    WidthRequest="30"
                                                                     IsVisible="{Binding IsSelected}"
                                                                     Source="Selected"/>
                                                                 <Label

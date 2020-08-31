@@ -5,11 +5,11 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    NavigationPage.HasNavigationBar="False"    
-    BackgroundImageSource="Menu"
+    NavigationPage.HasNavigationBar="False"
     x:Class="MyChefApp.Views.MenuPage">
     <ContentPage.BackgroundImageSource>
         <OnPlatform x:TypeArguments="FileImageSource">
+            <On Platform="Android" Value="Menu"/>
             <On Platform="iOS" Value="MenuOne"/>
         </OnPlatform>
     </ContentPage.BackgroundImageSource>
