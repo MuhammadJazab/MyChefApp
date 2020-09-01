@@ -12,10 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\ROCK.TTF" />
     <None Remove="Resources\Fonts\Samantha.ttf" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\ROCK.TTF" />
     <EmbeddedResource Include="Resources\Fonts\Samantha.ttf" />
   </ItemGroup>
 

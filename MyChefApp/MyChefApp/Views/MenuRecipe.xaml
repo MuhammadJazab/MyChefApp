@@ -11,62 +11,57 @@
         <Grid
             ColumnSpacing="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65*"/>
-                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="30*"/>
             </Grid.ColumnDefinitions>
             <StackLayout
                 Grid.Column="0"
                 Margin="10,50"
-                VerticalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"
                 HorizontalOptions="CenterAndExpand">
+                <Label 
+                    TextColor="{DynamicResource Yellow}"
+                    FontFamily="Rockwall"
+                    Text="Eat.">
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android" Value="30"/>
+                            <On Platform="iOS" Value="35"/>
+                        </OnPlatform>
+                    </Label.FontSize>
+                </Label>
                 <StackLayout
+                    Spacing="5"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="FillAndExpand"
                     Orientation="Horizontal">
-                    <StackLayout
-                        Spacing="0"
-                        HorizontalOptions="StartAndExpand"
-                        Orientation="Vertical">
-                        <Label 
-                            TextColor="{DynamicResource Yellow}"
-                            FontFamily="Samantha"
-                            Text="Eat.">
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="Android" Value="50"/>
-                                    <On Platform="iOS" Value="45"/>
-                                </OnPlatform>
-                            </Label.FontSize>
-                        </Label>
-                        <Label 
-                            TextColor="{DynamicResource Yellow}"
-                            FontFamily="Samantha"
-                            Text="In.">
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="Android" Value="50"/>
-                                    <On Platform="iOS" Value="45"/>
-                                </OnPlatform>
-                            </Label.FontSize>
-                        </Label>
-                    </StackLayout>
+                    <Label 
+                        TextColor="{DynamicResource Yellow}"
+                        FontFamily="Rockwall"
+                        Text="In.">
+                        <Label.FontSize>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android" Value="30"/>
+                                <On Platform="iOS" Value="35"/>
+                            </OnPlatform>
+                        </Label.FontSize>
+                    </Label>
                     <Frame
-                        VerticalOptions="Center"
-                        HorizontalOptions="EndAndExpand"
+                        HorizontalOptions="StartAndExpand"
                         CornerRadius="30"
-                        Padding="5"
-                        Margin="5"
+                        Padding="8,5"
                         BackgroundColor="Gray">
                         <Label
                             HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
                             HorizontalOptions="CenterAndExpand"
-                            VerticalOptions="EndAndExpand"
-                            FontFamily="Samantha"
-                            Padding="0,10"
+                            FontFamily="Rockwall"
                             TextColor="{DynamicResource Yellow}"
                             Text="XP Level: Seasoned Cook">
                             <Label.FontSize>
                                 <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="Android" Value="22"/>
-                                    <On Platform="iOS" Value="25"/>
+                                    <On Platform="Android" Value="13"/>
+                                    <On Platform="iOS" Value="14"/>
                                 </OnPlatform>
                             </Label.FontSize>
                         </Label>
@@ -75,17 +70,17 @@
                 <ScrollView>
                     <StackLayout
                         Spacing="10"
-                        HorizontalOptions="CenterAndExpand"
+                        HorizontalOptions="StartAndExpand"
                         Orientation="Vertical">
                         <Label 
                             HorizontalTextAlignment="Center"
                             TextColor="White"
-                            FontFamily="Samantha"
+                            FontFamily="Rockwall"
                             Text="Monday">
                             <Label.FontSize>
                                 <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="Android" Value="40"/>
-                                    <On Platform="iOS" Value="40"/>
+                                    <On Platform="Android" Value="30"/>
+                                    <On Platform="iOS" Value="35"/>
                                 </OnPlatform>
                             </Label.FontSize>
                         </Label>
@@ -96,22 +91,21 @@
                             <Label
                                 HorizontalTextAlignment="Center"
                                 FontAttributes="Bold"
-                                FontSize="Medium"
-                                FontFamily="Samantha"
+                                FontFamily="Rockwall"
                                 Text="Chicken Marsala W/ Roasted Asparagus &amp; Carrots">
                                 <Label.FontSize>
                                     <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="Android" Value="22"/>
-                                        <On Platform="iOS" Value="25"/>
+                                        <On Platform="Android" Value="16"/>
+                                        <On Platform="iOS" Value="17"/>
                                     </OnPlatform>
                                 </Label.FontSize>
                             </Label>
                         </Frame>
                         <Label
-                            Margin="0,30,0,0"
+                            Margin="0,20,0,0"
                             HorizontalTextAlignment="Center"
-                            TextColor="{DynamicResource Yellow}"
-                            FontFamily="Samantha"
+                            TextColor="{DynamicResource Yellow}" 
+                            FontFamily="Rockwall"
                             FontAttributes="Bold"
                             Text="Step 1-3">
                             <Label.FontSize>
@@ -125,7 +119,7 @@
                             CornerRadius="40"
                             Padding="10">
                             <Label 
-                                FontFamily="Samantha"
+                                FontFamily="Rockwall"
                                 FontAttributes="Bold"
                                 FontSize="Large"
                                 HorizontalTextAlignment="Center"
@@ -136,8 +130,8 @@
                                 Example steps to make recipy">
                                 <Label.FontSize>
                                     <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="Android" Value="22"/>
-                                        <On Platform="iOS" Value="25"/>
+                                        <On Platform="Android" Value="16"/>
+                                        <On Platform="iOS" Value="17"/>
                                     </OnPlatform>
                                 </Label.FontSize>
                             </Label>
@@ -152,70 +146,174 @@
                 HorizontalOptions="FillAndExpand"
                 Spacing="10">
                 <StackLayout
-                        VerticalOptions="CenterAndExpand"
+                    Spacing="50"
+                    Margin="0,80,0,0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand">
+                    <StackLayout
                         HorizontalOptions="CenterAndExpand">
-                    <Label 
-                        FontSize="Medium"
+                        <Label 
+                        FontFamily="Rockwall"
+                        HorizontalTextAlignment="Center"
+                        FontSize="Small"
                         TextColor="White"
                         Text="Ingredients"/>
-                    <!--replace it with list of ingredients-->
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                </StackLayout>
-                <StackLayout
-                        VerticalOptions="CenterAndExpand"
+                        <!--replace it with list of ingredients-->
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                    </StackLayout>
+                    <StackLayout
                         HorizontalOptions="CenterAndExpand">
-                    <Label 
-                        FontSize="Medium"
-                        TextColor="White"
-                        Text="Directions"/>
-                    <!--replace it with Directions-->
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
-                    <Label 
-                        FontSize="Body"
-                        TextColor="White"
-                        Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Small"
+                            TextColor="White"
+                            Text="Directions"/>
+                        <!--replace it with Directions-->
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                        <Label 
+                            FontFamily="Rockwall"
+                            HorizontalTextAlignment="Center"
+                            FontSize="Micro"
+                            TextColor="White"
+                            Text="Ingredients"/>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </Grid>
