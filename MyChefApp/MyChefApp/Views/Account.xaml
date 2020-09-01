@@ -121,7 +121,7 @@
                         FontSize="Medium"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center"
-                        Text="{StaticResource FreeMessage}"/>
+                        Text="{StaticResource PremiumMessage}"/>
                 </StackLayout>
 
                 <StackLayout

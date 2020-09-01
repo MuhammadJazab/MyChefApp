@@ -11,8 +11,8 @@
         <Grid
             ColumnSpacing="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70*"/>
-                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="35*"/>
             </Grid.ColumnDefinitions>
             <StackLayout
                 Grid.Column="0"
@@ -23,18 +23,30 @@
                     Orientation="Horizontal">
                     <StackLayout
                         Spacing="0"
-                        HorizontalOptions="EndAndExpand"
+                        HorizontalOptions="StartAndExpand"
                         Orientation="Vertical">
                         <Label 
                             TextColor="{DynamicResource Yellow}"
-                            FontSize="50"
                             FontFamily="Samantha"
-                            Text="Eat."/>
+                            Text="Eat.">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="50"/>
+                                    <On Platform="iOS" Value="45"/>
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
                         <Label 
                             TextColor="{DynamicResource Yellow}"
-                            FontSize="50"
                             FontFamily="Samantha"
-                            Text="In."/>
+                            Text="In.">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="50"/>
+                                    <On Platform="iOS" Value="45"/>
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
                     </StackLayout>
                     <Frame
                         VerticalOptions="Center"
@@ -45,11 +57,19 @@
                         BackgroundColor="Gray">
                         <Label
                             HorizontalTextAlignment="Center"
-                            HorizontalOptions="EndAndExpand"
-                            FontSize="30"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="EndAndExpand"
                             FontFamily="Samantha"
+                            Padding="0,10"
                             TextColor="{DynamicResource Yellow}"
-                            Text="XP Level: Seasoned Cook"/>
+                            Text="XP Level: Seasoned Cook">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="22"/>
+                                    <On Platform="iOS" Value="25"/>
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
                     </Frame>
                 </StackLayout>
                 <ScrollView>
@@ -61,8 +81,14 @@
                             HorizontalTextAlignment="Center"
                             TextColor="White"
                             FontFamily="Samantha"
-                            FontSize="55"
-                            Text="Monday"/>
+                            Text="Monday">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="40"/>
+                                    <On Platform="iOS" Value="40"/>
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
                         <Frame
                             BackgroundColor="White"
                             Padding="5"
@@ -70,32 +96,38 @@
                             <Label
                                 HorizontalTextAlignment="Center"
                                 FontAttributes="Bold"
-                                FontSize="30"
+                                FontSize="Medium"
                                 FontFamily="Samantha"
                                 Text="Chicken Marsala W/ Roasted Asparagus &amp; Carrots">
                                 <Label.FontSize>
                                     <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="iOS" Value="20"/>
+                                        <On Platform="Android" Value="22"/>
+                                        <On Platform="iOS" Value="25"/>
                                     </OnPlatform>
                                 </Label.FontSize>
                             </Label>
                         </Frame>
                         <Label
-                            Margin="0,20"
+                            Margin="0,30,0,0"
                             HorizontalTextAlignment="Center"
                             TextColor="{DynamicResource Yellow}"
-                            FontSize="40"
                             FontFamily="Samantha"
                             FontAttributes="Bold"
-                            Text="Step 1-3"/>
+                            Text="Step 1-3">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="30"/>
+                                    <On Platform="iOS" Value="35"/>
+                                </OnPlatform>
+                            </Label.FontSize>
+                        </Label>
                         <Frame
                             CornerRadius="40"
-                            Margin="10"
                             Padding="10">
                             <Label 
                                 FontFamily="Samantha"
                                 FontAttributes="Bold"
-                                FontSize="30"
+                                FontSize="Large"
                                 HorizontalTextAlignment="Center"
                                 Text="Step1: Example steps to make recipy
                                 Example steps to make recipy
@@ -104,7 +136,8 @@
                                 Example steps to make recipy">
                                 <Label.FontSize>
                                     <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="iOS" Value="20"/>
+                                        <On Platform="Android" Value="22"/>
+                                        <On Platform="iOS" Value="25"/>
                                     </OnPlatform>
                                 </Label.FontSize>
                             </Label>
@@ -122,26 +155,32 @@
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="CenterAndExpand">
                     <Label 
-                        FontSize="Large"
+                        FontSize="Medium"
                         TextColor="White"
                         Text="Ingredients"/>
                     <!--replace it with list of ingredients-->
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                 </StackLayout>
@@ -149,26 +188,32 @@
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="CenterAndExpand">
                     <Label 
-                        FontSize="Large"
+                        FontSize="Medium"
                         TextColor="White"
                         Text="Directions"/>
                     <!--replace it with Directions-->
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                     <Label 
+                        FontSize="Body"
                         TextColor="White"
                         Text="Ingredients"/>
                 </StackLayout>

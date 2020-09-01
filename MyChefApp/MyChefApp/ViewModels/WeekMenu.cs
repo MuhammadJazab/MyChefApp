@@ -46,18 +46,6 @@ namespace MyChefApp.ViewModels
                     Day = "Friday",
                     Title = "Menu 5",
                     IsEven = false
-                },
-                new WeekMenu()
-                {
-                    Day = "Saturday",
-                    Title = "Menu 6",
-                    IsEven = true
-                },
-                new WeekMenu()
-                {
-                    Day = "Sunday",
-                    Title = "Menu 7",
-                    IsEven = false
                 }
             };
 

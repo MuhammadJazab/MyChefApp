@@ -31,6 +31,7 @@
                         Source="one"/>
                     <Button
                         CornerRadius="30"
+                        Padding="10"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource SlatBlack}"
@@ -52,6 +53,7 @@
                         CornerRadius="30"
                         FontFamily="Samantha"
                         FontSize="30"
+                        Padding="10"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource SlatBlack}"
@@ -73,12 +75,13 @@
                         TextColor="{DynamicResource BadgeColor}"
                         FontFamily="Samantha"
                         FontSize="55"
-                        Text="Welcome, Raspy"/>
+                        Text="Welcome, Jazab Najeeb"/>
                     <Button
                         Grid.Row="1"
                         x:Name="ButtonXPLevel"
                         CornerRadius="30"
                         FontSize="Title"
+                        Padding="10"
                         FontFamily="Samantha"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
@@ -98,6 +101,7 @@
                         FontSize="30"
                         FontFamily="Samantha"
                         CornerRadius="30"
+                        Padding="10"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         TextColor="{DynamicResource SlatBlack}"
@@ -116,6 +120,7 @@
                         FontFamily="Samantha"
                         FontSize="30"
                         CornerRadius="30"
+                        Padding="10"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         TextColor="{DynamicResource SlatBlack}"
