@@ -101,7 +101,7 @@
                         Scale="0.78"
                         BackgroundColor="RoyalBlue"
                         Source="ArrowFarword"
-                        Clicked="LoginClick"/>
+                        Clicked="SignInClick"/>
                 </StackLayout>                
             </StackLayout>
         </StackLayout>

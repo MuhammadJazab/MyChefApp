@@ -1,15 +1,17 @@
-﻿using MyChefApp.Views;
-using System;
+﻿using Firebase.Database;
+using MyChefApp.Views;
+using Syncfusion.Licensing;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace MyChefApp
 {
     public partial class App : Application
     {
+        public static FirebaseClient firebaseClient = new FirebaseClient("https://mychef-app-c0406.firebaseio.com/");
+
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzAzNTI5QDMxMzgyZTMyMmUzMGhJWGVNK0N6aUdUdmVySHo0YnhjZzIwSkZSemJzNUlTZFlvbS9aN2lUZ009");
+            SyncfusionLicenseProvider.RegisterLicense("MzAzNTI5QDMxMzgyZTMyMmUzMGhJWGVNK0N6aUdUdmVySHo0YnhjZzIwSkZSemJzNUlTZFlvbS9aN2lUZ009");
 
             InitializeComponent();
 

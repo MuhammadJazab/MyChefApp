@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyChefApp.Models;
+using MyChefApp.Services;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,14 +10,27 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Signup : ContentPage
     {
+        AuthServices authServices;
+
         public Signup()
         {
             InitializeComponent();
-        }
 
-        private async void LoginClick(object sender, EventArgs e)
+            authServices = new AuthServices();
+        }
+        
+        private async void SignInClick(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Account());
+            RegistrationModel registrationModel = new RegistrationModel()
+            {
+                Email = txtEmail.Text.ToLower(),
+                Password = txtPassword.Text,
+                UserName = txtUserName.Text
+            };
+
+            await authServices.RegisterUser(registrationModel);
+
+            //await Navigation.PushAsync(new Account());
         }
     }
 }
