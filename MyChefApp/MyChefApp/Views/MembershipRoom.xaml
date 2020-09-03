@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyChefApp.Views.MembershipRoom">
+    <ContentPage.Content>
+        <StackLayout
+            Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <StackLayout
+                Grid.Row="0"
+                Orientation="Horizontal">
+                <StackLayout
+                    Grid.Column="1"
+                    BackgroundColor="Blue">
+                    
+                </StackLayout>
+                <StackLayout
+                    Grid.Column="0"
+                    BackgroundColor="Brown">
+
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                Orientation="Horizontal">
+                <StackLayout
+                    Grid.Column="0"
+                    BackgroundColor="Pink">
+
+                </StackLayout>
+                <StackLayout
+                    Grid.Column="1"
+                    BackgroundColor="Green">
+
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="2"
+                Orientation="Horizontal">
+                <StackLayout
+                    Grid.Column="1"
+                    BackgroundColor="Orange">
+
+                </StackLayout>
+                <StackLayout
+                    Grid.Column="0"
+                    BackgroundColor="Yellow">
+
+                </StackLayout>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
