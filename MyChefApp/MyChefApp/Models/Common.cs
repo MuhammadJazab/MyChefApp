@@ -18,4 +18,14 @@ namespace MyChefApp.Models
         Restrected = 403
     }
 
+    public static class TableName
+    {
+        public const string UserTable = "Users";
+    }
+
+    public static class Messages
+    {
+        public const string InvalidUsers = "Invalid email or password";
+        public const string LoginSuccessfully = "LoginSuccessfully";
+    }
 }

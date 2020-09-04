@@ -1,5 +1,9 @@
-﻿using MyChefApp.Models;
+﻿using Firebase.Database.Query;
+using MyChefApp.Models;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyChefApp.Services
@@ -8,20 +12,140 @@ namespace MyChefApp.Services
     {
         public async Task<Response> RegisterUser(RegistrationModel registrationModel)
         {
-            //Response response;
+            Response response;
 
-            string registrationJson = JsonConvert.SerializeObject(registrationModel);
-            var aa = await App.firebaseClient.Child("Users").PostAsync(registrationJson);
+            try
+            {
+                string registrationJson = JsonConvert.SerializeObject(registrationModel);
 
-            return new Response() ;
+                var firebaseObject = await App.firebaseClient.Child(TableName.UserTable).PostAsync(registrationJson);
+                await UpdateUser(registrationModel);
+
+                response = new Response()
+                {
+                    Status = ResponseStatus.OK,
+                    ResultData = firebaseObject.Key
+                };
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
         }
 
-        //public async Task<Response> SignIn(SignIn signIn)
-        //{
-        //    Response response;
+        public async Task<Response> SignIn(SignIn signIn)
+        {
+            Response response;
 
+            try
+            {
+                List<RegistrationModel> allUsers = (List<RegistrationModel>)(await GetAllUsers()).ResultData;
 
-        //    return response;
-        //}
+                var user = allUsers.Where(x => x.Email == signIn.Email && x.Password == signIn.Password).FirstOrDefault();
+
+                if (user != null)
+                {
+                    response = new Response()
+                    {
+                        ResultData = user,
+                        Status = ResponseStatus.OK,
+                        Message = Messages.LoginSuccessfully
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        ResultData = user,
+                        Message = Messages.InvalidUsers,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
+
+        private async Task<Response> UpdateUser(RegistrationModel registrationModel)
+        {
+            Response response;
+
+            try
+            {
+                var user = (await App.firebaseClient.Child(TableName.UserTable).OnceAsync<RegistrationModel>())
+                    .Where(x => x.Object.Email == registrationModel.Email && x.Object.Password == registrationModel.Password)
+                    .FirstOrDefault();
+
+                if (user != null)
+                {
+                    await App.firebaseClient.Child(TableName.UserTable).Child(user.Key).PutAsync(JsonConvert.SerializeObject(registrationModel.UserId = user.Key));
+                }
+                else
+                {
+                    // User not exist
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
+
+        public async Task<Response> GetAllUsers()
+        {
+            Response response;
+
+            try
+            {
+                List<RegistrationModel> userList = (await App.firebaseClient.Child(TableName.UserTable).OnceAsync<RegistrationModel>())
+                    .Select(x => new RegistrationModel
+                    {
+                        UserId = x.Key,
+                        Email = x.Object.Email,
+                        Password = x.Object.Password,
+                        UserName = x.Object.UserName
+                    }).ToList();
+
+                response = new Response()
+                {
+                    Status = ResponseStatus.OK,
+                    ResultData = userList
+                };
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
     }
 }
