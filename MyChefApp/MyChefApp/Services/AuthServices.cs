@@ -54,7 +54,7 @@ namespace MyChefApp.Services
                 {
                     response = new Response()
                     {
-                        ResultData = user,
+                        ResultData = user.UserId,
                         Status = ResponseStatus.OK,
                         Message = Messages.LoginSuccessfully
                     };
@@ -94,11 +94,34 @@ namespace MyChefApp.Services
 
                 if (user != null)
                 {
-                    await App.firebaseClient.Child(TableName.UserTable).Child(user.Key).PutAsync(JsonConvert.SerializeObject(registrationModel.UserId = user.Key));
+                    var regModel = new RegistrationModel
+                    {
+                        UserId = user.Key,
+                        Email = registrationModel.Email,
+                        Password = registrationModel.Password,
+                        UserName = registrationModel.UserName
+                    };
+
+                    await App.firebaseClient
+                        .Child(TableName.UserTable)
+                        .Child(user.Key)
+                        .PutAsync(JsonConvert.SerializeObject(regModel));
+
+                    response = new Response()
+                    {
+                        Status = ResponseStatus.OK,
+                        Message = "",
+                        ResultData = true
+                    };
                 }
                 else
                 {
-                    // User not exist
+                    response = new Response()
+                    {
+                        Status = ResponseStatus.Restrected,
+                        Message = Messages.UserNotExist,
+                        ResultData = true
+                    };
                 }
             }
             catch (Exception ex)

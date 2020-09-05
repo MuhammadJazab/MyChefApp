@@ -18,7 +18,7 @@ namespace MyChefApp.Views
         {
             InitializeComponent();
 
-            listView_MyProteins.ItemsSource = new Protien().GetProtiens();
+            listView_MyProteins.ItemsSource = new Protein().GetProtiens();
             listView_MyGrains.ItemsSource = new Grain().GetGrain();
             listView_MyVeggies.ItemsSource = new Veggie().GetVeggie();
             listView_AllergieAndRestrictions.ItemsSource = new AllergieAndRestriction().GetAllergieAndRestrictions();
@@ -27,7 +27,7 @@ namespace MyChefApp.Views
 
         private void ItemTapped_MyProtein(object sender, ItemTappedEventArgs e)
         {
-            var selectedItem = (Protien)e.Item;
+            var selectedItem = (Protein)e.Item;
             selectedItem.IsSelected = selectedItem.IsSelected ? false : true;
         }
 

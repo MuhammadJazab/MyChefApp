@@ -38,20 +38,20 @@ namespace MyChefApp.Views
 
             Response response = await authServices.SignIn(signIn);
 
-            if(response.Status == ResponseStatus.Restrected)
+            if (response.Status == ResponseStatus.Restrected)
             {
-
+                await DisplayAlert("Error", Messages.InvalidUsers, "OK");
             }
-            else if(response.Status == ResponseStatus.Error)
+            else if (response.Status == ResponseStatus.Error)
             {
-
+                await DisplayAlert("Error", "Unable to connect to the server. Check your internet connection", "OK");
             }
             else
             {
-
+                await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
+                await Navigation.PushAsync(new Account());
             }
 
-            await Navigation.PushAsync(new Account());
         }
 
         private async void SignupClick(object sender, EventArgs e)

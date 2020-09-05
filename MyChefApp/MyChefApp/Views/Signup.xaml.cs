@@ -1,7 +1,6 @@
 ﻿using MyChefApp.Models;
 using MyChefApp.Services;
 using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,9 +27,14 @@ namespace MyChefApp.Views
                 UserName = txtUserName.Text
             };
 
-            await authServices.RegisterUser(registrationModel);
+            Response response =  await authServices.RegisterUser(registrationModel);
 
-            //await Navigation.PushAsync(new Account());
+            if(response.Status == ResponseStatus.OK)
+            {
+                await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
+                await Navigation.PushAsync(new Account());
+            }
+            else await DisplayAlert("Error", "Unable to connect to the server. Check your internet connection", "OK");
         }
     }
 }
