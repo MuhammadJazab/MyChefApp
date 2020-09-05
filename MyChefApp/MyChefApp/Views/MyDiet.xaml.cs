@@ -18,10 +18,10 @@ namespace MyChefApp.Views
         {
             InitializeComponent();
 
-            listView_MyProteins.ItemsSource = new Protein().GetProtiens();
-            listView_MyGrains.ItemsSource = new Grain().GetGrain();
-            listView_MyVeggies.ItemsSource = new Veggie().GetVeggie();
-            listView_AllergieAndRestrictions.ItemsSource = new AllergieAndRestriction().GetAllergieAndRestrictions();
+            //listView_MyProteins.ItemsSource = new Protein().GetProtiens();
+            //listView_MyGrains.ItemsSource = new Grain().GetGrain();
+            //listView_MyVeggies.ItemsSource = new Veggie().GetVeggie();
+            //listView_AllergieAndRestrictions.ItemsSource = new AllergieAndRestriction().GetAllergieAndRestrictions();
 
         }
 
