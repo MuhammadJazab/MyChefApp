@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    x:Class="MyChefApp.Views.MyCheffCommunity"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout
+            Margin="10">
+            <Grid
+                VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <Grid
+                    Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <border:SfBorder
+                        Grid.Column="0"
+                        BorderWidth="5"
+                        BorderColor="{DynamicResource Green}">
+                        <StackLayout
+                            Orientation="Vertical">
+                            <Label 
+                                Text="BOH"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                FontFamily="Rockwall">
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <On Platform="Android" Value="40"/>
+                                        <On Platform="iOS" Value="40"/>
+                                    </OnPlatform>
+                                </Label.FontSize>
+                            </Label>
+                            <Image
+                                HeightRequest="120"
+                                WidthRequest="120"
+                                Source="StageLadders"/>
+                        </StackLayout>
+                    </border:SfBorder>
+                    <StackLayout
+                        Grid.Column="1">
+                        <Grid
+                            BackgroundColor="Yellow"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <Image
+                                Aspect="AspectFill"
+                                Source="main"
+                                HeightRequest="150"
+                                WidthRequest="150"/>
+                            <StackLayout
+                                Spacing="-30"
+                                VerticalOptions="CenterAndExpand">
+                                <Label
+                                    Margin="10"
+                                    Padding="3"
+                                    HorizontalOptions="Center"
+                                    TextColor="LightGray"
+                                    FontSize="45"
+                                    FontAttributes="Bold"
+                                    Text="MYCHEF"/>
+                                <Label
+                                    Margin="10"
+                                    Padding="3"
+                                    HorizontalOptions="Center"
+                                    TextColor="LightGray"
+                                    FontSize="35"
+                                    FontAttributes="Bold"
+                                    Text="COMMUNITY"/>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+                <Grid
+                    Grid.Row="1">
+                    
+                </Grid>
+                <StackLayout
+                    Grid.Row="2">
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
