@@ -86,6 +86,9 @@
                             </StackLayout>
                         </Grid>
                     </StackLayout>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="BOHTapped"/>
+                    </Grid.GestureRecognizers>
                 </Grid>
                 <Grid
                     Grid.Row="1">

@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MyChefApp.Views
+namespace MyChefApp.Templates
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MembershipRoom : ContentPage
+    public partial class IncomingMessage : ViewCell
     {
-        public MembershipRoom()
+        public IncomingMessage()
         {
             InitializeComponent();
-        }
-
-        private async void BOHTapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MyCheffCommunity());
         }
     }
 }
