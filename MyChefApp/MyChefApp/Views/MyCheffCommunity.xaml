@@ -86,7 +86,6 @@
                             HeightRequest="120"
                             WidthRequest="120"
                             Source="eight"/>
-                        
                     </Grid>
                 </Grid>
                 <StackLayout
