@@ -16,7 +16,7 @@ namespace MyChefApp
             InitializeComponent();
 
             //MainPage = new NavigationPage(new Login());
-            MainPage = new NavigationPage(new MembershipRoom());
+            MainPage = new NavigationPage(new ProgressReport());
         }
 
         protected override void OnStart()

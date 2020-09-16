@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MyChefApp.Views.ProgressReport"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid
+            Margin="10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid
+                Grid.Row="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid
+                        Grid.Column="0">
+                        <Image 
+                            Aspect="AspectFill" 
+                            Source="three"/>
+                        <StackLayout
+                            Orientation="Vertical"
+                            Margin="0,10">
+                            <Image Source="add"/>
+                            <Label 
+                                x:Name="Lbl_UserName"
+                                Text="UserName"
+                                TextColor="White"
+                                FontSize="30"
+                                HorizontalTextAlignment="Center"/>
+                            <Label 
+                                x:Name="Lbl_Followers"
+                                Text="39 Followers"
+                                TextColor="White"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"/>
+                            <StackLayout
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal">
+                                <Image                                    
+                                    Source="add"/>
+                                <Label 
+                                    x:Name="Lbl_Trophys"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="End"
+                                    TextColor="White"
+                                    Text="1x"
+                                    FontSize="20"/>
+                            </StackLayout>
+                            <Label 
+                                Text="CHEF CHALLANGE"
+                                TextColor="White"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <StackLayout
+                        Grid.Column="1"
+                        BackgroundColor="LightGreen">
+                        <Label
+                            Text="S O U S    C H E F"/>
+                    </StackLayout>
+
+                    <Grid
+                        Grid.Column="2">
+                        <Grid>
+                            <Image 
+                                Source="account"/>
+                            <StackLayout
+                                Padding="20">
+                                <Label
+                                    x:Name="Lbl_XpLevel"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    BackgroundColor="LightGreen"
+                                    HorizontalTextAlignment="Center"
+                                    Text="XP LEVEL: LINE COOK"/>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+            <Grid
+                Grid.Row="1">
+                <Grid>
+                    <Image 
+                        Aspect="AspectFill"
+                        Source="menu"/>
+                    <StackLayout
+                        Spacing="5"
+                        Orientation="Vertical">
+                        <Label
+                            Margin="0,10"
+                            Text="PROGRESS REPORT"
+                            HorizontalTextAlignment="Center"
+                            FontSize="30"
+                            FontAttributes="Bold"
+                            TextColor="Black"
+                            BackgroundColor="{DynamicResource YellowText}"/>
+                        <Label
+                            Margin="0,20,0,0"
+                            Text="NEXT ACHIEVEMENT"
+                            HorizontalTextAlignment="Center"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            TextColor="Black"/>
+                        <Label
+                            x:Name="lbl_xpLevelTxt"
+                            Text="XP LEVEL: SOUS CHEF"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="Black"
+                            BackgroundColor="LightGreen"/>
+                        <StackLayout
+                            Margin="0,20,0,0"
+                            BackgroundColor="LightGreen"
+                            Orientation="Horizontal">
+                            <Label
+                                HorizontalOptions="FillAndExpand"
+                                Text="CHALLENGES"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                            <Label 
+                                HorizontalOptions="FillAndExpand"
+                                Text="MY GOALS"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <CheckBox
+                                Color="Black"
+                                HorizontalOptions="CenterAndExpand"/>
+                            <CheckBox
+                                Color="Black"
+                                HorizontalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <CheckBox
+                                Color="Black"
+                                HorizontalOptions="CenterAndExpand"/>
+                            <CheckBox
+                                Color="Black"
+                                HorizontalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
