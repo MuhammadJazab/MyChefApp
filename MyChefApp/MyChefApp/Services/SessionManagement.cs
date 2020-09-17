@@ -1,5 +1,4 @@
-﻿using MyChefApp.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace MyChefApp.Services

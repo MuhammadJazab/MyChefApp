@@ -18,7 +18,9 @@ namespace MyChefAppModels
         public virtual DbSet<AccountTypes> AccountTypes { get; set; }
         public virtual DbSet<CookingSkills> CookingSkills { get; set; }
         public virtual DbSet<FoodTypes> FoodTypes { get; set; }
+        public virtual DbSet<Foods> Foods { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<WeekMenu> WeekMenu { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,7 +42,20 @@ namespace MyChefAppModels
             {
                 entity.HasKey(e => e.FoodTypeId);
 
-                entity.Property(e => e.FoodTypeName).HasMaxLength(20);
+                entity.Property(e => e.FoodTypeName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Foods>(entity =>
+            {
+                entity.HasKey(e => e.FoodId);
+
+                entity.Property(e => e.FoodId).HasColumnName("FoodID");
+
+                entity.Property(e => e.FoodName)
+                    .IsRequired()
+                    .HasMaxLength(20);
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -50,6 +65,19 @@ namespace MyChefAppModels
                 entity.Property(e => e.Password).HasMaxLength(30);
 
                 entity.Property(e => e.UserName).HasMaxLength(20);
+            });
+
+            modelBuilder.Entity<WeekMenu>(entity =>
+            {
+                entity.HasKey(e => e.MenuId);
+
+                entity.Property(e => e.MenuTitle)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.WeekDay)
+                    .IsRequired()
+                    .HasMaxLength(20);
             });
 
             OnModelCreatingPartial(modelBuilder);

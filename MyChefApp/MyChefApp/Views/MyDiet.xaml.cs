@@ -27,7 +27,7 @@ namespace MyChefApp.Views
 
         private void ItemTapped_MyProtein(object sender, ItemTappedEventArgs e)
         {
-            var selectedItem = (Protein)e.Item;
+            var selectedItem = (Protien)e.Item;
             selectedItem.IsSelected = selectedItem.IsSelected ? false : true;
         }
 

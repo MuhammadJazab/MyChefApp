@@ -1,5 +1,4 @@
-﻿using MyChefApp.Models;
-using MyChefApp.Services;
+﻿using MyChefApp.Services;
 using MyChefApp.ViewModels;
 using System;
 using Xamarin.Forms;

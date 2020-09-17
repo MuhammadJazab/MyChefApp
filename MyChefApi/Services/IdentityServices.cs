@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Utilities;
 
 namespace MyChefApi.Services
@@ -70,6 +71,7 @@ namespace MyChefApi.Services
             try
             {
                 uow.Repository<User>().Add(_user);
+                uow.Save();
 
                 response = new Response()
                 {
