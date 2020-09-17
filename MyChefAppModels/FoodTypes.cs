@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace MyChefApp.Models
+namespace MyChefAppModels
 {
-    public class FoodType
+    public partial class FoodTypes
     {
         public long FoodTypeId { get; set; }
-        public string Name { get; set; }
+        public string FoodTypeName { get; set; }
     }
 }

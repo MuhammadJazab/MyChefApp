@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyChefApp.Models
+namespace MyChefApp.ViewModels
 {
     public class Response
     {
@@ -22,7 +22,7 @@ namespace MyChefApp.Models
     {
         Free = 1,
         Premium = 2,
-        FKPremium =3
+        FKPremium = 3
     }
 
     public enum FoodTypeEnum
@@ -43,20 +43,13 @@ namespace MyChefApp.Models
         ExecutiveChef = 6,
     }
 
-    public static class TableName
-    {
-        public const string UserTable = "Users";
-        public const string FoodTypeTable = "FoodType";
-        public const string FoodTable = "Food";
-    }
-
     public static class Messages
     {
         public const string InvalidUsers = "Invalid email or password";
         public const string LoginSuccessfully = "LoginSuccessfully";
         public const string UserNotExist = "User does not exit";
     }
-    
+
     public static class SessionKey
     {
         public const string Token = "Token";

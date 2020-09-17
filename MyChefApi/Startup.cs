@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using MyChefApi.Data;
+using MyChefApi.Services;
+using MyChefAppModels;
+using Utilities;
 
 namespace MyChefApi
 {
@@ -22,8 +24,12 @@ namespace MyChefApi
         {
             services.AddControllers();
 
-            services.AddDbContext<MyChefApiContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MyChefApiContext")));
+            services
+                .AddDbContext<MyChefContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("MyChefApiContext"), builder => builder.EnableRetryOnFailure()));
+
+            services.AddTransient<IIdentityServices, IdentityServices>();
+            services.AddTransient<IUnitOfWork, UnitOfWork<MyChefContext>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +48,9 @@ namespace MyChefApi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "api/{controller}/{action}/{id?}");
             });
         }
     }

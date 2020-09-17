@@ -1,10 +1,6 @@
-﻿using MyChefApp.Models;
-using MyChefApp.Services;
+﻿using MyChefApp.Services;
+using MyChefApp.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -36,11 +32,18 @@ namespace MyChefApp.Views
                 Password = txtPassword.Text
             };
 
-            Response response = await authServices.SignIn(signIn);
+            Response response = await authServices.GetUserByCredentials(signIn);
 
             if (response.Status == ResponseStatus.Restrected)
             {
-                await DisplayAlert("Error", Messages.InvalidUsers, "OK");
+                ContainerEmail.HasError = true;
+                ContainerPassword.HasError = true;
+
+                ContainerEmail.ErrorColor = Color.Red;
+                ContainerPassword.ErrorColor = Color.Red;
+
+                ContainerEmail.ErrorText = response.Message;
+                ContainerPassword.ErrorText = response.Message;
             }
             else if (response.Status == ResponseStatus.Error)
             {
@@ -51,7 +54,6 @@ namespace MyChefApp.Views
                 await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
                 await Navigation.PushAsync(new Account());
             }
-
         }
 
         private async void SignupClick(object sender, EventArgs e)

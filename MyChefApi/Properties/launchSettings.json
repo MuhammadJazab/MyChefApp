@@ -4,15 +4,14 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost:53547",
-      "sslPort": 44340
+      "applicationUrl": "http://localhost:8800"
     }
   },
   "profiles": {
     "IIS ": {
       "commandName": "IIS",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "api/Identity/start",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,8 +19,8 @@
     "MyChefApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "launchUrl": "api/Identity/start",
+      "applicationUrl": "http://localhost:8800",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

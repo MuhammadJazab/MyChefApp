@@ -1,5 +1,6 @@
 ﻿using MyChefApp.Models;
 using MyChefApp.Services;
+using MyChefApp.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,7 +21,7 @@ namespace MyChefApp.Views
         
         private async void SignInClick(object sender, EventArgs e)
         {
-            RegistrationModel registrationModel = new RegistrationModel()
+            RegistrationVM registrationModel = new RegistrationVM()
             {
                 Email = txtEmail.Text.ToLower(),
                 Password = txtPassword.Text,

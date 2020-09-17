@@ -68,6 +68,7 @@
                         FontSize="Body"/>
 
                     <inputLayout:SfTextInputLayout
+                        x:Name="ContainerEmail"
                         Hint="EMAIL"
                         EnableFloating="False"
                         ContainerBackgroundColor="{StaticResource Yellow}"
@@ -80,6 +81,7 @@
                     </inputLayout:SfTextInputLayout>
 
                     <inputLayout:SfTextInputLayout
+                        x:Name="ContainerPassword"
                         Hint="PASSWORD" 
                         EnableFloating="False"
                         ContainerBackgroundColor="{StaticResource Yellow}"
