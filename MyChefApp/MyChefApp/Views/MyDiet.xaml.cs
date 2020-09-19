@@ -1,4 +1,6 @@
-﻿using MyChefApp.ViewModels;
+﻿using MyChefApp.Services;
+using MyChefApp.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,15 +16,23 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyDiet : ContentPage
     {
-        public MyDiet()
+        HttpRequests httpRequests;
+
+        ObservableCollection<FoodVM> proteinList;
+        ObservableCollection<FoodVM> grainList;
+        ObservableCollection<FoodVM> vegiList;
+        ObservableCollection<FoodVM> allergiesList;
+
+        public MyDiet(long accountType, long cookingSkillId)
         {
             InitializeComponent();
 
-            //listView_MyProteins.ItemsSource = new Protein().GetProtiens();
-            //listView_MyGrains.ItemsSource = new Grain().GetGrain();
-            //listView_MyVeggies.ItemsSource = new Veggie().GetVeggie();
-            //listView_AllergieAndRestrictions.ItemsSource = new AllergieAndRestriction().GetAllergieAndRestrictions();
+            httpRequests = new HttpRequests();
 
+            Task.Run(async () =>
+            {
+                
+            });
         }
 
         private void ItemTapped_MyProtein(object sender, ItemTappedEventArgs e)

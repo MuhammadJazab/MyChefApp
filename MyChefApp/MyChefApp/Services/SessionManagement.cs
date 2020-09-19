@@ -14,5 +14,10 @@ namespace MyChefApp.Services
         {
             return SecureStorage.GetAsync(key).Result;
         }
+
+        public static bool RemoveSession(string key)
+        {
+            return SecureStorage.Remove(key);
+        }
     }
 }

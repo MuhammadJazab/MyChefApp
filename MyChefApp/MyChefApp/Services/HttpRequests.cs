@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace MyChefApp.Services
 {
-    public class AuthServices
+    public class HttpRequests
     {
         private HttpClientService httpClient;
 
-        public AuthServices()
+        public HttpRequests()
         {
             httpClient = new HttpClientService();
         }
 
-        public async Task<Response> RegisterUser(RegistrationVM registrationModel)
+        public async Task<Response> RegisterUser(UserVM registrationModel)
         {
             Response response;
 
@@ -37,14 +37,14 @@ namespace MyChefApp.Services
             return response;
         }
 
-        public async Task<Response> GetUserByCredentials(SignIn signIn)
+        public async Task<Response> GetUserByCredentials(UserVM signIn)
         {
             Response response;
 
             try
             {
                 response = JsonConvert.DeserializeObject<Response>(
-                    await httpClient.PostAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.GetUserByCredentials}", new RegistrationVM() { Email = signIn.Email, Password = signIn.Password })
+                    await httpClient.PostAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.GetUserByCredentials}", signIn)
                 );
             }
             catch (Exception ex)
@@ -60,7 +60,7 @@ namespace MyChefApp.Services
             return response;
         }
 
-        private async Task<Response> UpdateUser(RegistrationVM registrationModel)
+        public async Task<Response> UpdateUser(UserVM registrationModel)
         {
             Response response;
 
@@ -83,5 +83,27 @@ namespace MyChefApp.Services
             return response;
         }
 
+        public async Task<Response> GetFoodList()
+        {
+            Response response;
+
+            try
+            {
+                response = JsonConvert.DeserializeObject<Response>(
+                    await httpClient.GetAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.GetFoodList}")
+                );
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
     }
 }

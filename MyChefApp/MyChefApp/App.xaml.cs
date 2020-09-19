@@ -1,5 +1,8 @@
 ﻿using Firebase.Database;
+using MyChefApp.Services;
+using MyChefApp.ViewModels;
 using MyChefApp.Views;
+using Newtonsoft.Json;
 using Syncfusion.Licensing;
 using Xamarin.Forms;
 
@@ -13,7 +16,30 @@ namespace MyChefApp
 
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Login());
+            //if (!string.IsNullOrEmpty(SessionManagement.GetSession(SessionKey.Token)))
+            //{
+            //    UserVM user = JsonConvert.DeserializeObject<UserVM>(SessionManagement.GetSession(SessionKey.Token));
+
+            //    if (user != null)
+            //    {
+            //        if (!string.IsNullOrEmpty(user.Email))
+            //        {
+            //            if (user.AccountType > 0)
+            //            {
+            //                if(user.CookingSkills > 0)
+            //                {
+
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    MainPage = new NavigationPage(new Login());
+            //}
+
+            MainPage = new NavigationPage(new MyDiet(1,2));
         }
 
         protected override void OnStart()

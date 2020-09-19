@@ -9,18 +9,18 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Signup : ContentPage
     {
-        AuthServices authServices;
+        HttpRequests authServices;
 
         public Signup()
         {
             InitializeComponent();
 
-            authServices = new AuthServices();
+            authServices = new HttpRequests();
         }
         
         private async void SignInClick(object sender, EventArgs e)
         {
-            RegistrationVM registrationModel = new RegistrationVM()
+            UserVM registrationModel = new UserVM()
             {
                 Email = txtEmail.Text.ToLower(),
                 Password = txtPassword.Text,

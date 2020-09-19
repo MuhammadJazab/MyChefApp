@@ -12,14 +12,18 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Skills : ContentPage
     {
-        public Skills()
+        long accountType;
+
+        public Skills(long accountType)
         {
+            this.accountType = accountType;
+
             InitializeComponent();
         }
 
         private async void SelectSkill(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyDiet());
+            await Navigation.PushAsync(new MyDiet(accountType, Convert.ToInt64(((TappedEventArgs)e).Parameter)));
         }
     }
 }

@@ -77,7 +77,7 @@
                         BackgroundColor="Gray"
                         Source="ArrowFarword">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="FreeClick"/>
+                            <TapGestureRecognizer CommandParameter="1" Tapped="ClickPaymentMethod"/>
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
@@ -109,7 +109,7 @@
                         BackgroundColor="WhiteSmoke"
                         Source="ArrowFarword">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="PremiumClick"/>
+                            <TapGestureRecognizer CommandParameter="2" Tapped="ClickPaymentMethod"/>
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
@@ -140,7 +140,7 @@
                         BackgroundColor="LightGreen"
                         Source="ArrowFarword">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="FKPremiumClick"/>
+                            <TapGestureRecognizer CommandParameter="3" Tapped="ClickPaymentMethod"/>
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>

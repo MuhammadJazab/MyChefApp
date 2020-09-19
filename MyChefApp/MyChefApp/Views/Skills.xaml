@@ -34,6 +34,9 @@
                             FontAttributes="Bold"
                             VerticalTextAlignment="Start"
                             Text="{StaticResource FreshMeat}"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="1" Tapped="SelectSkill"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <Frame
                         CornerRadius="30"
@@ -49,6 +52,9 @@
                             FontAttributes="Bold"
                             VerticalTextAlignment="End"
                             Text="{StaticResource SeasonedCook}"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="2" Tapped="SelectSkill"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <Frame
                         CornerRadius="30"
@@ -64,6 +70,9 @@
                             FontAttributes="Bold"
                             VerticalTextAlignment="End"
                             Text="{StaticResource PrepCook}"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="3" Tapped="SelectSkill"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <Frame
                         CornerRadius="30"
@@ -79,6 +88,9 @@
                             FontAttributes="Bold"
                             VerticalTextAlignment="End"
                             Text="{StaticResource LineCook}"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="4" Tapped="SelectSkill"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <Frame
                         CornerRadius="30"
@@ -94,6 +106,9 @@
                             FontAttributes="Bold"
                             VerticalTextAlignment="End"
                             Text="{StaticResource SousCook}"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="5" Tapped="SelectSkill"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                     <Frame
                         CornerRadius="30"
@@ -109,16 +124,10 @@
                             FontAttributes="Bold"
                             VerticalTextAlignment="End"
                             Text="{StaticResource ExecutiveChef}"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="6" Tapped="SelectSkill"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
-                    <Button
-                        HorizontalOptions="EndAndExpand"
-                        CornerRadius="30"
-                        Text="Next"
-                        TextColor="White"
-                        FontSize="Medium"
-                        Clicked="SelectSkill"
-                        BackgroundColor="{DynamicResource ColorBlue}">
-                    </Button>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

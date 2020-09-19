@@ -15,8 +15,6 @@ namespace MyChefApp.Views
         public WeeklyMenu()
         {
             InitializeComponent();
-
-            //Application.Current.Resources["resourceName"]
         }
 
         private async void WeekMenu(object sender, EventArgs e)

@@ -12,19 +12,24 @@ namespace MyChefApp.Views
             InitializeComponent();
         }
 
-        private async void FreeClick(object sender, EventArgs e)
+        private async void ClickPaymentMethod(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Skills());
-        }
+            switch (Convert.ToInt64(((TappedEventArgs)e).Parameter))
+            {
+                case 1:
+                    await Navigation.PushAsync(new Skills(Convert.ToInt64(((TappedEventArgs)e).Parameter)));
+                    break;
 
-        private async void PremiumClick(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Skills());
-        }
+                case 2:
+                    await DisplayAlert("Error", "Payment method are under development", "OK");
+                    break;
 
-        private async void FKPremiumClick(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Skills());
+                case 3:
+                    await DisplayAlert("Error", "Payment method are under development", "OK");
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

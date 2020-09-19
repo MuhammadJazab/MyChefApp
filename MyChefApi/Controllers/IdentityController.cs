@@ -22,21 +22,27 @@ namespace MyChefApi.Controllers
         }
 
         [HttpPost]
-        public Response RegisterUser(User user)
+        public Response RegisterUser([FromBody] User user)
         {
             return identityServices.RegisterUser(user);
         }
 
         [HttpPost]
-        public Response UpdateUser(User user)
+        public Response UpdateUser([FromBody] User user)
         {
             return identityServices.UpdateUser(user);
         }
 
-        [HttpGet]
-        public Response GetUserByCredentials(User user)
+        [HttpPost]
+        public Response GetUserByCredentials([FromBody] User user)
         {
             return identityServices.GetUserByCredentials(user);
+        }
+
+        [HttpGet]
+        public Response GetFoodList()
+        {
+            return identityServices.GetFoodList();
         }
     }
 }

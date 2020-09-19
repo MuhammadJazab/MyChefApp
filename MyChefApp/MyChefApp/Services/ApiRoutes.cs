@@ -8,7 +8,7 @@ namespace MyChefApp.Services
     {
         public static class Base
         {
-            public static readonly string BaseUrl = "http://localhost:8800/";
+            public static readonly string BaseUrl = "http://172.16.2.101:8800/";
         }
 
         public static class MyChefAPI
@@ -18,6 +18,7 @@ namespace MyChefApp.Services
             public static readonly string RegisterUser = $"{BaseUrl}RegisterUser";
             public static readonly string UpdateUser = $"{BaseUrl}UpdateUser";
             public static readonly string GetUserByCredentials = $"{BaseUrl}GetUserByCredentials";
+            public static readonly string GetFoodList = $"{BaseUrl}GetFoodList";
         }
     }
 }
