@@ -10,7 +10,8 @@ namespace MyChefApp.ViewModels
         public string Email { get; set; }
         public string Password { get; set; }
         public string UserName { get; set; }
-        public int AccountType { get; set; }
-        public int CookingSkills { get; set; }
+        public long AccountTypeId { get; set; }
+        public long CookingSkillId { get; set; }
+        public List<FoodVM> UserFoodPreferences { get; set; }
     }
 }

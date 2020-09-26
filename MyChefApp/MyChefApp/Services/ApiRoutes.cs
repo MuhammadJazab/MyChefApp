@@ -8,7 +8,7 @@ namespace MyChefApp.Services
     {
         public static class Base
         {
-            public static readonly string BaseUrl = "http://172.16.2.101:8800/";
+            public static readonly string BaseUrl = "http://192.168.10.6:8800/";
         }
 
         public static class MyChefAPI

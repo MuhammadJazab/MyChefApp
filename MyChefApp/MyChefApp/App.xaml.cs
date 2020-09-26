@@ -39,7 +39,8 @@ namespace MyChefApp
             //    MainPage = new NavigationPage(new Login());
             //}
 
-            MainPage = new NavigationPage(new MyDiet(1,2));
+            //MainPage = new NavigationPage(new WeeklyMenu(new UserVM()));
+            MainPage = new NavigationPage(new TestPage());
         }
 
         protected override void OnStart()

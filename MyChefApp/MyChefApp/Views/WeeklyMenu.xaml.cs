@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using MyChefApp.ViewModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,9 +8,13 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WeeklyMenu : ContentPage
     {
-        public WeeklyMenu()
+        UserVM userVM;
+
+        public WeeklyMenu(UserVM userVM)
         {
             InitializeComponent();
+
+            this.userVM = userVM;
         }
 
         private async void WeekMenu(object sender, EventArgs e)

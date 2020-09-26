@@ -52,10 +52,17 @@
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
                             Text="{StaticResource DietMessage}"/>
+                        <StackLayout>
+                            <ActivityIndicator 
+                                x:Name="ActivityIndicator"
+                                Color="{DynamicResource Green}"
+                                VerticalOptions="Center"/>
+                        </StackLayout>
                         <ScrollView>
                             <StackLayout 
                                 x:Name="ContainerExpender"
                                 Margin="30"
+                                IsVisible="false"
                                 HorizontalOptions="CenterAndExpand"
                                 VerticalOptions="CenterAndExpand">
                                 
@@ -93,7 +100,7 @@
                                                 IsPullToRefreshEnabled="False"
                                                 SelectionMode="None"
                                                 RefreshControlColor="{DynamicResource Green}"
-                                                ItemTapped="ItemTapped_MyProtein"
+                                                ItemTapped="ItemTapped_FoodSelection"
                                                 SeparatorVisibility="None">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
@@ -115,7 +122,7 @@
                                                                     VerticalOptions="Center"
                                                                     FontSize="Large"
                                                                     BackgroundColor="#67785c"
-                                                                    Text="{Binding Title}"/>
+                                                                    Text="{Binding FoodName}"/>
                                                             </StackLayout>
                                                         </ViewCell>
                                                     </DataTemplate>
@@ -159,7 +166,7 @@
                                                 IsPullToRefreshEnabled="False"
                                                 SelectionMode="None"
                                                 RefreshControlColor="{DynamicResource Green}"
-                                                ItemTapped="ItemTapped_MyGrains"
+                                                ItemTapped="ItemTapped_FoodSelection"
                                                 SeparatorVisibility="None">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
@@ -181,7 +188,7 @@
                                                                     VerticalOptions="Center"
                                                                     FontSize="Large"
                                                                     BackgroundColor="#67785c"
-                                                                    Text="{Binding Title}"/>
+                                                                    Text="{Binding FoodName}"/>
                                                             </StackLayout>
                                                         </ViewCell>
                                                     </DataTemplate>
@@ -225,7 +232,7 @@
                                                 IsPullToRefreshEnabled="False"
                                                 SelectionMode="None"
                                                 RefreshControlColor="{DynamicResource Green}"
-                                                ItemTapped="ItemTapped_MyVeggies"
+                                                ItemTapped="ItemTapped_FoodSelection"
                                                 SeparatorVisibility="None">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
@@ -247,7 +254,7 @@
                                                                     VerticalOptions="Center"
                                                                     FontSize="Large"
                                                                     BackgroundColor="#67785c"
-                                                                    Text="{Binding Title}"/>
+                                                                    Text="{Binding FoodName}"/>
                                                             </StackLayout>
                                                         </ViewCell>
                                                     </DataTemplate>
@@ -291,7 +298,7 @@
                                                 IsPullToRefreshEnabled="False"
                                                 SelectionMode="None"
                                                 RefreshControlColor="{DynamicResource Green}"
-                                                ItemTapped="ItemTapped_AllergieAndRestrictions"
+                                                ItemTapped="ItemTapped_FoodSelection"
                                                 SeparatorVisibility="None">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
@@ -313,7 +320,7 @@
                                                                     VerticalOptions="Center"
                                                                     FontSize="Large"
                                                                     BackgroundColor="#67785c"
-                                                                    Text="{Binding Title}"/>
+                                                                    Text="{Binding FoodName}"/>
                                                             </StackLayout>
                                                         </ViewCell>
                                                     </DataTemplate>
@@ -325,7 +332,9 @@
                             </StackLayout>
                         </ScrollView>
                         <Button
+                            x:Name="Btn_Next"
                             Text="NEXT"
+                            IsEnabled="False"
                             BackgroundColor="{DynamicResource ColorBlue}"
                             HorizontalOptions="End"
                             VerticalOptions="End"
