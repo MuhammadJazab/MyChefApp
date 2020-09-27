@@ -14,6 +14,7 @@ namespace MyChefApi.Services
         Response UpdateUser(User _user);
         Response GetUserByCredentials(User _user);
         Response GetFoodList();
+        Response GetCookingSkills();
     }
 
     public class IdentityServices : IIdentityServices
@@ -25,20 +26,60 @@ namespace MyChefApi.Services
             this.uow = uow;
         }
 
+        public Response GetCookingSkills()
+        {
+            Response response;
+
+            try
+            {
+                List<CookingSkills> cookingSkills = uow.Repository<CookingSkills>().GetAll().ToList();
+
+                if (cookingSkills != null)
+                {
+                    response = new Response()
+                    {
+                        Message = "Successfully fetch cooking skills",
+                        ResultData = cookingSkills,
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "failed to fetch cooking skills",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
+        }
+
         public Response GetFoodList()
         {
             Response response;
 
             try
             {
-                List<Foods> cookingSkills = uow.Repository<Foods>().GetAll().ToList();
+                List<Foods> foods = uow.Repository<Foods>().GetAll().ToList();
 
-                if (cookingSkills != null)
+                if (foods != null)
                 {
                     response = new Response()
                     {
                         Message = "Login Successfully",
-                        ResultData = cookingSkills,
+                        ResultData = foods,
                         Status = ResponseStatus.OK
                     };
                 }

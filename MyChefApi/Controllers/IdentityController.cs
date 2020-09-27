@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyChefApi.Services;
 using MyChefAppModels;
+using System.Security.Cryptography;
 using Utilities;
 
 namespace MyChefApi.Controllers
@@ -43,6 +44,12 @@ namespace MyChefApi.Controllers
         public Response GetFoodList()
         {
             return identityServices.GetFoodList();
+        }
+
+        [HttpGet]
+        public Response GetCookingSkills()
+        {
+            return identityServices.GetCookingSkills();
         }
     }
 }

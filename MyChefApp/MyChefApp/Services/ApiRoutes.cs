@@ -19,6 +19,7 @@ namespace MyChefApp.Services
             public static readonly string UpdateUser = $"{BaseUrl}UpdateUser";
             public static readonly string GetUserByCredentials = $"{BaseUrl}GetUserByCredentials";
             public static readonly string GetFoodList = $"{BaseUrl}GetFoodList";
+            public static readonly string GetCookingSkills = $"{BaseUrl}GetCookingSkills";
         }
     }
 }

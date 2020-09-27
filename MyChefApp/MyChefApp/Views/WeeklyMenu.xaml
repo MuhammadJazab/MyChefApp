@@ -21,6 +21,7 @@
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="20*"/>
                 </Grid.RowDefinitions>
+            </Grid>
             <StackLayout
                 Grid.Row="0"
                 Orientation="Vertical"
@@ -31,6 +32,7 @@
                         Aspect="AspectFill"
                         Source="one"/>
                     <Button
+                        x:Name="Btn_WeekMenu"
                         CornerRadius="30"
                         Padding="10"
                         HorizontalOptions="Center"
@@ -63,6 +65,15 @@
                 </Grid>
             </StackLayout>
             <StackLayout
+                Grid.Row="2">
+                <ActivityIndicator 
+                    x:Name="ActivityIndicator"
+                    Color="{DynamicResource Green}"
+                    VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout
+                x:Name="NameContainer"
+                IsVisible="false"
                 Grid.Row="2"
                 Spacing="0"
                 Orientation="Vertical">
@@ -71,6 +82,7 @@
                         Aspect="AspectFill"
                         Source="three"/>
                     <Label
+                        x:Name="Lbl_Name"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         TextColor="{DynamicResource BadgeColor}"
@@ -87,7 +99,6 @@
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource BadgeColor}"
-                        Text="Xp level: Fresh Meat"
                         TextColor="White"/>
                 </Grid>
             </StackLayout>
@@ -129,7 +140,6 @@
                         Text="My Goals"/>
                 </Grid>
             </StackLayout>
-            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

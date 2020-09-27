@@ -9,18 +9,18 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-        HttpRequests authServices;
+        HttpRequests httpRequests;
 
         public Login()
         {
             InitializeComponent();
 
-            authServices = new HttpRequests();
+            httpRequests = new HttpRequests();
         }
 
-        private void ForgotUserPasswordClick(object sender, EventArgs e)
+        private async void ForgotUserPasswordClick(object sender, EventArgs e)
         {
-
+            await DisplayAlert("Alert", "Under Development", "OK");
         }
 
         private async void LoginClick(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace MyChefApp.Views
                 Password = txtPassword.Text
             };
 
-            Response response = await authServices.GetUserByCredentials(signIn);
+            Response response = await httpRequests.GetUserByCredentials(signIn);
 
             if (response != null)
             {
@@ -53,7 +53,8 @@ namespace MyChefApp.Views
                 else
                 {
                     await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
-                    await Navigation.PushAsync(new Account());
+                    SessionManagement.LoginMechanism();
+                    //await Navigation.PushAsync(new Account());
                 }
             }
             else

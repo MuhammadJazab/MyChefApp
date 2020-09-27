@@ -37,6 +37,29 @@ namespace MyChefApp.Services
             return response;
         }
 
+        public async Task<Response> GetCookingSkills()
+        {
+            Response response;
+
+            try
+            {
+                response = JsonConvert.DeserializeObject<Response>(
+                    await httpClient.GetAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.GetCookingSkills}")
+                );
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
+
         public async Task<Response> GetUserByCredentials(UserVM signIn)
         {
             Response response;

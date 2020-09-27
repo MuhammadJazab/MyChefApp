@@ -30,16 +30,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Templates\EvenDays.xaml">
+    <EmbeddedResource Update="Templates\DaysTemplate\EvenDays.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Templates\IncomingMessage.xaml">
+    <EmbeddedResource Update="Templates\ChatTemplate\IncomingMessage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Templates\OddDays.xaml">
+    <EmbeddedResource Update="Templates\DaysTemplate\OddDays.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Templates\OutgoingMessage.xaml">
+    <EmbeddedResource Update="Templates\ChatTemplate\OutgoingMessage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Account.xaml">
