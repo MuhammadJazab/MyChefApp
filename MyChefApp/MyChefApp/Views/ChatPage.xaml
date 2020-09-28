@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:template="clr-namespace:MyChefApp.ControlHelpers" 
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             x:Class="MyChefApp.Views.ChatPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="FromTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout 
+                            Spacing="10" 
+                            Orientation="Vertical" 
+                            Margin="0,5" 
+                            HorizontalOptions="FillAndExpand">
+                            <Label 
+                                Text="{Binding DateSent,StringFormat='\{0:dd MMM hh:mm tt}'}" 
+                                FontFamily="{DynamicResource Myriadpro_bold}"
+                                FontSize="Micro" 
+                                HorizontalOptions="CenterAndExpand"/>
+                            <StackLayout 
+                                Margin="60,0,0,0"
+                                HorizontalOptions="EndAndExpand">
+
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Spacing="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="StartAndExpand"
+                                    Padding="2">
+                                    <Frame 
+                                        HasShadow="False"
+                                        BackgroundColor="{DynamicResource lightblueBgColor}" 
+                                        Padding="10" 
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="EndAndExpand" 
+                                        CornerRadius="3">
+                                        <Label 
+                                            Text="{Binding Message}" 
+                                            FontSize="12" 
+                                            TextColor="Black" 
+                                            FontFamily="{DynamicResource Myriadpro_bold}"
+                                            LineHeight="1.2"
+                                            VerticalOptions="StartAndExpand"
+                                            HorizontalOptions="FillAndExpand" 
+                                            HorizontalTextAlignment="Start"/>
+                                    </Frame>
+                                    <Image
+                                        Source="right_arrow"
+                                        Margin="0,5,0,0"
+                                        VerticalOptions="Start"></Image>
+                                    <Frame
+                                            CornerRadius="300"
+                                            BackgroundColor="{DynamicResource lightblueBgColor}"
+                                            Padding="10,8"
+                                            VerticalOptions="Start">
+                                        <Image
+                                                Source="chat_ico"
+                                                VerticalOptions="Start"></Image>
+                                    </Frame>
+
+
+                                </StackLayout>
+
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="ToTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout 
+                            Spacing="10" 
+                            Orientation="Vertical" 
+                            Margin="0,5" 
+                            HorizontalOptions="FillAndExpand">
+                            <Label 
+                                Text="{Binding DateSent,StringFormat='\{0:dd MMM hh:mm tt}'}" 
+                                FontSize="Micro" 
+                                FontFamily="{DynamicResource Myriadpro_bold}"
+                                HorizontalOptions="CenterAndExpand"/>
+                            <StackLayout 
+                                Margin="0,0,60,0"
+                                HorizontalOptions="StartAndExpand">
+
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Spacing="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    Padding="2">
+                                    <Frame
+                                        CornerRadius="300"
+                                        BackgroundColor="{DynamicResource lightgreenColor}"
+                                        Padding="10,8"
+                                        VerticalOptions="Start">
+                                        <Image
+                                           Source="chat_ico"
+                                           VerticalOptions="Start"></Image>
+                                    </Frame>
+                                    <Image
+                                       Source="left_arrow"
+                                       Margin="0,5,0,0"
+                                       VerticalOptions="Start"></Image>
+                                    <Frame 
+                                        HasShadow="False"
+                                       BackgroundColor="{DynamicResource lightgreenColor}" 
+                                       Padding="10" 
+                                       VerticalOptions="Start" 
+                                       HorizontalOptions="EndAndExpand" 
+                                       CornerRadius="3" >
+                                        <Label 
+                                          Text="{Binding Message}" 
+                                           FontFamily="{DynamicResource Myriadpro_bold}"
+                                          FontSize="12" 
+                                          LineHeight="1.2"
+                                          HorizontalOptions="FillAndExpand" 
+                                          HorizontalTextAlignment="Start"/>
+                                    </Frame>
+
+
+                                </StackLayout>
+
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <template:ChatDataTemplateSelector x:Key="chatDataTemplateSelector" FromTemplate="{StaticResource FromTemplate}" ToTemplate="{StaticResource ToTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <OnPlatform x:TypeArguments="View">
+            <On Platform="Android">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*"/>
+                        <ColumnDefinition Width="20*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        FontFamily="{DynamicResource Myriadpro_bold}"
+                        TextColor="#0D4C84"
+                        Text="SMS Chat"/>
+                </Grid>
+            </On>
+        </OnPlatform>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Padding="20"
+                     x:Name="PageContainer">
+            <Grid x:Name="ListViewContainer">
+                <template:AutoScrollListView
+                        x:Name="listMessages"
+                        SelectionMode="None"
+                        IsVisible="False"
+                        SeparatorVisibility="None"
+                        ItemTemplate="{StaticResource chatDataTemplateSelector}" 
+                        VerticalOptions="FillAndExpand"
+                        HasUnevenRows="True">
+                </template:AutoScrollListView>
+            </Grid>
+            <StackLayout VerticalOptions="End">
+                <Frame 
+                    BorderColor="{DynamicResource blueButtonColor}" 
+                    Padding="10,0,5,0"
+                    HeightRequest="40"
+                    CornerRadius="30">
+                    <StackLayout 
+                        Orientation="Horizontal"
+                        Padding="0"
+                        HorizontalOptions="FillAndExpand">
+                        <inputLayout:SfTextInputLayout
+                            ContainerType="None"
+                            InputViewPadding="0"
+                            Padding="0"
+                            VerticalOptions="Center"
+                            UnfocusedStrokeWidth="0"
+                            FocusedStrokeWidth="0"
+                            HorizontalOptions="FillAndExpand">
+                            <Entry 
+                                x:Name="txt_msg"
+                                Placeholder="Enter Message"
+                                MaxLength="200"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center"
+                             FontFamily="{DynamicResource Myriadpro_bold}"
+                            HorizontalOptions="FillAndExpand"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <Button 
+                            Text="SEND"
+                            CornerRadius="30"
+                            Padding="0,5"
+                            FontSize="Micro"
+                            VerticalOptions="Center"
+                            HeightRequest="30"
+                            BackgroundColor="{DynamicResource Green}"
+                            TextColor="White"
+                            Clicked="Button_Clicked"
+                            HorizontalOptions="End"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
