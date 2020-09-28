@@ -44,7 +44,7 @@ namespace MyChefApp.Services
                                 if (user.UserFoodPreferences.Count > 0)
                                 {
                                     App.User = $"{user.UserName}_{user.UserId}";
-                                    App.Current.MainPage = new NavigationPage(new WeeklyMenu(user));
+                                    App.Current.MainPage = new NavigationPage(new ChatPage("chat_123"));
                                 }
                             }
                         }
@@ -53,7 +53,7 @@ namespace MyChefApp.Services
             }
             else
             {
-                App.Current.MainPage = new NavigationPage(new Login());
+                App.Current.MainPage = new NavigationPage(new ChatPage("chat_123"));
             }
         }
     }
