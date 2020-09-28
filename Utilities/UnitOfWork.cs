@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Utilities
@@ -15,7 +11,7 @@ namespace Utilities
     {
         void Save();
         Task SaveAsync();
-        IRepository<T> Repository<T>() where T : class;      
+        IRepository<T> Repository<T>() where T : class;
     }
 
     public class UnitOfWork<U> : IUnitOfWork where U : class

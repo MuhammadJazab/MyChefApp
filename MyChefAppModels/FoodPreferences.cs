@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MyChefAppModels
+﻿namespace MyChefAppModels
 {
     public partial class FoodPreferences
     {

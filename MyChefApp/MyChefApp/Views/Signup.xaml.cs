@@ -1,5 +1,4 @@
 ﻿using MyChefApp.Services;
-using MyChefApp.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,7 +16,7 @@ namespace MyChefApp.Views
 
             authServices = new HttpRequests();
         }
-        
+
         private async void SignInClick(object sender, EventArgs e)
         {
             UserVM registrationModel = new UserVM()
@@ -27,9 +26,9 @@ namespace MyChefApp.Views
                 UserName = txtUserName.Text
             };
 
-            Response response =  await authServices.RegisterUser(registrationModel);
+            Response response = await authServices.RegisterUser(registrationModel);
 
-            if(response.Status == ResponseStatus.OK)
+            if (response.Status == ResponseStatus.OK)
             {
                 await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
                 await Navigation.PushAsync(new Account());

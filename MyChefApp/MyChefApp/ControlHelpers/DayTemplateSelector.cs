@@ -1,6 +1,4 @@
 ﻿using MyChefApp.Templates;
-using MyChefApp.ViewModels;
-using System;
 using Xamarin.Forms;
 
 namespace MyChefApp.ControlHelpers

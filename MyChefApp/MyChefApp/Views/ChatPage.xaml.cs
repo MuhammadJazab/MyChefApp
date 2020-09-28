@@ -5,9 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,29 +14,25 @@ namespace MyChefApp.Views
     public partial class ChatPage : ContentPage
     {
         FirebaseHelper firebaseHelper;
-        string chatRoom;
+        string chatRoomId;
         ObservableCollection<Chat> chatList;
         List<Chat> completeList;
-        //JobSvc jobSvc;
 
-        public ChatPage(string chatRoom)
+        public ChatPage(string chatRoomId)
         {
             InitializeComponent();
-            this.chatRoom = chatRoom;
+            this.chatRoomId = chatRoomId;
 
             GetData();
         }
 
         private async void GetData()
         {
-            //await CustomLoadingDialog.ShowLoadingDialog("Loading messages..");
-
             firebaseHelper = new FirebaseHelper();
             chatList = new ObservableCollection<Chat>();
             completeList = new List<Chat>();
-            //jobSvc = new JobSvc();
 
-            completeList = await firebaseHelper.GetCompleteChat(chatRoom);
+            completeList = await firebaseHelper.GetCompleteChat(chatRoomId);
 
             if (completeList?.Count > 0)
             {
@@ -59,9 +52,11 @@ namespace MyChefApp.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            string message = string.Empty;
+
             if (!string.IsNullOrWhiteSpace(txt_msg.Text))
             {
-                string message = txt_msg.Text;
+                message = txt_msg.Text;
                 txt_msg.Text = string.Empty;
 
                 Chat chat = new Chat()
@@ -72,15 +67,12 @@ namespace MyChefApp.Views
                     Status = 2
                 };
 
-                await firebaseHelper.AddChat(chat, chatRoom);
-                message = string.Empty;
+                await firebaseHelper.AddChat(chat, chatRoomId);
             }
             else
             {
-                //DependencyService.Get<IToastMessage>().ShortAlert("Can't send empty message");
+                await DisplayAlert("Error", "Can't send empty message", "OK");
             }
-            //var allPersons = await firebaseHelper.GetAllPersons();
-            //lstPersons.ItemsSource = allPersons;
         }
 
 
@@ -88,32 +80,20 @@ namespace MyChefApp.Views
         {
             firebaseHelper.firebase
                 .Child("Chats")
-                .Child(chatRoom)
+                .Child(chatRoomId)
                 .OrderByKey()
                 .LimitToLast(1)
                 .AsObservable<Chat>()
-                .Subscribe(d => addToList(d.Object, d.Key));
+                .Subscribe(d => AddToList(d.Object, d.Key));
         }
 
-        private void addToList(Chat chat, string key)
+        private void AddToList(Chat chat, string key)
         {
             try
             {
                 if (chat != null && !(chatList.Count > 0 && chatList.LastOrDefault().DateSent.Ticks.Equals(chat.DateSent.Ticks)))
                 {
                     chatList.Add(chat);
-
-                    //InappChatVM chatVM = new InappChatVM()
-                    //{
-                    //    ChatKey = key,
-                    //    ChatRoom = chatRoom,
-                    //    DateSent = chat.DateSent,
-                    //    Message = chat.Message,
-                    //    StatusId = chat.Status,
-                    //    UserRoleId = chat.Role
-                    //};
-
-                    //jobSvc.SaveUpdateInappChat(chatVM, new SessionManagment().GetSession()).Wait();
                 }
             }
             catch (Exception)

@@ -1,18 +1,17 @@
-﻿using MyChefAppModels;
+﻿using MyChefApp.ViewModels;
+using MyChefAppModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 using Utilities;
 
 namespace MyChefApi.Services
 {
     public interface IIdentityServices
     {
-        Response RegisterUser(User _user);
-        Response UpdateUser(User _user);
-        Response GetUserByCredentials(User _user);
+        Response RegisterUser(UserVM _user);
+        Response UpdateUser(UserVM _user);
+        Response GetUserByCredentials(UserVM _user);
         Response GetFoodList();
         Response GetCookingSkills();
     }
@@ -106,7 +105,7 @@ namespace MyChefApi.Services
             return response;
         }
 
-        public Response GetUserByCredentials(User _user)
+        public Response GetUserByCredentials(UserVM _user)
         {
             Response response;
 
@@ -146,13 +145,22 @@ namespace MyChefApi.Services
             return response;
         }
 
-        public Response RegisterUser(User _user)
+        public Response RegisterUser(UserVM _user)
         {
             Response response;
 
             try
             {
-                uow.Repository<User>().Add(_user);
+                uow.Repository<User>().Add(new User() 
+                {
+                    AccountTypeId = _user.AccountTypeId,
+                    CookingSkillId = _user.CookingSkillId,
+                    Email = _user.Email,
+                    Password = _user.Password,
+                    UserId = _user.UserId,
+                    UserName = _user.UserName
+                });
+
                 uow.Save();
 
                 response = new Response()
@@ -175,7 +183,7 @@ namespace MyChefApi.Services
             return response;
         }
 
-        public Response UpdateUser(User _user)
+        public Response UpdateUser(UserVM _user)
         {
             Response response;
 
@@ -183,9 +191,31 @@ namespace MyChefApi.Services
             {
                 User user = uow.Repository<User>().Get(x => x.Email == _user.Email).FirstOrDefault();
 
-                if (user == null)
+                if (user != null)
                 {
-                    uow.Repository<User>().Update(_user);
+                    uow.Repository<User>().Update(new User()
+                    {
+                        AccountTypeId = _user.AccountTypeId,
+                        CookingSkillId = _user.CookingSkillId,
+                        Email = _user.Email,
+                        Password = _user.Password,
+                        UserId = _user.UserId,
+                        UserName = _user.UserName
+                    });
+
+                    if (_user.UserFoodPreferences.Count > 0)
+                    {
+                        foreach (var food in _user.UserFoodPreferences)
+                        {
+                            uow.Repository<FoodPreferences>().Add(new FoodPreferences()
+                            {
+                                FoodId = food.FoodId,
+                                UserId = _user.UserId
+                            });
+                        }
+                    }
+
+                    uow.Save();
 
                     response = new Response()
                     {

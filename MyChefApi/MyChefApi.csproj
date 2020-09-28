@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyChefAppModels\MyChefAppModels.csproj" />
+    <ProjectReference Include="..\MyChefAppViewModels\MyChefAppViewModels.csproj" />
     <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 

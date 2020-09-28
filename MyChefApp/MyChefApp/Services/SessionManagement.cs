@@ -1,7 +1,5 @@
-﻿using MyChefApp.ViewModels;
-using MyChefApp.Views;
+﻿using MyChefApp.Views;
 using Newtonsoft.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -39,12 +37,17 @@ namespace MyChefApp.Services
                     {
                         if (user.AccountTypeId > 0)
                         {
+                            App.User = $"{user.UserName}_{user.UserId}";
+
                             if (user.CookingSkillId > 0)
                             {
-                                if (user.UserFoodPreferences!=null && user.UserFoodPreferences.Count > 0)
+                                if (user.UserFoodPreferences == null || user.UserFoodPreferences.Count <= 0)
                                 {
-                                    App.User = $"{user.UserName}_{user.UserId}";
-                                    App.Current.MainPage = new NavigationPage(new ChatPage("chat_123"));
+                                    App.Current.MainPage = new NavigationPage(new MyDiet(user.AccountTypeId, user.CookingSkillId));
+                                }
+                                else
+                                {
+                                    App.Current.MainPage = new NavigationPage(new WeeklyMenu(user));
                                 }
                             }
                         }
@@ -53,7 +56,7 @@ namespace MyChefApp.Services
             }
             else
             {
-                App.Current.MainPage = new NavigationPage(new ChatPage("chat_123"));
+                App.Current.MainPage = new NavigationPage(new Login());
             }
         }
     }

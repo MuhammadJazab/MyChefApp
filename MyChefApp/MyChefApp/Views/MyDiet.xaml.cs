@@ -46,7 +46,7 @@ namespace MyChefApp.Views
             vegiList = new ObservableCollection<FoodVM>();
             allergiesList = new ObservableCollection<FoodVM>();
 
-            Device.BeginInvokeOnMainThread(async ()=> 
+            Device.BeginInvokeOnMainThread(async () =>
             {
                 ShowActivityIndicator();
                 await FatchAndBindData();
@@ -107,7 +107,12 @@ namespace MyChefApp.Views
                 userVM.CookingSkillId = cookingSkillId;
                 userVM.UserFoodPreferences = selectedFoods;
 
-                await Navigation.PushAsync(new WeeklyMenu(userVM));
+                Response response = await httpRequests.UpdateUser(userVM);
+
+                if (response.Status == ResponseStatus.OK)
+                    await Navigation.PushAsync(new WeeklyMenu(userVM));
+                else
+                    await DisplayAlert("Error", response.Message, "OK");
             }
             else await DisplayAlert("Alert", "Select atleast one food item", "OK");
         }

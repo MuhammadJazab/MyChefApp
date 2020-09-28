@@ -1,8 +1,4 @@
-﻿using Firebase.Database;
-using MyChefApp.Services;
-using MyChefApp.ViewModels;
-using MyChefApp.Views;
-using Newtonsoft.Json;
+﻿using MyChefApp.Services;
 using Syncfusion.Licensing;
 using Xamarin.Forms;
 

@@ -44,7 +44,6 @@ namespace MyChefApp.Views
 
             Lbl_Name.Text = $"WELCOME, {userVM.UserName}";
             ButtonXPLevel.Text = $"Xp level: {skill}";
-
         }
 
         private async void WeekMenu(object sender, EventArgs e)

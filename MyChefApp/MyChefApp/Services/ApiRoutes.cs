@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyChefApp.Services
+﻿namespace MyChefApp.Services
 {
     public static class ApiRoutes
     {

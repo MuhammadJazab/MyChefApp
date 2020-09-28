@@ -54,7 +54,6 @@ namespace MyChefApp.Views
                 {
                     await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
                     SessionManagement.LoginMechanism();
-                    //await Navigation.PushAsync(new Account());
                 }
             }
             else

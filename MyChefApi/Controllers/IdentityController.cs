@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyChefApi.Services;
-using MyChefAppModels;
-using System.Security.Cryptography;
+using MyChefApp.ViewModels;
 using Utilities;
 
 namespace MyChefApi.Controllers
@@ -23,19 +22,19 @@ namespace MyChefApi.Controllers
         }
 
         [HttpPost]
-        public Response RegisterUser([FromBody] User user)
+        public Response RegisterUser([FromBody] UserVM user)
         {
             return identityServices.RegisterUser(user);
         }
 
         [HttpPost]
-        public Response UpdateUser([FromBody] User user)
+        public Response UpdateUser([FromBody] UserVM user)
         {
             return identityServices.UpdateUser(user);
         }
 
         [HttpPost]
-        public Response GetUserByCredentials([FromBody] User user)
+        public Response GetUserByCredentials([FromBody] UserVM user)
         {
             return identityServices.GetUserByCredentials(user);
         }
