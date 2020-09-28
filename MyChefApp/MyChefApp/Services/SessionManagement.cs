@@ -41,7 +41,7 @@ namespace MyChefApp.Services
                         {
                             if (user.CookingSkillId > 0)
                             {
-                                if (user.UserFoodPreferences.Count > 0)
+                                if (user.UserFoodPreferences!=null && user.UserFoodPreferences.Count > 0)
                                 {
                                     App.User = $"{user.UserName}_{user.UserId}";
                                     App.Current.MainPage = new NavigationPage(new WeeklyMenu(user));

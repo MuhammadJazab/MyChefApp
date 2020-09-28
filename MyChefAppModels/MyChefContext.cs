@@ -29,7 +29,9 @@ namespace MyChefAppModels
             {
                 entity.HasKey(e => e.AccountTypeId);
 
-                entity.Property(e => e.AccountTypeName).HasMaxLength(20);
+                entity.Property(e => e.AccountTypeName)
+                    .IsRequired()
+                    .HasMaxLength(20);
             });
 
             modelBuilder.Entity<CookingSkills>(entity =>
