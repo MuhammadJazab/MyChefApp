@@ -7,9 +7,13 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuRecipe : ContentPage
     {
-        public MenuRecipe()
+        long menuId = 0;
+
+        public MenuRecipe(long _menuId)
         {
             InitializeComponent();
+
+            menuId = _menuId;
         }
     }
 }

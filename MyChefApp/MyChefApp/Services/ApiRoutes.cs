@@ -16,6 +16,7 @@
             public static readonly string GetUserByCredentials = $"{BaseUrl}GetUserByCredentials";
             public static readonly string GetFoodList = $"{BaseUrl}GetFoodList";
             public static readonly string GetCookingSkills = $"{BaseUrl}GetCookingSkills";
+            public static readonly string GetWeeklyMenu = $"{BaseUrl}GetWeeklyMenu";
         }
     }
 }

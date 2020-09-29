@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text;
 
-namespace MyChefAppModels
+namespace MyChefApp.ViewModels
 {
-    public partial class WeekMenu
+    public class WeekMenuVM
     {
         public long MenuId { get; set; }
         public string MenuTitle { get; set; }

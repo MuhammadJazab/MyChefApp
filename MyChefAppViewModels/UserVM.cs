@@ -13,5 +13,6 @@ namespace MyChefApp.ViewModels
         public long AccountTypeId { get; set; }
         public long CookingSkillId { get; set; }
         public List<FoodVM> UserFoodPreferences { get; set; }
+        public bool HasFoodPreference { get; set; }
     }
 }

@@ -38,7 +38,7 @@
                         BackgroundColor="White"
                         WidthRequest="150"
                         MinimumWidthRequest="150"
-                        Text="{Binding Title}"
+                        Text="{Binding MenuTitle}"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center"/>
                 </StackLayout>
@@ -46,7 +46,7 @@
             <Label 
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-                Text="{Binding Day}"/>
+                Text="{Binding WeekDay}"/>
         </StackLayout>
     </ViewCell.View>
 </ViewCell>

@@ -26,20 +26,15 @@ namespace MyChefApp.Views
 
         List<FoodVM> selectedFoods;
 
-        long accountTypeId, cookingSkillId;
-
-        public MyDiet(long accountTypeId, long cookingSkillId)
+        public MyDiet(UserVM _userVM)
         {
             InitializeComponent();
 
             httpRequests = new HttpRequests();
 
-            userVM = new UserVM();
+            userVM =_userVM;
 
             selectedFoods = new List<FoodVM>();
-
-            this.accountTypeId = accountTypeId;
-            this.cookingSkillId = cookingSkillId;
 
             proteinList = new ObservableCollection<FoodVM>();
             grainList = new ObservableCollection<FoodVM>();
@@ -103,14 +98,15 @@ namespace MyChefApp.Views
         {
             if (selectedFoods.Count > 0)
             {
-                userVM.AccountTypeId = accountTypeId;
-                userVM.CookingSkillId = cookingSkillId;
                 userVM.UserFoodPreferences = selectedFoods;
 
                 Response response = await httpRequests.UpdateUser(userVM);
 
                 if (response.Status == ResponseStatus.OK)
-                    await Navigation.PushAsync(new WeeklyMenu(userVM));
+                {
+                    await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
+                    await Navigation.PushAsync(new WeeklyMenu(userVM)); 
+                }
                 else
                     await DisplayAlert("Error", response.Message, "OK");
             }

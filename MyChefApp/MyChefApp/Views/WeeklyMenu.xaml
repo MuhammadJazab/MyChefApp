@@ -94,7 +94,7 @@
                         x:Name="ButtonXPLevel"
                         CornerRadius="30"
                         FontSize="Title"
-                        Padding="10"
+                        Padding="5"
                         FontFamily="Samantha"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"

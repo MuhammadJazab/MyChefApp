@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyChefApp.ViewModels;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,18 +9,20 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Skills : ContentPage
     {
-        long accountType;
+        UserVM userVM;
 
-        public Skills(long accountType)
+        public Skills(UserVM _userVM)
         {
-            this.accountType = accountType;
-
             InitializeComponent();
+
+            userVM = _userVM;
         }
 
         private async void SelectSkill(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyDiet(accountType, Convert.ToInt64(((TappedEventArgs)e).Parameter)));
+            userVM.CookingSkillId = Convert.ToInt64(((TappedEventArgs)e).Parameter);
+
+            await Navigation.PushAsync(new MyDiet(userVM));
         }
     }
 }

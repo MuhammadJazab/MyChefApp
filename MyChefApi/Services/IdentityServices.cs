@@ -14,6 +14,7 @@ namespace MyChefApi.Services
         Response GetUserByCredentials(UserVM _user);
         Response GetFoodList();
         Response GetCookingSkills();
+        Response GetWeeklyMenu();
     }
 
     public class IdentityServices : IIdentityServices
@@ -77,7 +78,7 @@ namespace MyChefApi.Services
                 {
                     response = new Response()
                     {
-                        Message = "Login Successfully",
+                        Message = "",
                         ResultData = foods,
                         Status = ResponseStatus.OK
                     };
@@ -86,7 +87,7 @@ namespace MyChefApi.Services
                 {
                     response = new Response()
                     {
-                        Message = "Invalid Email or Password",
+                        Message = "",
                         ResultData = null,
                         Status = ResponseStatus.Restrected
                     };
@@ -127,6 +128,46 @@ namespace MyChefApi.Services
                     response = new Response()
                     {
                         Message = "Invalid Email or Password",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
+        }
+
+        public Response GetWeeklyMenu()
+        {
+            Response response;
+
+            try
+            {
+                List<WeekMenu> weekMenu = uow.Repository<WeekMenu>().GetAll().ToList();
+
+                if (weekMenu != null)
+                {
+                    response = new Response()
+                    {
+                        Message = "",
+                        ResultData = weekMenu,
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "",
                         ResultData = null,
                         Status = ResponseStatus.Restrected
                     };
@@ -193,16 +234,6 @@ namespace MyChefApi.Services
 
                 if (user != null)
                 {
-                    uow.Repository<User>().Update(new User()
-                    {
-                        AccountTypeId = _user.AccountTypeId,
-                        CookingSkillId = _user.CookingSkillId,
-                        Email = _user.Email,
-                        Password = _user.Password,
-                        UserId = _user.UserId,
-                        UserName = _user.UserName
-                    });
-
                     if (_user.UserFoodPreferences.Count > 0)
                     {
                         foreach (var food in _user.UserFoodPreferences)
@@ -213,7 +244,17 @@ namespace MyChefApi.Services
                                 UserId = _user.UserId
                             });
                         }
+
+                        user.HasFoodPreference = true;
                     }
+
+                    user.AccountTypeId = _user.AccountTypeId;
+                    user.CookingSkillId = _user.CookingSkillId;
+                    user.Email = _user.Email;
+                    user.Password = _user.Password;
+                    user.UserName = _user.UserName;
+
+                    uow.Repository<User>().Update(user);
 
                     uow.Save();
 
@@ -228,7 +269,7 @@ namespace MyChefApi.Services
                 {
                     response = new Response()
                     {
-                        Message = "User Already Exists",
+                        Message = "User Not Found",
                         ResultData = null,
                         Status = ResponseStatus.Error
                     };

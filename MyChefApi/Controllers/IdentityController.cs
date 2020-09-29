@@ -50,5 +50,11 @@ namespace MyChefApi.Controllers
         {
             return identityServices.GetCookingSkills();
         }
+
+        [HttpGet]
+        public Response GetWeeklyMenu()
+        {
+            return identityServices.GetWeeklyMenu();
+        }
     }
 }

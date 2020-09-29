@@ -24,8 +24,15 @@
                 FontSize="Title"
                 HorizontalTextAlignment="Center"
                 Text="{StaticResource ThisWeekMenu}"/>
+            <StackLayout>
+                <ActivityIndicator 
+                    x:Name="ActivityIndicator"
+                    Color="{DynamicResource Green}"
+                    VerticalOptions="Center"/>
+            </StackLayout>
             <ScrollView>
                 <Grid 
+                    x:Name="MenuContainer"
                     RowSpacing="0" 
                     ColumnSpacing="0">
                     <Grid.RowDefinitions>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyChefApp.ViewModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,9 +8,13 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Account : ContentPage
     {
-        public Account()
+        UserVM userVM;
+
+        public Account(UserVM _userVM)
         {
             InitializeComponent();
+
+            userVM = _userVM;
         }
 
         private async void ClickPaymentMethod(object sender, EventArgs e)
@@ -17,7 +22,8 @@ namespace MyChefApp.Views
             switch (Convert.ToInt64(((TappedEventArgs)e).Parameter))
             {
                 case 1:
-                    await Navigation.PushAsync(new Skills(Convert.ToInt64(((TappedEventArgs)e).Parameter)));
+                    userVM.AccountTypeId = Convert.ToInt64(((TappedEventArgs)e).Parameter);
+                    await Navigation.PushAsync(new Skills(userVM));
                     break;
 
                 case 2:

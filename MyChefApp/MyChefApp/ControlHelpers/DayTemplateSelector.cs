@@ -1,4 +1,5 @@
 ﻿using MyChefApp.Templates;
+using MyChefApp.ViewModels;
 using Xamarin.Forms;
 
 namespace MyChefApp.ControlHelpers
@@ -18,7 +19,7 @@ namespace MyChefApp.ControlHelpers
             if (item == null)
                 return EvenMenuItem;
 
-            return ((WeekMenu)item).IsEven ? EvenMenuItem : OddMenuItem;
+            return ((WeekMenuVM)item).IsEven ? EvenMenuItem : OddMenuItem;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MyChefApp.Views;
+﻿using MyChefApp.ViewModels;
+using MyChefApp.Views;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -41,13 +42,13 @@ namespace MyChefApp.Services
 
                             if (user.CookingSkillId > 0)
                             {
-                                if (user.UserFoodPreferences == null || user.UserFoodPreferences.Count <= 0)
+                                if (user.HasFoodPreference)
                                 {
-                                    App.Current.MainPage = new NavigationPage(new MyDiet(user.AccountTypeId, user.CookingSkillId));
+                                    App.Current.MainPage = new NavigationPage(new WeeklyMenu(user));
                                 }
                                 else
                                 {
-                                    App.Current.MainPage = new NavigationPage(new WeeklyMenu(user));
+                                    App.Current.MainPage = new NavigationPage(new MyDiet(user));
                                 }
                             }
                         }
