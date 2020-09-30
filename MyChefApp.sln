@@ -25,7 +25,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Util
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", "{39897A65-5C2F-47B3-B8B4-7A333CE823D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyChefAppViewModels", "MyChefAppViewModels\MyChefAppViewModels.csproj", "{BBE842D8-BDC6-471F-ABE5-59A35BFD0BAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChefAppViewModels", "MyChefAppViewModels\MyChefAppViewModels.csproj", "{BBE842D8-BDC6-471F-ABE5-59A35BFD0BAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseBackup", "DatabaseBackup", "{5AB3F108-9288-4F1C-9270-9E77CC7D0E76}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\jbnb\Desktop\FUI\Phase 3\DB.bacpac = C:\Users\jbnb\Desktop\FUI\Phase 3\DB.bacpac
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

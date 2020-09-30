@@ -30,6 +30,10 @@
                     </Label.FontSize>
                 </Label>
             </StackLayout>
+            <ActivityIndicator 
+                x:Name="ActivityIndicator"
+                Color="{DynamicResource Green}"
+                VerticalOptions="Center"/>
             <StackLayout 
                  Margin="30,0"
                 VerticalOptions="CenterAndExpand"
@@ -97,6 +101,7 @@
                         HorizontalOptions="CenterAndExpand"
                         Text="{StaticResource EULIText}"/>
                     <ImageButton
+                        x:Name="Btn_SignIn"
                         HorizontalOptions="EndAndExpand"
                         Scale="0.78"
                         BackgroundColor="RoyalBlue"
