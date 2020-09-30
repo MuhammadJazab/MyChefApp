@@ -1,5 +1,6 @@
 ﻿using MyChefApp.ViewModels;
 using MyChefAppModels;
+using MyChefAppViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace MyChefApi.Services
         Response GetFoodList();
         Response GetCookingSkills();
         Response GetWeeklyMenu();
+        Response GetRecipeByMenuId(long menuId);
     }
 
     public class IdentityServices : IIdentityServices
@@ -88,6 +90,63 @@ namespace MyChefApi.Services
                     response = new Response()
                     {
                         Message = "",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
+        }
+
+        public Response GetRecipeByMenuId(long menuId)
+        {
+            Response response;
+
+            try
+            {
+                Recipes recipe = uow.Repository<Recipes>().Get().Where(x => x.MenuId == menuId).FirstOrDefault();
+                WeekMenu weekMenu = uow.Repository<WeekMenu>().Get(x => x.MenuId == menuId).FirstOrDefault();
+                List<Ingredients> ingredients = uow.Repository<Ingredients>().Get().Where(x => x.MenuRecipeId == recipe.MenuRecipeId).ToList();
+
+                RecipeVM recipeVM = new RecipeVM()
+                {
+                    Directions = recipe.Directions,
+                    MenuDay = recipe.MenuDay,
+                    MenuId = recipe.MenuId,
+                    MenuRecipeId = recipe.MenuRecipeId,
+                    MenuTitle = weekMenu.MenuTitle,
+                    RecipeIngredients = ingredients.Select(x => new IngredientsVM()
+                    {
+                        IngredientId = x.IngredientId,
+                        MenuIngredients = x.MenuIngredients,
+                        MenuRecipeId = x.MenuRecipeId
+                    }).ToList()
+                };
+
+                if (recipe != null)
+                {
+                    response = new Response()
+                    {
+                        Message = "Login Successfully",
+                        ResultData = recipeVM,
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "Invalid Email or Password",
                         ResultData = null,
                         Status = ResponseStatus.Restrected
                     };
@@ -192,7 +251,7 @@ namespace MyChefApi.Services
 
             try
             {
-                uow.Repository<User>().Add(new User() 
+                uow.Repository<User>().Add(new User()
                 {
                     AccountTypeId = _user.AccountTypeId,
                     CookingSkillId = _user.CookingSkillId,

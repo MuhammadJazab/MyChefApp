@@ -47,6 +47,7 @@
             </StackLayout>
             <StackLayout
                 Grid.Row="1"
+                Spacing="0"
                 Orientation="Vertical">
                 <Grid>
                     <Image
@@ -61,7 +62,8 @@
                         VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource SlatBlack}"
                         TextColor="White"
-                        Text="MYChef Folk"/>
+                        Text="MYChef Folk"
+                        Clicked="MYChefFolk"/>
                 </Grid>
             </StackLayout>
             <StackLayout
@@ -75,7 +77,7 @@
                 x:Name="NameContainer"
                 IsVisible="false"
                 Grid.Row="2"
-                Spacing="0"
+                Spacing="-5"
                 Orientation="Vertical">
                 <Grid>
                     <Image
@@ -118,7 +120,8 @@
                         VerticalOptions="CenterAndExpand"
                         TextColor="{DynamicResource SlatBlack}"
                         BackgroundColor="{DynamicResource BadgeColor}"
-                        Text="Chef Challenges"/>
+                        Text="Chef Challenges"
+                        Clicked="ChefChallenges"/>
                 </Grid>
             </StackLayout>
             <StackLayout

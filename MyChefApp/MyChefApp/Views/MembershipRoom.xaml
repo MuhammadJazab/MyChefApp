@@ -147,6 +147,9 @@
                                 Source="StageLadders"/>
                         </StackLayout>
                     </border:SfBorder>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CCTapped"/>
+                    </Grid.GestureRecognizers>
                 </Grid>
                 <Grid
                     Grid.Row="2">
@@ -220,6 +223,9 @@
                             </StackLayout>
                         </Grid>
                     </StackLayout>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OTTapped"/>
+                    </Grid.GestureRecognizers>
                 </Grid>
             </Grid>
         </StackLayout>

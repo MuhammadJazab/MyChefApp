@@ -14,14 +14,16 @@ namespace MyChefApp.Views
     public partial class MenuPage : ContentPage
     {
         HttpRequests httpRequests;
+        UserVM userVM;
 
         ObservableCollection<WeekMenuVM> menus;
 
-        public MenuPage()
+        public MenuPage(UserVM _userVM)
         {
             InitializeComponent();
 
             httpRequests = new HttpRequests();
+            userVM = _userVM;
 
             menus = new ObservableCollection<WeekMenuVM>();
 
@@ -51,7 +53,7 @@ namespace MyChefApp.Views
 
         private async void ItemTapped_WeeklyMenu(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new MenuRecipe(((WeekMenuVM)e.Item).MenuId));
+            await Navigation.PushAsync(new MenuRecipe(userVM, ((WeekMenuVM)e.Item).MenuId));
         }
 
         private void ShowActivityIndicator()

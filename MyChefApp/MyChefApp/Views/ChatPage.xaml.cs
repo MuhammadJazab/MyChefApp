@@ -18,15 +18,19 @@ namespace MyChefApp.Views
         ObservableCollection<Chat> chatList;
         List<Chat> completeList;
 
-        public ChatPage(string chatRoomId)
+        public ChatPage(object userVM, string chatRoomId)
         {
             InitializeComponent();
-            this.chatRoomId = chatRoomId;
 
-            GetData();
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.Transparent;
+
+            Lbl_chatRoomId.Text = chatRoomId;
+
+            this.chatRoomId = chatRoomId;
+            FatchAndBindData();
         }
 
-        private async void GetData()
+        private async void FatchAndBindData()
         {
             firebaseHelper = new FirebaseHelper();
             chatList = new ObservableCollection<Chat>();
@@ -75,7 +79,6 @@ namespace MyChefApp.Views
             }
         }
 
-
         public void subChat()
         {
             firebaseHelper.firebase
@@ -96,9 +99,8 @@ namespace MyChefApp.Views
                     chatList.Add(chat);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
             }
         }
     }

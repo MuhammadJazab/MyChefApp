@@ -17,6 +17,8 @@ namespace MyChefApp.Views
 
         UserVM userVM;
 
+        string skill;
+
         public WeeklyMenu(UserVM userVM)
         {
             InitializeComponent();
@@ -38,7 +40,7 @@ namespace MyChefApp.Views
             Response cookingSkillsJson = await httpRequests.GetCookingSkills();
 
             List<CookingSkillVM> cookingSkills = JsonConvert.DeserializeObject<List<CookingSkillVM>>(cookingSkillsJson.ResultData.ToString());
-            string skill = cookingSkills.Where(x => x.CookingSkillId == userVM.CookingSkillId).FirstOrDefault().CookingSkillName;
+            skill = cookingSkills.Where(x => x.CookingSkillId == userVM.CookingSkillId).FirstOrDefault().CookingSkillName;
 
             NameContainer.IsVisible = true;
 
@@ -48,7 +50,7 @@ namespace MyChefApp.Views
 
         private async void WeekMenu(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage());
+            await Navigation.PushAsync(new MenuPage(userVM));
         }
 
         private void ShowActivityIndicator()
@@ -61,6 +63,16 @@ namespace MyChefApp.Views
         {
             ActivityIndicator.IsRunning = false;
             ActivityIndicator.IsVisible = false;
+        }
+
+        private async void ChefChallenges(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProgressReport(userVM, skill));
+        }
+
+        private async void MYChefFolk(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MembershipRoom(userVM));
         }
     }
 }

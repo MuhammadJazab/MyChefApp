@@ -56,5 +56,11 @@ namespace MyChefApi.Controllers
         {
             return identityServices.GetWeeklyMenu();
         }
+
+        [HttpGet]
+        public Response GetRecipeByMenuId(long menuId)
+        {
+            return identityServices.GetRecipeByMenuId(menuId);
+        }
     }
 }

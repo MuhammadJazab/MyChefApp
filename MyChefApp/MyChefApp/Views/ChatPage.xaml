@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:template="clr-namespace:MyChefApp.ControlHelpers" 
-             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             x:Class="MyChefApp.Views.ChatPage">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:template="clr-namespace:MyChefApp.ControlHelpers" 
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    NavigationPage.HasNavigationBar="True"
+    NavigationPage.IconColor="Black"
+    x:Class="MyChefApp.Views.ChatPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="FromTemplate">
@@ -16,7 +19,7 @@
                             HorizontalOptions="FillAndExpand">
                             <Label 
                                 Text="{Binding DateSent,StringFormat='\{0:dd MMM hh:mm tt}'}" 
-                                FontFamily="{DynamicResource Myriadpro_bold}"
+                                FontFamily="{DynamicResource Rockwall}"
                                 FontSize="Micro" 
                                 HorizontalOptions="CenterAndExpand"/>
                             <StackLayout 
@@ -40,7 +43,7 @@
                                             Text="{Binding Message}" 
                                             FontSize="12" 
                                             TextColor="Black" 
-                                            FontFamily="{DynamicResource Myriadpro_bold}"
+                                            FontFamily="{DynamicResource Rockwall}"
                                             LineHeight="1.2"
                                             VerticalOptions="StartAndExpand"
                                             HorizontalOptions="FillAndExpand" 
@@ -49,20 +52,17 @@
                                     <Image
                                         Source="right_arrow"
                                         Margin="0,5,0,0"
-                                        VerticalOptions="Start"></Image>
+                                        VerticalOptions="Start"/>
                                     <Frame
-                                            CornerRadius="300"
-                                            BackgroundColor="{DynamicResource lightblueBgColor}"
-                                            Padding="10,8"
-                                            VerticalOptions="Start">
+                                        CornerRadius="300"
+                                        BackgroundColor="{DynamicResource lightblueBgColor}"
+                                        Padding="10,8"
+                                        VerticalOptions="Start">
                                         <Image
-                                                Source="chat_ico"
-                                                VerticalOptions="Start"></Image>
+                                            Source="chat_ico"
+                                            VerticalOptions="Start"/>
                                     </Frame>
-
-
                                 </StackLayout>
-
                             </StackLayout>
                         </StackLayout>
                     </ViewCell.View>
@@ -79,7 +79,7 @@
                             <Label 
                                 Text="{Binding DateSent,StringFormat='\{0:dd MMM hh:mm tt}'}" 
                                 FontSize="Micro" 
-                                FontFamily="{DynamicResource Myriadpro_bold}"
+                                FontFamily="{DynamicResource Rockwall}"
                                 HorizontalOptions="CenterAndExpand"/>
                             <StackLayout 
                                 Margin="0,0,60,0"
@@ -113,26 +113,27 @@
                                        CornerRadius="3" >
                                         <Label 
                                           Text="{Binding Message}" 
-                                           FontFamily="{DynamicResource Myriadpro_bold}"
+                                           FontFamily="{DynamicResource Rockwall}"
                                           FontSize="12" 
                                           LineHeight="1.2"
                                           HorizontalOptions="FillAndExpand" 
                                           HorizontalTextAlignment="Start"/>
                                     </Frame>
-
-
                                 </StackLayout>
-
                             </StackLayout>
                         </StackLayout>
                     </ViewCell.View>
                 </ViewCell>
             </DataTemplate>
-            <template:ChatDataTemplateSelector x:Key="chatDataTemplateSelector" FromTemplate="{StaticResource FromTemplate}" ToTemplate="{StaticResource ToTemplate}"/>
+            <template:ChatDataTemplateSelector 
+                x:Key="chatDataTemplateSelector" 
+                FromTemplate="{StaticResource FromTemplate}" 
+                ToTemplate="{StaticResource ToTemplate}"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <NavigationPage.TitleView>
-        <OnPlatform x:TypeArguments="View">
+        <OnPlatform 
+            x:TypeArguments="View">
             <On Platform="Android">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -141,31 +142,32 @@
                     </Grid.ColumnDefinitions>
                     <Label
                         Grid.Column="0"
+                        x:Name="Lbl_chatRoomId"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center"
                         FontSize="Medium"
                         FontAttributes="Bold"
-                        FontFamily="{DynamicResource Myriadpro_bold}"
-                        TextColor="#0D4C84"
-                        Text="SMS Chat"/>
+                        FontFamily="{DynamicResource Rockwall}"
+                        TextColor="Black"/>
                 </Grid>
             </On>
         </OnPlatform>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout Padding="20"
-                     x:Name="PageContainer">
+        <StackLayout 
+            Padding="20"
+            x:Name="PageContainer">
             <Grid x:Name="ListViewContainer">
                 <template:AutoScrollListView
-                        x:Name="listMessages"
-                        SelectionMode="None"
-                        IsVisible="False"
-                        SeparatorVisibility="None"
-                        ItemTemplate="{StaticResource chatDataTemplateSelector}" 
-                        VerticalOptions="FillAndExpand"
-                        HasUnevenRows="True">
+                    x:Name="listMessages"
+                    SelectionMode="None"
+                    IsVisible="False"
+                    SeparatorVisibility="None"
+                    ItemTemplate="{StaticResource chatDataTemplateSelector}" 
+                    VerticalOptions="FillAndExpand"
+                    HasUnevenRows="True">
                 </template:AutoScrollListView>
             </Grid>
             <StackLayout VerticalOptions="End">
@@ -192,7 +194,7 @@
                                 MaxLength="200"
                                 VerticalOptions="Center"
                                 VerticalTextAlignment="Center"
-                             FontFamily="{DynamicResource Myriadpro_bold}"
+                             FontFamily="{DynamicResource Rockwall}"
                             HorizontalOptions="FillAndExpand"/>
                         </inputLayout:SfTextInputLayout>
 
