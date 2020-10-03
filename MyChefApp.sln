@@ -27,8 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyChefAppViewModels", "MyChefAppViewModels\MyChefAppViewModels.csproj", "{BBE842D8-BDC6-471F-ABE5-59A35BFD0BAC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseBackup", "DatabaseBackup", "{5AB3F108-9288-4F1C-9270-9E77CC7D0E76}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backup", "Backup", "{5AB3F108-9288-4F1C-9270-9E77CC7D0E76}"
 	ProjectSection(SolutionItems) = preProject
+		C:\Users\jbnb\Downloads\AWSCredentials.pem = C:\Users\jbnb\Downloads\AWSCredentials.pem
 		C:\Users\jbnb\Desktop\FUI\Phase 3\DB.bacpac = C:\Users\jbnb\Desktop\FUI\Phase 3\DB.bacpac
 	EndProjectSection
 EndProject
