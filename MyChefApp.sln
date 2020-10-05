@@ -31,6 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backup", "Backup", "{5AB3F1
 	ProjectSection(SolutionItems) = preProject
 		C:\Users\jbnb\Downloads\AWSCredentials.pem = C:\Users\jbnb\Downloads\AWSCredentials.pem
 		C:\Users\jbnb\Desktop\FUI\Phase 3\DB.bacpac = C:\Users\jbnb\Desktop\FUI\Phase 3\DB.bacpac
+		C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\Backup\MyChef.bak = C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\Backup\MyChef.bak
 	EndProjectSection
 EndProject
 Global
