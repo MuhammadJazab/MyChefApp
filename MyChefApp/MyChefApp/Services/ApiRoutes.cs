@@ -4,7 +4,15 @@
     {
         public static class Base
         {
-            public static readonly string BaseUrl = "http://172.16.2.101:8800/";
+            /// <summary>
+            /// Local
+            /// </summary>
+            //public static readonly string BaseUrl = "http://172.16.2.101:8800/";
+
+            /// <summary>
+            /// Live
+            /// </summary>
+            public static readonly string BaseUrl = "http://ec2-54-177-128-8.us-west-1.compute.amazonaws.com/"; 
         }
 
         public static class MyChefAPI
