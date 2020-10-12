@@ -23,7 +23,10 @@ namespace MyChefApp.Views
             {
                 case 1:
                     userVM.AccountTypeId = Convert.ToInt64(((TappedEventArgs)e).Parameter);
-                    await Navigation.PushAsync(new Skills(userVM));
+                    if (userVM.CookingSkillId < 0)
+                        await Navigation.PushAsync(new Skills(userVM));
+                    else
+                        await Navigation.PushAsync(new WeeklyMenu(userVM));
                     break;
 
                 case 2:

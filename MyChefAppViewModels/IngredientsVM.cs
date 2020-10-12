@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyChefAppViewModels
+﻿namespace MyChefAppViewModels
 {
     public class IngredientsVM
     {

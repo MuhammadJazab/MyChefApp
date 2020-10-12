@@ -1,16 +1,21 @@
-﻿using MyChefApp.ViewModels;
+﻿using Microsoft.Extensions.Configuration;
+using MyChefApp.ViewModels;
 using MyChefAppModels;
 using MyChefAppViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 using Utilities;
 
 namespace MyChefApi.Services
 {
     public interface IIdentityServices
     {
-        Response RegisterUser(UserVM _user);
+        Task<Response> RegisterUser(UserVM _user);
         Response UpdateUser(UserVM _user);
         Response GetUserByCredentials(UserVM _user);
         Response GetFoodList();
@@ -22,10 +27,12 @@ namespace MyChefApi.Services
     public class IdentityServices : IIdentityServices
     {
         private readonly IUnitOfWork uow;
+        private readonly IConfiguration configuration;
 
-        public IdentityServices(IUnitOfWork uow)
+        public IdentityServices(IUnitOfWork uow, IConfiguration configuration)
         {
             this.uow = uow;
+            this.configuration = configuration;
         }
 
         public Response GetCookingSkills()
@@ -171,7 +178,9 @@ namespace MyChefApi.Services
 
             try
             {
-                User user = uow.Repository<User>().Get().Where(x => x.Email == _user.Email && x.Password == _user.Password).FirstOrDefault();
+                string eStr = PasswordEncrypt(_user.Password, configuration.GetValue<string>("EncryptionKey"));
+
+                User user = uow.Repository<User>().Get().Where(x => x.Email == _user.Email && x.Password == eStr).FirstOrDefault();
 
                 if (user != null)
                 {
@@ -245,30 +254,48 @@ namespace MyChefApi.Services
             return response;
         }
 
-        public Response RegisterUser(UserVM _user)
+        public async Task<Response> RegisterUser(UserVM _user)
         {
             Response response;
 
             try
             {
-                uow.Repository<User>().Add(new User()
-                {
-                    AccountTypeId = _user.AccountTypeId,
-                    CookingSkillId = _user.CookingSkillId,
-                    Email = _user.Email,
-                    Password = _user.Password,
-                    UserId = _user.UserId,
-                    UserName = _user.UserName
-                });
 
-                uow.Save();
+                User user = uow.Repository<User>().Get().Where(x => x.Email == _user.Email).FirstOrDefault();
 
-                response = new Response()
+                if (user == null)
                 {
-                    Message = "User Saved Successfully",
-                    ResultData = _user,
-                    Status = ResponseStatus.OK
-                };
+                    string eStr = PasswordEncrypt(_user.Password, configuration.GetValue<string>("EncryptionKey"));
+
+                    User userDTO = new User()
+                    {
+                        AccountTypeId = _user.AccountTypeId,
+                        CookingSkillId = _user.CookingSkillId,
+                        Email = _user.Email,
+                        Password = eStr,
+                        UserName = _user.UserName
+                    };
+
+                    uow.Repository<User>().Add(userDTO);
+
+                    await uow.SaveAsync();
+
+                    response = new Response()
+                    {
+                        Message = "User Saved Successfully",
+                        ResultData = userDTO,
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "Email Already exists",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
             }
             catch (Exception ex)
             {
@@ -345,6 +372,50 @@ namespace MyChefApi.Services
             }
 
             return response;
+        }
+
+        public string PasswordEncrypt(string inText, string key)
+        {
+            byte[] bytesBuff = Encoding.Unicode.GetBytes(inText);
+            using (Aes aes = Aes.Create())
+            {
+                Rfc2898DeriveBytes crypto = new Rfc2898DeriveBytes(key, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                aes.Key = crypto.GetBytes(32);
+                aes.IV = crypto.GetBytes(16);
+                using (MemoryStream mStream = new MemoryStream())
+                {
+                    using (CryptoStream cStream = new CryptoStream(mStream, aes.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cStream.Write(bytesBuff, 0, bytesBuff.Length);
+                        cStream.Close();
+                    }
+                    inText = Convert.ToBase64String(mStream.ToArray());
+                }
+            }
+            return inText;
+        }
+
+        //Decrypting a string
+        public string PasswordDecrypt(string cryptTxt, string key)
+        {
+            cryptTxt = cryptTxt.Replace(" ", "+");
+            byte[] bytesBuff = Convert.FromBase64String(cryptTxt);
+            using (Aes aes = Aes.Create())
+            {
+                Rfc2898DeriveBytes crypto = new Rfc2898DeriveBytes(key, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                aes.Key = crypto.GetBytes(32);
+                aes.IV = crypto.GetBytes(16);
+                using (MemoryStream mStream = new MemoryStream())
+                {
+                    using (CryptoStream cStream = new CryptoStream(mStream, aes.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cStream.Write(bytesBuff, 0, bytesBuff.Length);
+                        cStream.Close();
+                    }
+                    cryptTxt = Encoding.Unicode.GetString(mStream.ToArray());
+                }
+            }
+            return cryptTxt;
         }
     }
 }

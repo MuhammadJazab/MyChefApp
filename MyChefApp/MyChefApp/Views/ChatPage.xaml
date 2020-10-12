@@ -49,19 +49,9 @@
                                             HorizontalOptions="FillAndExpand" 
                                             HorizontalTextAlignment="Start"/>
                                     </Frame>
-                                    <Image
-                                        Source="right_arrow"
-                                        Margin="0,5,0,0"
-                                        VerticalOptions="Start"/>
-                                    <Frame
-                                        CornerRadius="300"
-                                        BackgroundColor="{DynamicResource lightblueBgColor}"
-                                        Padding="10,8"
-                                        VerticalOptions="Start">
-                                        <Image
-                                            Source="chat_ico"
-                                            VerticalOptions="Start"/>
-                                    </Frame>
+                                    <Label
+                                        FontSize="Micro"
+                                        Text="{Binding UserName}"/>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
@@ -91,19 +81,9 @@
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="CenterAndExpand"
                                     Padding="2">
-                                    <Frame
-                                        CornerRadius="300"
-                                        BackgroundColor="{DynamicResource lightgreenColor}"
-                                        Padding="10,8"
-                                        VerticalOptions="Start">
-                                        <Image
-                                           Source="chat_ico"
-                                           VerticalOptions="Start"></Image>
-                                    </Frame>
-                                    <Image
-                                       Source="left_arrow"
-                                       Margin="0,5,0,0"
-                                       VerticalOptions="Start"></Image>
+                                    <Label
+                                        FontSize="Micro"
+                                        Text="{Binding UserName}"/>
                                     <Frame 
                                         HasShadow="False"
                                        BackgroundColor="{DynamicResource lightgreenColor}" 
@@ -112,12 +92,12 @@
                                        HorizontalOptions="EndAndExpand" 
                                        CornerRadius="3" >
                                         <Label 
-                                          Text="{Binding Message}" 
-                                           FontFamily="{DynamicResource Rockwall}"
-                                          FontSize="12" 
-                                          LineHeight="1.2"
-                                          HorizontalOptions="FillAndExpand" 
-                                          HorizontalTextAlignment="Start"/>
+                                            Text="{Binding Message}" 
+                                            FontFamily="{DynamicResource Rockwall}"
+                                            FontSize="12" 
+                                            LineHeight="1.2"
+                                            HorizontalOptions="FillAndExpand" 
+                                            HorizontalTextAlignment="Start"/>
                                     </Frame>
                                 </StackLayout>
                             </StackLayout>

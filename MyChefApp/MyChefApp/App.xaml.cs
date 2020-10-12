@@ -6,7 +6,7 @@ namespace MyChefApp
 {
     public partial class App : Application
     {
-        public static string User = string.Empty;
+        public static long UserId = 0;
 
         public App()
         {

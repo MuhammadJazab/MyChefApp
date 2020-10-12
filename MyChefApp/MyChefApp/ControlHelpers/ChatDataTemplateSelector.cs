@@ -12,7 +12,7 @@ namespace MyChefApp.ControlHelpers
         {
             if (item != null)
             {
-                return ((Chat)item).Role.Equals(1) ? FromTemplate : ToTemplate;
+                return ((Chat)item).Role.Equals(App.UserId) ? FromTemplate : ToTemplate;
             }
             else
             {

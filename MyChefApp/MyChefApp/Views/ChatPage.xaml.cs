@@ -18,7 +18,9 @@ namespace MyChefApp.Views
         ObservableCollection<Chat> chatList;
         List<Chat> completeList;
 
-        public ChatPage(object userVM, string chatRoomId)
+        UserVM userVM;
+
+        public ChatPage(UserVM userVM, string chatRoomId)
         {
             InitializeComponent();
 
@@ -27,6 +29,8 @@ namespace MyChefApp.Views
             Lbl_chatRoomId.Text = chatRoomId;
 
             this.chatRoomId = chatRoomId;
+            this.userVM = userVM;
+
             FatchAndBindData();
         }
 
@@ -46,12 +50,12 @@ namespace MyChefApp.Views
                 }
             }
 
-            listMessages.ScrollTo(chatList, ScrollToPosition.MakeVisible, true);
             listMessages.ItemsSource = chatList;
+            listMessages.ScrollTo(chatList, ScrollToPosition.MakeVisible, true);
 
             listMessages.IsVisible = true;
 
-            subChat();
+            SubChat();
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -67,8 +71,9 @@ namespace MyChefApp.Views
                 {
                     Message = message,
                     DateSent = DateTime.Now,
-                    Role = 1,
-                    Status = 2
+                    Role = App.UserId,
+                    Status = 2,
+                    UserName = userVM.UserName
                 };
 
                 await firebaseHelper.AddChat(chat, chatRoomId);
@@ -79,7 +84,7 @@ namespace MyChefApp.Views
             }
         }
 
-        public void subChat()
+        public void SubChat()
         {
             firebaseHelper.firebase
                 .Child("Chats")

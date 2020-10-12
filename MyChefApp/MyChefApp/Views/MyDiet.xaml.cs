@@ -32,7 +32,7 @@ namespace MyChefApp.Views
 
             httpRequests = new HttpRequests();
 
-            userVM =_userVM;
+            userVM = _userVM;
 
             selectedFoods = new List<FoodVM>();
 
@@ -99,13 +99,14 @@ namespace MyChefApp.Views
             if (selectedFoods.Count > 0)
             {
                 userVM.UserFoodPreferences = selectedFoods;
+                userVM.HasFoodPreference = true;
 
                 Response response = await httpRequests.UpdateUser(userVM);
 
                 if (response.Status == ResponseStatus.OK)
                 {
                     await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
-                    await Navigation.PushAsync(new WeeklyMenu(userVM)); 
+                    await Navigation.PushAsync(new WeeklyMenu(userVM));
                 }
                 else
                     await DisplayAlert("Error", response.Message, "OK");

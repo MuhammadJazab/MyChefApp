@@ -45,7 +45,7 @@ namespace MyChefApp.Services
             {
                 response = JsonConvert.DeserializeObject<Response>(
                     await httpClient.GetAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.GetRecipeByMenuId}?menuId={menuId}")
-                ) ;
+                );
             }
             catch (Exception ex)
             {
@@ -151,7 +151,7 @@ namespace MyChefApp.Services
 
             return response;
         }
-        
+
         public async Task<Response> GetWeeklyMenu()
         {
             Response response;

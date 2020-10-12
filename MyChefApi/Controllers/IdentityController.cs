@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyChefApi.Services;
 using MyChefApp.ViewModels;
+using System.Threading.Tasks;
 using Utilities;
 
 namespace MyChefApi.Controllers
@@ -22,9 +23,9 @@ namespace MyChefApi.Controllers
         }
 
         [HttpPost]
-        public Response RegisterUser([FromBody] UserVM user)
+        public async Task<Response> RegisterUser([FromBody] UserVM user)
         {
-            return identityServices.RegisterUser(user);
+            return await identityServices.RegisterUser(user);
         }
 
         [HttpPost]

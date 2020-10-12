@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Class="MyChefApp.Popups.ContextMenuPopup">
+    <StackLayout 
+        VerticalOptions="CenterAndExpand" 
+        HorizontalOptions="FillAndExpand" 
+        BackgroundColor="White"
+        Padding="50"
+        Margin="50">
+        <Button
+            Clicked="Accounts_Click"
+            Text="Change Accounts"/>
+        
+        <Button
+            Clicked="Preferences_Click"
+            Text="Change Food Preferences"/>
+
+        <Button
+            Clicked="Signout_Click"
+            Text="SignOut"/>
+       
+    </StackLayout>
+</pages:PopupPage>

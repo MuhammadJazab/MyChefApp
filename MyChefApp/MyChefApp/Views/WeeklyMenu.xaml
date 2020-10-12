@@ -39,10 +39,19 @@
                         VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource SlatBlack}"
                         TextColor="White"
-                        FontFamily="Samantha"
-                        FontSize="30"
+                        FontFamily="Arlrdbd"
+                        FontSize="15"
                         Text="This Week's Menu"
                         Clicked="WeekMenu"/>
+                    <StackLayout
+                        VerticalOptions="Start"
+                        HorizontalOptions="End"
+                        Orientation="Horizontal">
+                        <Button 
+                            BackgroundColor="Transparent"
+                            Clicked="Settings_Click"
+                            ImageSource="setting"/>
+                    </StackLayout>
                 </Grid>
             </StackLayout>
             <StackLayout
@@ -55,8 +64,8 @@
                         Source="two"/>
                     <Button
                         CornerRadius="30"
-                        FontFamily="Samantha"
-                        FontSize="30"
+                        FontFamily="Arlrdbd"
+                        FontSize="15"
                         Padding="10"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
@@ -77,31 +86,34 @@
                 x:Name="NameContainer"
                 IsVisible="false"
                 Grid.Row="2"
-                Spacing="-5"
                 Orientation="Vertical">
                 <Grid>
                     <Image
                         Aspect="AspectFill"
                         Source="three"/>
-                    <Label
-                        x:Name="Lbl_Name"
-                        HorizontalOptions="Center"
-                        VerticalOptions="CenterAndExpand"
-                        TextColor="{DynamicResource BadgeColor}"
-                        FontFamily="Samantha"
-                        FontSize="55"
-                        Text="Welcome, Jazab Najeeb"/>
-                    <Button
-                        Grid.Row="1"
-                        x:Name="ButtonXPLevel"
-                        CornerRadius="30"
-                        FontSize="Title"
-                        Padding="5"
-                        FontFamily="Samantha"
-                        HorizontalOptions="Center"
-                        VerticalOptions="CenterAndExpand"
-                        BackgroundColor="{DynamicResource BadgeColor}"
-                        TextColor="White"/>
+                    <StackLayout
+                        Orientation="Vertical"
+                        Padding="30,0">
+                        <Label
+                            Grid.Row="0"
+                            x:Name="Lbl_Name"
+                            HorizontalOptions="Center"
+                            VerticalOptions="CenterAndExpand"
+                            TextColor="{DynamicResource BadgeColor}"
+                            FontFamily="Arlrdbd"
+                            FontSize="25"/>
+                        <Button
+                            Grid.Row="1"
+                            x:Name="ButtonXPLevel"
+                            CornerRadius="20"
+                            FontSize="15"
+                            Padding="5"
+                            FontFamily="Arlrdbd"
+                            HorizontalOptions="Center"
+                            VerticalOptions="CenterAndExpand"
+                            BackgroundColor="{DynamicResource BadgeColor}"
+                            TextColor="White"/>
+                    </StackLayout>
                 </Grid>
             </StackLayout>
             <StackLayout
@@ -112,8 +124,8 @@
                         Aspect="AspectFill"
                         Source="four"/>
                     <Button
-                        FontSize="30"
-                        FontFamily="Samantha"
+                        FontSize="15"
+                        FontFamily="Arlrdbd"
                         CornerRadius="30"
                         Padding="10"
                         HorizontalOptions="Center"
@@ -132,8 +144,8 @@
                         Aspect="AspectFill"
                         Source="five"/>
                     <Button
-                        FontFamily="Samantha"
-                        FontSize="30"
+                        FontFamily="Arlrdbd"
+                        FontSize="15"
                         CornerRadius="30"
                         Padding="10"
                         HorizontalOptions="Center"

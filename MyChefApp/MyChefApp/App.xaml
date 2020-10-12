@@ -23,7 +23,7 @@
         <Color x:Key="Blue">#53a1b0</Color>
 
         <x:String x:Key="EULIText">READ &amp; AGREE TO TERMS &amp; CONDITIONS</x:String>
-        <x:String x:Key="AccountMessage">THESE USER OPTIONS CAN CHANGED AT ANYTIME VIA SETTINGS.</x:String>
+        <x:String x:Key="AccountMessage">THESE USER OPTIONS CAN BE CHANGED AT ANY TIME VIA SETTINGS.</x:String>
         <x:String x:Key="FreeTitle">FREE</x:String>
         <x:String x:Key="FreeMessage">Free - users can be a part of the MyChef community and set dieting goals for themselves each week. Can opt into a weekly MyChef challenge for 1.00</x:String>
         <x:String x:Key="PremiumTitle">PREMIUM $5.99</x:String>
@@ -36,10 +36,10 @@
         <x:String x:Key="SkillLevelMessage">Choose Your Skill Level</x:String>
         <x:String x:Key="FreshMeat">Fresh Meat - basic to no cooking experience</x:String>
         <x:String x:Key="SeasonedCook">Seasoned Cook - basic home cooking experience</x:String>
-        <x:String x:Key="PrepCook">Prep Cook - multile cuisine cooking experience</x:String>
+        <x:String x:Key="PrepCook">Prep Cook - multiple cuisine cooking experience</x:String>
         <x:String x:Key="LineCook">Line Cook - home cooking &amp; restaurant experience</x:String>
-        <x:String x:Key="SousCook">Sous Chef - advance knowlege &amp; restaurant experience</x:String>
-        <x:String x:Key="ExecutiveChef">Executive Chef - professional knowlege &amp; cooking experience</x:String>
+        <x:String x:Key="SousCook">Sous Chef - advance knowledge &amp; restaurant experience</x:String>
+        <x:String x:Key="ExecutiveChef">Executive Chef - professional knowledge &amp; cooking experience</x:String>
 
         <x:String x:Key="ThisWeekMenu">This Week's Menu</x:String>
 
@@ -63,6 +63,5 @@
         
         <local:ExpanderIconConverter x:Key="ExpanderIconConverter"/>
         <local:DayTemplateSelector x:Key="DayTemplateSelector"/>
-        <local:ChatTemplateSelector x:Key="ChatTemplateSelector"/>
     </Application.Resources>
 </Application>

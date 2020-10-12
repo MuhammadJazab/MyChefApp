@@ -67,22 +67,8 @@
                             <StackLayout
                                 Spacing="-30"
                                 VerticalOptions="End">
-                                <Label
-                                    Margin="10"
-                                    Padding="3"
-                                    HorizontalOptions="Center"
-                                    TextColor="{DynamicResource Green}"
-                                    FontSize="45"
-                                    FontAttributes="Bold"
-                                    Text="MYCHEF"/>
-                                <Label
-                                    Margin="10"
-                                    Padding="3"
-                                    HorizontalOptions="Center"
-                                    TextColor="{DynamicResource Green}"
-                                    FontSize="35"
-                                    FontAttributes="Bold"
-                                    Text="COMMUNITY"/>
+                                <Image
+                                    Source="MyChefCommunity"/>
                             </StackLayout>
                         </Grid>
                     </StackLayout>
@@ -110,22 +96,8 @@
                             <StackLayout
                                 Spacing="-20"
                                 VerticalOptions="Center">
-                                <Label
-                                    Margin="10"
-                                    Padding="3"
-                                    HorizontalOptions="Center"
-                                    TextColor="{DynamicResource YellowText}"
-                                    FontSize="60"
-                                    FontAttributes="Bold"
-                                    Text="CHEF"/>
-                                <Label
-                                    Margin="10"
-                                    Padding="3"
-                                    HorizontalOptions="Center"
-                                    TextColor="{DynamicResource YellowText}"
-                                    FontSize="25"
-                                    FontAttributes="Bold"
-                                    Text="CHALLENGE FEED"/>
+                                <Image
+                                    Source="MyChefChallenge"/>
                             </StackLayout>
                         </Grid>
                     </StackLayout>
@@ -204,22 +176,8 @@
                             <StackLayout
                                 Spacing="-30"
                                 VerticalOptions="End">
-                                <Label
-                                    Margin="10"
-                                    Padding="3"
-                                    HorizontalOptions="Center"
-                                    TextColor="White"
-                                    FontSize="45"
-                                    FontAttributes="Bold"
-                                    Text="XP BASED"/>
-                                <Label
-                                    Margin="10"
-                                    Padding="3"
-                                    HorizontalOptions="Center"
-                                    TextColor="White"
-                                    FontSize="35"
-                                    FontAttributes="Bold"
-                                    Text="ROOMS"/>
+                                <Image
+                                    Source="XPBasedRooms"/>
                             </StackLayout>
                         </Grid>
                     </StackLayout>

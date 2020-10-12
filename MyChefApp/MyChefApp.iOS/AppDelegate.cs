@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using Rg.Plugins.Popup;
 using Syncfusion.XForms.iOS.Expander;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
@@ -22,6 +23,7 @@ namespace MyChefApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
+            Popup.Init();
             SfTextInputLayoutRenderer.Init();
             SfExpanderRenderer.Init();
             LoadApplication(new App());

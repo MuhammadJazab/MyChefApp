@@ -45,8 +45,8 @@
                     <StackLayout
                         Orientation="Vertical">
                         <Label
-                            FontFamily="Samantha"
-                            FontSize="30"
+                            FontFamily="ROCK"
+                            FontSize="20"
                             FontAttributes="Bold"
                             TextColor="Black"
                             HorizontalTextAlignment="Center"

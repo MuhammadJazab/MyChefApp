@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-
-namespace MyChefApp.ViewModels
+﻿namespace MyChefApp.ViewModels
 {
     public class WeekMenuVM
     {

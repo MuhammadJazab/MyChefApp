@@ -24,6 +24,11 @@ namespace MyChefApp.Services
             return SecureStorage.Remove(key);
         }
 
+        public static void RemoveSession()
+        {
+            SecureStorage.RemoveAll();
+        }
+
         public static void LoginMechanism()
         {
             string userJson = GetSession(SessionKey.Token);
@@ -38,7 +43,7 @@ namespace MyChefApp.Services
                     {
                         if (user.AccountTypeId > 0)
                         {
-                            App.User = $"{user.UserName}_{user.UserId}";
+                            App.UserId = user.UserId;
 
                             if (user.CookingSkillId > 0)
                             {

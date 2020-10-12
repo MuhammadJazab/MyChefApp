@@ -2,7 +2,6 @@
 using MyChefApp.ViewModels;
 using MyChefAppViewModels;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,7 +38,7 @@ namespace MyChefApp.Views
         private async Task FatchAndBindData()
         {
             Response cookingSkillsJson = await httpRequests.GetCookingSkills();
-            Response response = await httpRequests.GetRecipeByMenuId(menuId); 
+            Response response = await httpRequests.GetRecipeByMenuId(menuId);
 
             List<CookingSkillVM> cookingSkills = JsonConvert.DeserializeObject<List<CookingSkillVM>>(cookingSkillsJson.ResultData.ToString());
 

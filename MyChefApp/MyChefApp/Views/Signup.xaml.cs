@@ -37,7 +37,11 @@ namespace MyChefApp.Views
             if (response.Status == ResponseStatus.OK)
             {
                 await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
-                await Navigation.PushAsync(new Account(JsonConvert.DeserializeObject<UserVM>(response.ResultData.ToString())));
+                
+                userVm = JsonConvert.DeserializeObject<UserVM>(response.ResultData.ToString());
+                App.UserId = userVm.UserId;
+
+                await Navigation.PushAsync(new Account(userVm));
             }
             else await DisplayAlert("Error", "Unable to connect to the server. Check your internet connection", "OK");
         }

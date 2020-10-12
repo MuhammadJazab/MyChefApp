@@ -1,6 +1,9 @@
-﻿using MyChefApp.Services;
+﻿using MyChefApp.Popups;
+using MyChefApp.Services;
 using MyChefApp.ViewModels;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +36,8 @@ namespace MyChefApp.Views
                 await FatchAndBindData();
                 HideActivityIndicator();
             });
+
+            Navigation.PopToRootAsync();
         }
 
         private async Task FatchAndBindData()
@@ -73,6 +78,11 @@ namespace MyChefApp.Views
         private async void MYChefFolk(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MembershipRoom(userVM));
+        }
+
+        private async void Settings_Click(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new ContextMenuPopup(userVM));
         }
     }
 }
