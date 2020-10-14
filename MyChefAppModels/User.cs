@@ -1,4 +1,7 @@
-﻿namespace MyChefAppModels
+﻿using System;
+using System.Collections.Generic;
+
+namespace MyChefAppModels
 {
     public partial class User
     {
@@ -9,5 +12,7 @@
         public long AccountTypeId { get; set; }
         public long CookingSkillId { get; set; }
         public bool HasFoodPreference { get; set; }
+        public byte[] ProfileImage { get; set; }
+        public string UserGoals { get; set; }
     }
 }

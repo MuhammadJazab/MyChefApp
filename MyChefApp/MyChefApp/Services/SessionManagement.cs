@@ -56,7 +56,19 @@ namespace MyChefApp.Services
                                     App.Current.MainPage = new NavigationPage(new MyDiet(user));
                                 }
                             }
+                            else
+                            {
+                                App.Current.MainPage = new NavigationPage(new Skills(user));
+                            }
                         }
+                        else
+                        {
+                            App.Current.MainPage = new NavigationPage(new Account(user));
+                        }
+                    }
+                    else
+                    {
+                        App.Current.MainPage = new NavigationPage(new Login());
                     }
                 }
             }

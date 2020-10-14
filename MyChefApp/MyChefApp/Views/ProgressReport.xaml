@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     x:Class="MyChefApp.Views.ProgressReport"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -16,7 +16,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="45*"/>
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="20"/>
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
 
@@ -28,15 +28,28 @@
                         <StackLayout
                             Orientation="Vertical"
                             Margin="0,10">
-                            <Image Source="add"/>
+                            <ActivityIndicator 
+                                x:Name="uploadIndicator" 
+                                IsVisible="False" 
+                                IsRunning="False" 
+                                Color="Green" />
+                            <Image
+                                x:Name="Image_ProfileImage"
+                                Source="add">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="UploadImage"/>
+                                </Image.GestureRecognizers>
+                            </Image>
                             <Label 
                                 x:Name="Lbl_UserName"
+                                FontFamily="Arlrdbd"
                                 Text="UserName"
                                 TextColor="White"
                                 FontSize="30"
                                 HorizontalTextAlignment="Center"/>
                             <Label 
                                 x:Name="Lbl_Followers"
+                                FontFamily="Arlrdbd"
                                 Text="39 Followers"
                                 TextColor="White"
                                 FontSize="20"
@@ -48,6 +61,7 @@
                                     Source="add"/>
                                 <Label 
                                     x:Name="Lbl_Trophys"
+                                    FontFamily="Arlrdbd"
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="End"
                                     TextColor="White"
@@ -56,17 +70,22 @@
                             </StackLayout>
                             <Label 
                                 Text="CHEF CHALLANGE"
+                                FontFamily="Arlrdbd"
                                 TextColor="White"
                                 FontSize="15"
                                 HorizontalTextAlignment="Center"/>
                         </StackLayout>
                     </Grid>
-
                     <StackLayout
                         Grid.Column="1"
+                        VerticalOptions="FillAndExpand"
                         BackgroundColor="LightGreen">
                         <Label
-                            Text="S O U S    C H E F"/>
+                            Margin="5,0"
+                            FontFamily="Arlrdbd"
+                            VerticalOptions="CenterAndExpand"
+                            FontAttributes="Bold"
+                            Text="S  O  U  S     C  H  E  F"/>
                     </StackLayout>
                     <Grid
                         Grid.Column="2">
@@ -76,12 +95,24 @@
                             <StackLayout
                                 Padding="20">
                                 <Label
+                                    FontFamily="Arlrdbd"
                                     x:Name="Lbl_XpLevel"
                                     FontSize="20"
                                     FontAttributes="Bold"
                                     BackgroundColor="LightGreen"
                                     HorizontalTextAlignment="Center"
                                     Text="XP LEVEL: LINE COOK"/>
+                                <Editor
+                                    x:Name="txt_Editor"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    TextChanged="Editor_Changed"
+                                    FontFamily="Arlrdbd"/>
+                                <Button
+                                    x:Name="Btn_Save"
+                                    Clicked="SaveGoles"
+                                    FontFamily="Arlrdbd"
+                                    Text="Save"/>
                             </StackLayout>
                         </Grid>
                     </Grid>
@@ -99,6 +130,7 @@
                         Orientation="Vertical">
                         <Label
                             Margin="0,10"
+                            FontFamily="Arlrdbd"
                             Text="PROGRESS REPORT"
                             HorizontalTextAlignment="Center"
                             FontSize="30"
@@ -107,6 +139,7 @@
                             BackgroundColor="{DynamicResource YellowText}"/>
                         <Label
                             Margin="0,20,0,0"
+                            FontFamily="Arlrdbd"
                             Text="NEXT ACHIEVEMENT"
                             HorizontalTextAlignment="Center"
                             FontSize="15"
@@ -114,6 +147,7 @@
                             TextColor="Black"/>
                         <Label
                             x:Name="lbl_xpLevelTxt"
+                            FontFamily="Arlrdbd"
                             Text="XP LEVEL: SOUS CHEF"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
@@ -127,6 +161,7 @@
                             Orientation="Horizontal">
                             <Label
                                 HorizontalOptions="FillAndExpand"
+                                FontFamily="Arlrdbd"
                                 Text="CHALLENGES"
                                 HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center"
@@ -135,6 +170,7 @@
                                 TextColor="Black"/>
                             <Label 
                                 HorizontalOptions="FillAndExpand"
+                                FontFamily="Arlrdbd"
                                 Text="MY GOALS"
                                 HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center"

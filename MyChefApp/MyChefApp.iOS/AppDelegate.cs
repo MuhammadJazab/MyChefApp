@@ -26,6 +26,7 @@ namespace MyChefApp.iOS
             Popup.Init();
             SfTextInputLayoutRenderer.Init();
             SfExpanderRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

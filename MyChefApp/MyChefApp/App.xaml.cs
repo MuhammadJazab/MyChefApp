@@ -10,7 +10,7 @@ namespace MyChefApp
 
         public App()
         {
-            SyncfusionLicenseProvider.RegisterLicense("MzAzNTI5QDMxMzgyZTMyMmUzMGhJWGVNK0N6aUdUdmVySHo0YnhjZzIwSkZSemJzNUlTZFlvbS9aN2lUZ009");
+            SyncfusionLicenseProvider.RegisterLicense("MzM0NzI0QDMxMzgyZTMzMmUzMG1GWVZlbDVvanZVQXRaeWJEbUxKa25DUXZtTzNQRkNKSGVuRng2S05jRDQ9");
 
             InitializeComponent();
 

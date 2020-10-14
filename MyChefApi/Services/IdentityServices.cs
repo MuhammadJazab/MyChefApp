@@ -22,6 +22,8 @@ namespace MyChefApi.Services
         Response GetCookingSkills();
         Response GetWeeklyMenu();
         Response GetRecipeByMenuId(long menuId);
+        Response GetUserGoalsByUserId(long userId);
+        Response GetUserProfileImageByUserId(long userId);
     }
 
     public class IdentityServices : IIdentityServices
@@ -310,6 +312,86 @@ namespace MyChefApi.Services
             return response;
         }
 
+        public Response GetUserGoalsByUserId(long userId)
+        {
+            Response response;
+
+            try
+            {
+                string goalText = uow.Repository<User>().Get().Where(x => x.UserId == userId).FirstOrDefault().UserGoals;
+
+                if (!string.IsNullOrEmpty(goalText))
+                {
+                    response = new Response()
+                    {
+                        Message = "",
+                        ResultData = goalText,
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
+        }
+
+        public Response GetUserProfileImageByUserId(long userId)
+        {
+            Response response;
+
+            try
+            {
+                byte[] userProfileImage = uow.Repository<User>().Get().Where(x => x.UserId == userId).FirstOrDefault().ProfileImage;
+
+                if (userProfileImage?.Length > 0)
+                {
+                    response = new Response()
+                    {
+                        Message = "",
+                        ResultData = Encoding.UTF8.GetString(userProfileImage),
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "No Image found",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
+        }
+
         public Response UpdateUser(UserVM _user)
         {
             Response response;
@@ -320,9 +402,9 @@ namespace MyChefApi.Services
 
                 if (user != null)
                 {
-                    if (_user.UserFoodPreferences.Count > 0)
+                    if (_user?.UserFoodPreferences?.Count > 0)
                     {
-                        foreach (var food in _user.UserFoodPreferences)
+                        foreach (var food in _user?.UserFoodPreferences)
                         {
                             uow.Repository<FoodPreferences>().Add(new FoodPreferences()
                             {
@@ -339,6 +421,8 @@ namespace MyChefApi.Services
                     user.Email = _user.Email;
                     user.Password = _user.Password;
                     user.UserName = _user.UserName;
+                    user.ProfileImage = _user?.ProfileImage;
+                    user.UserGoals = _user?.UserGoals;
 
                     uow.Repository<User>().Update(user);
 

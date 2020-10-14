@@ -1,5 +1,4 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -26,9 +25,12 @@ namespace MyChefApp.Droid
             Popup.Init(this, savedInstanceState);
             Platform.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
+
             LoadApplication(new App());
+            
+            Window.SetSoftInputMode(SoftInput.AdjustResize);
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 

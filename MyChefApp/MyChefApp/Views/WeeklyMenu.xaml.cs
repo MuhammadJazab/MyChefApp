@@ -72,7 +72,7 @@ namespace MyChefApp.Views
 
         private async void ChefChallenges(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ProgressReport(userVM, skill));
+            await Navigation.PushAsync(new MenuRecipe(userVM, 0));
         }
 
         private async void MYChefFolk(object sender, EventArgs e)
@@ -83,6 +83,11 @@ namespace MyChefApp.Views
         private async void Settings_Click(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new ContextMenuPopup(userVM));
+        }
+
+        private async void UserProfile(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProgressReport(userVM, skill));
         }
     }
 }

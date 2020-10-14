@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MyChefAppModels
 {
@@ -93,6 +95,8 @@ namespace MyChefAppModels
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(30);
+
+                entity.Property(e => e.UserGoals).HasMaxLength(30);
 
                 entity.Property(e => e.UserName)
                     .IsRequired()

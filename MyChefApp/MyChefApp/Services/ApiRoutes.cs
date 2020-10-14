@@ -7,12 +7,12 @@
             /// <summary>
             /// Local
             /// </summary>
-            //public static readonly string BaseUrl = "http://172.16.2.101:8800/";
+            public static readonly string BaseUrl = "http://172.16.2.101:8800/";
 
             /// <summary>
             /// Live
             /// </summary>
-            public static readonly string BaseUrl = "http://ec2-54-177-128-8.us-west-1.compute.amazonaws.com/";
+            //public static readonly string BaseUrl = "http://ec2-54-177-128-8.us-west-1.compute.amazonaws.com/";
         }
 
         public static class MyChefAPI
@@ -26,6 +26,8 @@
             public static readonly string GetCookingSkills = $"{BaseUrl}GetCookingSkills";
             public static readonly string GetWeeklyMenu = $"{BaseUrl}GetWeeklyMenu";
             public static readonly string GetRecipeByMenuId = $"{BaseUrl}GetRecipeByMenuId";
+            public static readonly string GetUserProfileImageByUserId = $"{BaseUrl}GetUserProfileImageByUserId";
+            public static readonly string GetUserGoalsByUserId = $"{BaseUrl}GetUserGoalsByUserId";
         }
     }
 }

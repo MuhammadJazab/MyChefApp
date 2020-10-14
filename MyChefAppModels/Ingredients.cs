@@ -1,4 +1,7 @@
-﻿namespace MyChefAppModels
+﻿using System;
+using System.Collections.Generic;
+
+namespace MyChefAppModels
 {
     public partial class Ingredients
     {

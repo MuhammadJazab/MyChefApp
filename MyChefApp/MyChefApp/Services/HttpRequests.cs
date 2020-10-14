@@ -37,6 +37,52 @@ namespace MyChefApp.Services
             return response;
         }
 
+        public async Task<Response> GetUserProfileImageByUserId(long userId)
+        {
+            Response response;
+
+            try
+            {
+                response = JsonConvert.DeserializeObject<Response>(
+                    await httpClient.GetAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.GetUserProfileImageByUserId}?userId={userId}")
+                );
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
+
+        public async Task<Response> GetUserGoalsByUserId(long userId)
+        {
+            Response response;
+
+            try
+            {
+                response = JsonConvert.DeserializeObject<Response>(
+                    await httpClient.GetAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.GetUserGoalsByUserId}?userId={userId}")
+                );
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
+
         public async Task<Response> GetRecipeByMenuId(long menuId)
         {
             Response response;
