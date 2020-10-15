@@ -47,7 +47,7 @@ namespace MyChefApp.Views
 
             Response imageResponse = await httpRequests.GetUserProfileImageByUserId(userVM.UserId);
 
-            txt_Editor.Text = goalResponse.ResultData.ToString();
+            txt_Editor.Text = goalResponse?.ResultData?.ToString();
 
             string profileImageString = imageResponse?.ResultData?.ToString();
 
