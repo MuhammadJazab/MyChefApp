@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyChefApi.Services;
 using MyChefApp.ViewModels;
+using MyChefAppModels;
+using MyChefAppViewModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Utilities;
 
@@ -68,6 +71,18 @@ namespace MyChefApi.Controllers
         public Response GetUserGoalsByUserId(long userId)
         {
             return identityServices.GetUserGoalsByUserId(userId);
+        }
+
+        [HttpGet]
+        public Response UpdateGoalByGoalId(long automationId, bool? isChecked)
+        {
+            return identityServices.UpdateGoalByGoalId(automationId, isChecked);
+        }
+
+        [HttpPost]
+        public async Task<Response> SetUserGoalsByUserId([FromBody] GoalsVM goalsVM)
+        {
+            return await identityServices.SetUserGoalsByUserId(goalsVM);
         }
 
         [HttpGet]

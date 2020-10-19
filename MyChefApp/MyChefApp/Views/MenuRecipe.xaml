@@ -168,16 +168,6 @@
                             FontSize="Micro"
                             TextColor="White"/>
                     </StackLayout>
-                    <!--<StackLayout
-                        Padding="5"
-                        HorizontalOptions="CenterAndExpand">
-                        <Label 
-                            FontFamily="Rockwall"
-                            HorizontalTextAlignment="Center"
-                            FontSize="Small"
-                            TextColor="White"
-                            Text="Directions"/>
-                    </StackLayout>-->
                 </StackLayout>
             </StackLayout>
         </Grid>

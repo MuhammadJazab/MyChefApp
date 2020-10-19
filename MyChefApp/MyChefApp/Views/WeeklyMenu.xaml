@@ -149,6 +149,7 @@
                         FontSize="15"
                         CornerRadius="30"
                         Padding="10"
+                        Clicked="UserProfile"
                         HorizontalOptions="Center"
                         VerticalOptions="CenterAndExpand"
                         TextColor="{DynamicResource SlatBlack}"

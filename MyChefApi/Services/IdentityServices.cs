@@ -2,6 +2,8 @@
 using MyChefApp.ViewModels;
 using MyChefAppModels;
 using MyChefAppViewModels;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +26,8 @@ namespace MyChefApi.Services
         Response GetRecipeByMenuId(long menuId);
         Response GetUserGoalsByUserId(long userId);
         Response GetUserProfileImageByUserId(long userId);
+        Task<Response> SetUserGoalsByUserId(GoalsVM goalsVM);
+        Response UpdateGoalByGoalId(long automationId, bool? isChecked);
     }
 
     public class IdentityServices : IIdentityServices
@@ -262,7 +266,6 @@ namespace MyChefApi.Services
 
             try
             {
-
                 User user = uow.Repository<User>().Get().Where(x => x.Email == _user.Email).FirstOrDefault();
 
                 if (user == null)
@@ -318,14 +321,14 @@ namespace MyChefApi.Services
 
             try
             {
-                string goalText = uow.Repository<User>().Get().Where(x => x.UserId == userId).FirstOrDefault().UserGoals;
+                List<Goals> goals = uow.Repository<Goals>().Get().Where(x => x.UserId == userId).ToList();
 
-                if (!string.IsNullOrEmpty(goalText))
+                if (goals.Count > 0)
                 {
                     response = new Response()
                     {
-                        Message = "",
-                        ResultData = goalText,
+                        Message = "Goals found successfully",
+                        ResultData = goals,
                         Status = ResponseStatus.OK
                     };
                 }
@@ -333,9 +336,86 @@ namespace MyChefApi.Services
                 {
                     response = new Response()
                     {
-                        Message = "",
+                        Message = "Goals not found",
                         ResultData = null,
                         Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
+        }
+
+        public async Task<Response> SetUserGoalsByUserId(GoalsVM goalsVM)
+        {
+            Response response;
+
+            try
+            {
+                Goals isGoalExist = uow.Repository<Goals>().Get(x => x.GoalId == goalsVM.GoalId).FirstOrDefault();
+
+                if (isGoalExist == null)
+                {
+                    int goalCount = uow.Repository<Goals>().GetAll().Where(x => x.UserId == goalsVM.UserId).Count();
+
+                    if (goalCount <= 4)
+                    {
+                        Goals goals = new Goals()
+                        {
+                            UserId = goalsVM.UserId,
+                            GoalCompleted = goalsVM.GoalCompleted,
+                            GoalText = goalsVM.GoalText
+                        };
+
+                        uow.Repository<Goals>().Add(goals);
+
+                        await uow.SaveAsync();
+
+                        response = new Response()
+                        {
+                            Message = "Goal Saved Successfully",
+                            ResultData = goals,
+                            Status = ResponseStatus.OK
+                        };
+                    }
+                    else
+                    {
+                        response = new Response()
+                        {
+                            Message = "Goal limit reached, you are allowed to add 4 goals",
+                            ResultData = goalCount,
+                            Status = ResponseStatus.Restrected
+                        };
+                    }
+                }
+                else
+                {
+                    Goals goals = new Goals()
+                    {
+                        UserId = goalsVM.UserId,
+                        GoalCompleted = goalsVM.GoalCompleted,
+                        GoalText = goalsVM.GoalText,
+                        GoalId = goalsVM.GoalId
+                    };
+
+                    uow.Repository<Goals>().Update(goals);
+
+                    await uow.SaveAsync();
+
+                    response = new Response()
+                    {
+                        Message = "Goal update Successfully",
+                        ResultData = goals,
+                        Status = ResponseStatus.OK
                     };
                 }
             }
@@ -365,7 +445,7 @@ namespace MyChefApi.Services
                     response = new Response()
                     {
                         Message = "",
-                        ResultData = Encoding.UTF8.GetString(userProfileImage),
+                        ResultData = JsonConvert.SerializeObject(userProfileImage),
                         Status = ResponseStatus.OK
                     };
                 }
@@ -422,7 +502,6 @@ namespace MyChefApi.Services
                     user.Password = _user.Password;
                     user.UserName = _user.UserName;
                     user.ProfileImage = _user?.ProfileImage;
-                    user.UserGoals = _user?.UserGoals;
 
                     uow.Repository<User>().Update(user);
 
@@ -500,6 +579,51 @@ namespace MyChefApi.Services
                 }
             }
             return cryptTxt;
+        }
+
+        public Response UpdateGoalByGoalId(long automationId, bool? isChecked)
+        {
+            Response response;
+
+            try
+            {
+                Goals goals = uow.Repository<Goals>().Get().Where(x => x.GoalId == automationId).FirstOrDefault();
+
+                if (goals != null)
+                {
+                    goals.GoalCompleted = isChecked.Value;
+
+                    uow.Repository<Goals>().Update(goals);
+                    uow.SaveAsync();
+
+                    response = new Response()
+                    {
+                        Message = "Goals Updated successfully",
+                        ResultData = goals,
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "Goals not found",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
         }
     }
 }

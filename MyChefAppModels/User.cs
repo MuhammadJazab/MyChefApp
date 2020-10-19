@@ -13,6 +13,5 @@ namespace MyChefAppModels
         public long CookingSkillId { get; set; }
         public bool HasFoodPreference { get; set; }
         public byte[] ProfileImage { get; set; }
-        public string UserGoals { get; set; }
     }
 }

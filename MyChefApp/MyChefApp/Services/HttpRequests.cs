@@ -1,4 +1,5 @@
 ﻿using MyChefApp.ViewModels;
+using MyChefAppViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
@@ -206,6 +207,52 @@ namespace MyChefApp.Services
             {
                 response = JsonConvert.DeserializeObject<Response>(
                     await httpClient.GetAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.GetWeeklyMenu}")
+                );
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
+
+        public async Task<Response> UpdateGoalByGoalId(long automationId, bool? isChecked)
+        {
+            Response response;
+
+            try
+            {
+                response = JsonConvert.DeserializeObject<Response>(
+                    await httpClient.GetAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.UpdateGoalByGoalId}?automationId={automationId}&isChecked={isChecked}")
+                );
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
+
+        public async Task<Response> SetUserGoalsByUserId(GoalsVM goalsVM)
+        {
+            Response response;
+
+            try
+            {
+                response = JsonConvert.DeserializeObject<Response>(
+                    await httpClient.PostAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.SetUserGoalsByUserId}", goalsVM)
                 );
             }
             catch (Exception ex)

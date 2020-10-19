@@ -20,6 +20,7 @@ namespace MyChefAppModels
         public virtual DbSet<FoodPreferences> FoodPreferences { get; set; }
         public virtual DbSet<FoodTypes> FoodTypes { get; set; }
         public virtual DbSet<Foods> Foods { get; set; }
+        public virtual DbSet<Goals> Goals { get; set; }
         public virtual DbSet<Ingredients> Ingredients { get; set; }
         public virtual DbSet<Recipes> Recipes { get; set; }
         public virtual DbSet<User> User { get; set; }
@@ -66,6 +67,15 @@ namespace MyChefAppModels
                     .HasMaxLength(20);
             });
 
+            modelBuilder.Entity<Goals>(entity =>
+            {
+                entity.HasKey(e => e.GoalId);
+
+                entity.Property(e => e.GoalText)
+                    .IsRequired()
+                    .HasMaxLength(35);
+            });
+
             modelBuilder.Entity<Ingredients>(entity =>
             {
                 entity.HasKey(e => e.IngredientId);
@@ -95,8 +105,6 @@ namespace MyChefAppModels
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(30);
-
-                entity.Property(e => e.UserGoals).HasMaxLength(30);
 
                 entity.Property(e => e.UserName)
                     .IsRequired()

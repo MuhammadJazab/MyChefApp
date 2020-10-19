@@ -1,8 +1,13 @@
 ﻿using MyChefApp.Services;
 using MyChefApp.ViewModels;
+using MyChefAppViewModels;
+using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using Syncfusion.XForms.Buttons;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,26 +19,34 @@ namespace MyChefApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProgressReport : ContentPage
     {
+        string skill;
+
         int restrictCount = 30;
 
-        private MediaFile _mediaFile;
-        private string URL { get; set; }
+        MediaFile _mediaFile;
 
         UserVM userVM;
 
         HttpRequests httpRequests;
+
+        List<GoalsVM> goalsVMs;
+        ObservableCollection<GoalsVM> observableGoalsVMs;
 
         public ProgressReport(UserVM userVM, string skill)
         {
             InitializeComponent();
 
             this.userVM = userVM;
+            this.skill = skill;
+
             httpRequests = new HttpRequests();
+
+            observableGoalsVMs = new ObservableCollection<GoalsVM>();
 
             Lbl_XpLevel.Text = skill;
             Lbl_UserName.Text = userVM.UserName;
 
-            Device.BeginInvokeOnMainThread(async () => 
+            Device.BeginInvokeOnMainThread(async () =>
             {
                 Busy();
                 await FetchAndBindData();
@@ -44,16 +57,39 @@ namespace MyChefApp.Views
         private async Task FetchAndBindData()
         {
             Response goalResponse = await httpRequests.GetUserGoalsByUserId(userVM.UserId);
-
             Response imageResponse = await httpRequests.GetUserProfileImageByUserId(userVM.UserId);
 
-            txt_Editor.Text = goalResponse?.ResultData?.ToString();
-
-            string profileImageString = imageResponse?.ResultData?.ToString();
-
-            if (profileImageString?.Length > 0)
+            if (goalResponse.Status == ResponseStatus.OK)
             {
-                Image_ProfileImage.Source = ImageSource.FromStream(() => new MemoryStream(Encoding.ASCII.GetBytes(profileImageString)));
+                goalsVMs = JsonConvert.DeserializeObject<List<GoalsVM>>(goalResponse?.ResultData?.ToString());
+
+                if (goalsVMs.Count > 0)
+                {
+                    foreach (var goal in goalsVMs)
+                    {
+                        observableGoalsVMs.Add(goal);
+                    }
+
+                    listView_MyGoals.ItemsSource = observableGoalsVMs;
+                }
+            }
+            else if (goalResponse.Status == ResponseStatus.Restrected)
+            {
+                await DisplayAlert("Error", goalResponse.Message, "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", goalResponse.Message, "OK");
+            }
+
+            if (imageResponse.Status == ResponseStatus.OK)
+            {
+                byte[] profileImageString = JsonConvert.DeserializeObject<byte[]>(imageResponse?.ResultData.ToString());
+
+                if (profileImageString?.Length > 0)
+                {
+                    Image_ProfileImage.Source = ImageSource.FromStream(() => new MemoryStream(profileImageString));
+                }
             }
         }
 
@@ -87,7 +123,7 @@ namespace MyChefApp.Views
 
                 _mediaFile = await CrossMedia.Current.PickPhotoAsync();
 
-                if (_mediaFile == null) 
+                if (_mediaFile == null)
                 {
                     await DisplayAlert("Error", "There was an error when trying to get your image.", "OK");
                     return;
@@ -105,7 +141,7 @@ namespace MyChefApp.Views
 
             userVM.ProfileImage = GetByteArrayFromStream(stream);
             await httpRequests.UpdateUser(userVM);
-            
+
             NotBusy();
 
             await DisplayAlert("Uploaded", "Profile image uploaded Successfully!", "OK");
@@ -144,16 +180,41 @@ namespace MyChefApp.Views
         {
             if (txt_Editor.Text.Length > 0)
             {
-                userVM.UserGoals = txt_Editor.Text;
-
                 Busy();
 
-                await httpRequests.UpdateUser(userVM);
+                GoalsVM goalsVM = new GoalsVM()
+                {
+                    UserId = userVM.UserId,
+                    GoalCompleted = false,
+                    GoalText = txt_Editor.Text
+                };
+
+                Response response = await httpRequests.SetUserGoalsByUserId(goalsVM);
 
                 NotBusy();
 
-                await DisplayAlert("Uploaded", "Goals uploaded Successfully!", "OK");
+                if (response.Status == ResponseStatus.OK)
+                {
+                    txt_Editor.Text = string.Empty;
+
+                    await DisplayAlert("Uploaded", response.Message, "OK");
+
+                    App.Current.MainPage = new NavigationPage(new ProgressReport(userVM, skill));
+                }
+                else if (response.Status == ResponseStatus.Restrected)
+                {
+                    await DisplayAlert("Error", response.Message, "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Exception", response.Message, "OK");
+                }
             }
+        }
+
+        private async void CheckBox_StateChanged(object sender, StateChangedEventArgs e)
+        {
+            Response response = await httpRequests.UpdateGoalByGoalId(Convert.ToInt64(((SfCheckBox)sender).AutomationId), e.IsChecked);
         }
     }
 }

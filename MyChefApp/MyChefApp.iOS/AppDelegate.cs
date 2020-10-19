@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using Rg.Plugins.Popup;
+using Syncfusion.XForms.iOS.Buttons;
 using Syncfusion.XForms.iOS.Expander;
 using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
@@ -26,6 +27,7 @@ namespace MyChefApp.iOS
             Popup.Init();
             SfTextInputLayoutRenderer.Init();
             SfExpanderRenderer.Init();
+            SfCheckBoxRenderer.Init();
 
             LoadApplication(new App());
 

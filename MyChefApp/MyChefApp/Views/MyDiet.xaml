@@ -280,7 +280,7 @@
                                                 Source={x:Reference Expender_AllergieAndRestrictions},
                                                 Converter={StaticResource ExpanderIconConverter}}"/>
                                             <Label 
-                                                Text="Allergie &amp; Restrictions" 
+                                                Text="ALLERGIES &amp; RESTRICTIONS" 
                                                 FontSize="Large"
                                                 VerticalTextAlignment="Center" 
                                                 HorizontalTextAlignment="Start"/>

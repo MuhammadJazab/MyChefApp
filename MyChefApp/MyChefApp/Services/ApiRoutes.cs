@@ -27,7 +27,19 @@
             public static readonly string GetWeeklyMenu = $"{BaseUrl}GetWeeklyMenu";
             public static readonly string GetRecipeByMenuId = $"{BaseUrl}GetRecipeByMenuId";
             public static readonly string GetUserProfileImageByUserId = $"{BaseUrl}GetUserProfileImageByUserId";
+            public static readonly string UpdateGoalByGoalId = $"{BaseUrl}UpdateGoalByGoalId";
+
+            /// <summary>
+            /// Type: Get
+            /// Paramaeter: long userId
+            /// </summary>
             public static readonly string GetUserGoalsByUserId = $"{BaseUrl}GetUserGoalsByUserId";
+
+            /// <summary>
+            /// Type: Post
+            /// Paramaeter: GoalsVM goalsVM
+            /// </summary>
+            public static readonly string SetUserGoalsByUserId = $"{BaseUrl}SetUserGoalsByUserId";
         }
     }
 }
