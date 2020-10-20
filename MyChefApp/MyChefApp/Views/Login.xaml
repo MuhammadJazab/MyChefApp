@@ -67,6 +67,11 @@
                         FontAttributes="Bold"
                         FontSize="Body"/>
 
+                    <ActivityIndicator 
+                        x:Name="ActivityIndicator"
+                        Color="{DynamicResource Green}"
+                        VerticalOptions="Center"/>
+
                     <inputLayout:SfTextInputLayout
                         x:Name="ContainerEmail"
                         Hint="EMAIL"
@@ -103,6 +108,7 @@
                 </StackLayout>
             </StackLayout>
             <Button
+                x:Name="Btn_Login"
                 VerticalOptions="End"
                 FontAttributes="Bold"
                 TextColor="White"

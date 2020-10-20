@@ -25,13 +25,15 @@ namespace MyChefApp.Views
 
         private async void LoginClick(object sender, EventArgs e)
         {
+            Busy();
+
             UserVM signIn = new UserVM()
             {
                 Email = txtEmail.Text,
                 Password = txtPassword.Text
             };
 
-            Response response = await httpRequests.GetUserByCredentials(signIn);
+            Response response = await httpRequests.GetUserByCredentials(signIn);           
 
             if (response != null)
             {
@@ -60,11 +62,33 @@ namespace MyChefApp.Views
             {
                 await DisplayAlert("Error", "Unable to connect to the server. Check your internet connection", "OK");
             }
+
+            NotBusy();
         }
 
         private async void SignupClick(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Signup());
+        }
+
+        public void Busy()
+        {
+            ActivityIndicator.IsVisible = true;
+            ActivityIndicator.IsRunning = true;
+
+            txtEmail.IsEnabled = false;
+            txtPassword.IsEnabled = false;
+            Btn_Login.IsEnabled = false;
+        }
+
+        public void NotBusy()
+        {
+            ActivityIndicator.IsVisible = false;
+            ActivityIndicator.IsRunning = false;
+
+            txtEmail.IsEnabled = true;
+            txtPassword.IsEnabled = true;
+            Btn_Login.IsEnabled = true;
         }
     }
 }
