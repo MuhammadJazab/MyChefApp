@@ -39,6 +39,8 @@
                         WidthRequest="150"
                         MinimumWidthRequest="150"
                         Text="{Binding MenuTitle}"
+                        LineBreakMode="TailTruncation"
+                        MaxLines="2"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center"/>
                 </StackLayout>
