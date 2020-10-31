@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="MyChefApp.Views.MenuRecipe"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundImageSource="main">
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="MyChefApp.Views.MenuRecipe"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundImageSource="main">
     <ContentPage.Content>
         <Grid
             ColumnSpacing="0">
@@ -22,7 +23,7 @@
             </StackLayout>
             <StackLayout
                 Grid.Column="0"
-                Margin="5,50"
+                Margin="5,20"
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="CenterAndExpand">
                 <Label 
@@ -158,15 +159,31 @@
                         <Label 
                             FontFamily="Rockwall"
                             HorizontalTextAlignment="Center"
-                            FontSize="Small"
+                            FontSize="Medium"
                             TextColor="White"
                             Text="Ingredients"/>
-                        <Label 
-                            x:Name="Lbl_Ingredients"
-                            FontFamily="Rockwall"
-                            HorizontalTextAlignment="Center"
-                            FontSize="Micro"
-                            TextColor="White"/>
+                        <ListView
+                            x:Name="ListView_Ingredients"
+                            BackgroundColor="Transparent"
+                            Margin="0"
+                            HasUnevenRows="True"
+                            SelectionMode="None"
+                            SeparatorColor="Transparent">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label 
+                                            x:Name="Lbl_Ingredients"
+                                            FontFamily="Rockwall"
+                                            Text="{Binding MenuIngredients}"
+                                            HorizontalTextAlignment="Center"
+                                            FontSize="Small"
+                                            TextColor="White"/>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                       
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

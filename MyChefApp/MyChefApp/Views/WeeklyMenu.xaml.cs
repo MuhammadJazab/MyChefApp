@@ -72,7 +72,7 @@ namespace MyChefApp.Views
 
         private async void ChefChallenges(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuRecipe(userVM, 0));
+            await Navigation.PushAsync(new MenuRecipe(userVM, 1));
         }
 
         private async void MYChefFolk(object sender, EventArgs e)

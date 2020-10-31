@@ -2,7 +2,9 @@
 using MyChefApp.ViewModels;
 using MyChefAppViewModels;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -16,12 +18,15 @@ namespace MyChefApp.Views
         HttpRequests httpRequests;
         UserVM userVM;
 
+        ObservableCollection<IngredientsVM> ingredentsList;
+
         long menuId = 0;
 
         public MenuRecipe(UserVM _userVM, long _menuId)
         {
             InitializeComponent();
 
+            ingredentsList = new ObservableCollection<IngredientsVM>();
             httpRequests = new HttpRequests();
             userVM = _userVM;
 
@@ -57,8 +62,10 @@ namespace MyChefApp.Views
 
                     foreach (var ingredient in recipeVM.RecipeIngredients)
                     {
-                        Lbl_Ingredients.Text += $"{ingredient.MenuIngredients}, ";
+                        ingredentsList.Add(ingredient);
                     }
+
+                    ListView_Ingredients.ItemsSource = ingredentsList;
                 }
             }
             else
