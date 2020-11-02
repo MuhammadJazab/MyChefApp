@@ -29,6 +29,7 @@ namespace MyChefApi
                 options => options.UseSqlServer(Configuration.GetConnectionString("MyChefApiContext"), builder => builder.EnableRetryOnFailure()));
 
             services.AddTransient<IIdentityServices, IdentityServices>();
+            services.AddTransient<IAdminServices, AdminServices>();
             services.AddTransient<IUnitOfWork, UnitOfWork<MyChefContext>>();
         }
 

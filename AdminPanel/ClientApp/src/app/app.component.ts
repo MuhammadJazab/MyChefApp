@@ -7,7 +7,7 @@ import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConf
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit{
-  title = 'demo1';
+  title = 'MyChef';
 
   showSidebar: boolean = true;
   showNavbar: boolean = true;
@@ -18,8 +18,9 @@ export class AppComponent implements OnInit{
     
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
     router.events.forEach((event) => { 
-      if(event instanceof NavigationStart) {
-        if((event['url'] == '/user-pages/login') || (event['url'] == '/user-pages/register') || (event['url'] == '/error-pages/404') || (event['url'] == '/error-pages/500') ) {
+      if (event instanceof NavigationStart) {
+        debugger;
+        if ((event['url'] == '/login') || (event['url'] == '/register') || (event['url'] == '/error-pages/404') || (event['url'] == '/error-pages/500') ) {
           this.showSidebar = false;
           this.showNavbar = false;
           this.showFooter = false;
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit{
           document.querySelector('.content-wrapper').classList.remove('auth', 'auth-img-bg', );
           document.querySelector('.content-wrapper').classList.remove('auth', 'lock-full-bg');
           if((event['url'] == '/error-pages/404') || (event['url'] == '/error-pages/500')) {
-            document.querySelector('.content-wrapper').classList.add('p-0');
+            document.querySelector('.content-wrapper').classList.add('p-0');         
           }
         } else {
           this.showSidebar = true;
