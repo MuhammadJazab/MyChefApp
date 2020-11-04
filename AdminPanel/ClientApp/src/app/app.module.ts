@@ -18,6 +18,7 @@ import { ContentAnimateDirective } from './shared/directives/content-animate.dir
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RegistrationComponent } from './registration/registration.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    HttpModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

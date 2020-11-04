@@ -5,7 +5,9 @@ import { LoginComponent } from './login/login.component'
 
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: LoginComponent },
+  { path: 'app-login', component: LoginComponent },
   { path: 'basic-ui', loadChildren: () => import('./basic-ui/basic-ui.module').then(m => m.BasicUiModule) },
   { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsDemoModule) },
   { path: 'forms', loadChildren: () => import('./forms/form.module').then(m => m.FormModule) },
