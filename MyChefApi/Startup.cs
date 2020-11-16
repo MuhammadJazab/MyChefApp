@@ -24,6 +24,8 @@ namespace MyChefApi
         {
             services.AddControllers();
 
+            services.AddCors();
+
             services
                 .AddDbContext<MyChefContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("MyChefApiContext"), builder => builder.EnableRetryOnFailure()));
@@ -41,11 +43,13 @@ namespace MyChefApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            app.UseAuthentication();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

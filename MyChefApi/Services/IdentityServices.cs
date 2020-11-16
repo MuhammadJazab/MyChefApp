@@ -183,7 +183,7 @@ namespace MyChefApi.Services
             {
                 string eStr = CustomCryptography.PasswordEncrypt(_user.Password, configuration.GetValue<string>("EncryptionKey"));
 
-                User user = uow.Repository<User>().Get().Where(x => x.Email == _user.Email && x.Password == eStr).FirstOrDefault();
+                User user = uow.Repository<User>().Get().Where(x => x.Email == _user.Email && x.Password == eStr && _user.IsAdmin == x.IsAdmin).FirstOrDefault();
 
                 if (user != null)
                 {
@@ -275,7 +275,8 @@ namespace MyChefApi.Services
                         CookingSkillId = _user.CookingSkillId,
                         Email = _user.Email,
                         Password = eStr,
-                        UserName = _user.UserName
+                        UserName = _user.UserName,
+                        IsAdmin = _user.IsAdmin
                     };
 
                     uow.Repository<User>().Add(userDTO);

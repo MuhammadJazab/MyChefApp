@@ -30,10 +30,11 @@ namespace MyChefApp.Views
             UserVM signIn = new UserVM()
             {
                 Email = txtEmail.Text,
-                Password = txtPassword.Text
+                Password = txtPassword.Text,
+                IsAdmin = false
             };
 
-            Response response = await httpRequests.GetUserByCredentials(signIn);           
+            Response response = await httpRequests.GetUserByCredentials(signIn);
 
             if (response != null)
             {

@@ -6,24 +6,59 @@ import { ApiRoutes } from '../../app/shared/ApiRoutes/ApiRoutes';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  constructor(
-    private http: Http,
-    /*private headers = new Headers({ 'Content-Type': 'application/json' })*/) {
+  usersList = [];
+  freeUsersList = [];
+  premiumUsersList = [];
+  folkPremiumUsersList = [];
 
-  }
-
-  ngOnInit() {
+  constructor(private http: Http) {
     this.GetUsersList();
   }
-  GetUsersList() {
-    debugger;
-    this.http.get(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.GetFinishedJobs).subscribe(
-      result => {
-        debugger;
-        var aa = result.json();
-      });
-  }
 
+  GetUsersList() {
+
+    try {
+      const _this = this;
+
+      this.http.get(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.GetUsersList).subscribe(result => {
+        debugger;
+        var resultJson = result.json();
+
+        if (result.status == 200) {
+          this.usersList = resultJson.resultData;
+
+          if (this.usersList.length > 0) {
+            debugger;
+            this.usersList.forEach(function (value) {
+
+              switch (value.accountTypeId) {
+                case 1:
+                  _this.freeUsersList.push(value);
+                  break;
+
+                case 2:
+                  _this.premiumUsersList.push(value);
+                  break;
+
+                case 3:
+                  _this.folkPremiumUsersList.push(value);
+                  break;
+              }
+            });
+          }
+          else {
+            console.log("Sonething went wrong.")
+          }
+        }
+        else {
+          console.log(result)
+        }
+      });
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
 }

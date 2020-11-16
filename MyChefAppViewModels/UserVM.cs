@@ -13,5 +13,6 @@ namespace MyChefApp.ViewModels
         public List<FoodVM> UserFoodPreferences { get; set; }
         public bool HasFoodPreference { get; set; }
         public byte[] ProfileImage { get; set; }
+        public bool? IsAdmin { get; set; }
     }
 }

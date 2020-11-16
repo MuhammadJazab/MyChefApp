@@ -27,7 +27,8 @@ namespace MyChefApp.Views
             {
                 Email = txtEmail.Text.ToLower(),
                 Password = txtPassword.Text,
-                UserName = txtUserName.Text
+                UserName = txtUserName.Text,
+                IsAdmin = false
             };
 
             Response response = await authServices.RegisterUser(userVm);
@@ -37,7 +38,7 @@ namespace MyChefApp.Views
             if (response.Status == ResponseStatus.OK)
             {
                 await SessionManagement.SetSession(SessionKey.Token, $"{response.ResultData} ");
-                
+
                 userVm = JsonConvert.DeserializeObject<UserVM>(response.ResultData.ToString());
                 App.UserId = userVm.UserId;
 

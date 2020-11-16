@@ -11,7 +11,7 @@
   "profiles": {
     "IIS ": {
       "commandName": "IIS",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "api/Identity/start",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -20,7 +20,7 @@
     },
     "MyChefApi": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "api/Identity/start",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
