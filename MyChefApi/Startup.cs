@@ -30,9 +30,9 @@ namespace MyChefApi
                 .AddDbContext<MyChefContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("MyChefApiContext"), builder => builder.EnableRetryOnFailure()));
 
-            services.AddTransient<IIdentityServices, IdentityServices>();
-            services.AddTransient<IAdminServices, AdminServices>();
-            services.AddTransient<IUnitOfWork, UnitOfWork<MyChefContext>>();
+            services.AddScoped<IIdentityServices, IdentityServices>();
+            services.AddScoped<IAdminServices, AdminServices>();
+            services.AddScoped<IUnitOfWork, UnitOfWork<MyChefContext>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

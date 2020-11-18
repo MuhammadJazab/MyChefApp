@@ -1,2 +1,0 @@
-key store path for windows: C:\Users\{User}\AppData\Local\Xamarin\Mono for Android\Keystore 
-Pass: Jazab1****2

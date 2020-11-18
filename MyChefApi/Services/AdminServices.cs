@@ -31,7 +31,23 @@ namespace MyChefApi.Services
 
         public Response GetMenuList()
         {
-            throw new NotImplementedException();
+            Response response;
+
+            try
+            {
+                List<WeekMenu> weekMenus = uow.Repository<WeekMenu>().GetAll().ToList();
+
+                List<long> weekMenuIds = weekMenus.Select(x => x.MenuId);
+
+                List<Recipes> recipes = uow.Repository<Recipes>().GetAll().Where(x => weekMenus.Contains(x.MenuId));
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            //return response;
+            return new Response();
         }
 
         public Response GetUsersList()
