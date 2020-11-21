@@ -3,7 +3,8 @@ export var ApiRoutes = {
     baseUrl: 'http://localhost:8800/'
   },
   Admin: {
-    GetUsersList: "api/Admin/GetUsersList"
+    GetUsersList: "api/Admin/GetUsersList",
+    LoginAdmin: "api/Admin/LoginAdmin"
   }
 }
 

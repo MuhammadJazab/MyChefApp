@@ -55,7 +55,15 @@ namespace MyChefApp.Views
 
         private async void WeekMenu(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage(userVM));
+            if (userVM.AccountTypeId != 1)
+            {
+
+                await Navigation.PushAsync(new MenuPage(userVM));
+            }
+            else
+            {
+                await DisplayAlert("Invalid access", "This option is not available for free account type. Kindly update your account.", "OK");
+            }
         }
 
         private void ShowActivityIndicator()
@@ -72,7 +80,16 @@ namespace MyChefApp.Views
 
         private async void ChefChallenges(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuRecipe(userVM, 1));
+            if (userVM.AccountTypeId != 1)
+            {
+
+                await Navigation.PushAsync(new MenuRecipe(userVM, 1));
+            }
+            else
+            {
+                await DisplayAlert("Invalid access", "This option is not available for free account type. Kindly update your account.", "OK");
+            }
+
         }
 
         private async void MYChefFolk(object sender, EventArgs e)
