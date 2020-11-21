@@ -2,6 +2,7 @@
 using MyChefApi.Helpers;
 using MyChefApp.ViewModels;
 using MyChefAppModels;
+using MyChefAppViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,19 +36,30 @@ namespace MyChefApi.Services
 
             try
             {
-                List<WeekMenu> weekMenus = uow.Repository<WeekMenu>().GetAll().ToList();
+                List<WeekMenu> weekMenus = uow.Repository<WeekMenu>().Get().ToList();
 
-                List<long> weekMenuIds = weekMenus.Select(x => x.MenuId);
+                List<long> weekMenuIds = weekMenus.Select(x => x.MenuId).ToList();
 
-                List<Recipes> recipes = uow.Repository<Recipes>().GetAll().Where(x => weekMenus.Contains(x.MenuId));
+                List<Recipes> recipes = uow.Repository<Recipes>().GetAll().Where(x => weekMenuIds.Contains(x.MenuId)).ToList();
+
+                response = new Response()
+                {
+                    Message = "User Saved Successfully",
+                    ResultData = recipes,
+                    Status = ResponseStatus.OK
+                };
             }
             catch (Exception ex)
             {
-
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
             }
 
-            //return response;
-            return new Response();
+            return response;
         }
 
         public Response GetUsersList()
@@ -228,5 +240,54 @@ namespace MyChefApi.Services
 
             return response;
         }
+
+        //public Response AddUpdateRecipes(RecipeVM recipeVM)
+        //{
+        //    Response response;
+
+        //    try
+        //    {
+        //        RecipeVM rexistingRecipe = uow.Repository<RecipeVM>().Get().Where(x => x.MenuRecipeId == recipeVM.MenuRecipeId).FirstOrDefault();
+
+        //        if (rexistingRecipe == null)
+        //        {
+        //            Recipes recipes = new Recipes()
+        //            {
+
+        //            };
+
+        //            uow.Repository<User>().Add(userDTO);
+
+        //            uow.SaveAsync();
+
+        //            response = new Response()
+        //            {
+        //                Message = "User Saved Successfully",
+        //                ResultData = userDTO,
+        //                Status = ResponseStatus.OK
+        //            };
+        //        }
+        //        else
+        //        {
+        //            response = new Response()
+        //            {
+        //                Message = "Email Already exists",
+        //                ResultData = null,
+        //                Status = ResponseStatus.Restrected
+        //            };
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response = new Response()
+        //        {
+        //            Message = "Something went wrong, try again",
+        //            ResultData = ex.Message,
+        //            Status = ResponseStatus.Error
+        //        };
+        //    }
+
+        //    return response;
+        //}
     }
 }
