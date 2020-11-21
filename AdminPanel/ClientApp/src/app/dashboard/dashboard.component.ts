@@ -6,59 +6,87 @@ import { ApiRoutes } from '../../app/shared/ApiRoutes/ApiRoutes';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
-  usersList = [];
+  public usersList = [];
   freeUsersList = [];
   premiumUsersList = [];
   folkPremiumUsersList = [];
 
   constructor(private http: Http) {
+
+    //this.usersList = [
+    //  {
+    //    'userId': '1',
+    //    'userName': 'xyz',
+    //    'email': 'muhammadawaism9@gmail.com',
+    //    'accountTypeId': 'Active',
+    //    'cookingSkillId': 'abc'
+    //  },
+    //  {
+    //    'userId': '1',
+    //    'userName': 'xyz',
+    //    'email': 'muhammadawaism9@gmail.com',
+    //    'accountTypeId': 'Active',
+    //    'cookingSkillId': 'abc'
+    //  },
+    //  {
+    //    'userId': '1',
+    //    'userName': 'xyz',
+    //    'email': 'muhammadawaism9@gmail.com',
+    //    'accountTypeId': 'Active',
+    //    'cookingSkillId': 'abc'
+    //  }
+    //]
+  }
+  public ngOnInit() {
+    debugger;
     this.GetUsersList();
   }
 
   GetUsersList() {
+    debugger;
+      try {
+        const _this = this;
 
-    try {
-      const _this = this;
+        this.http.get(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.GetUsersList).subscribe(result => {
+          debugger;
+          var resultJson = result.json();
 
-      this.http.get(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.GetUsersList).subscribe(result => {
-        debugger;
-        var resultJson = result.json();
+          if (result.status == 200) {
+            this.usersList = resultJson.resultData;
 
-        if (result.status == 200) {
-          this.usersList = resultJson.resultData;
+            if (this.usersList.length > 0) {
+              debugger;
+              this.usersList.forEach(function (value) {
 
-          if (this.usersList.length > 0) {
-            debugger;
-            this.usersList.forEach(function (value) {
+                switch (value.accountTypeId) {
+                  case 1:
+                    _this.freeUsersList.push(value);
+                    break;
 
-              switch (value.accountTypeId) {
-                case 1:
-                  _this.freeUsersList.push(value);
-                  break;
+                  case 2:
+                    _this.premiumUsersList.push(value);
+                    break;
 
-                case 2:
-                  _this.premiumUsersList.push(value);
-                  break;
-
-                case 3:
-                  _this.folkPremiumUsersList.push(value);
-                  break;
-              }
-            });
+                  case 3:
+                    _this.folkPremiumUsersList.push(value);
+                    break;
+                }
+              });
+            }
+            else {
+              console.log("Sonething went wrong.")
+            }
           }
           else {
-            console.log("Sonething went wrong.")
+            console.log(result)
           }
-        }
-        else {
-          console.log(result)
-        }
-      });
+        });
+      }
+      catch (e) {
+        console.log(e);
+      }
     }
-    catch (e) {
-      console.log(e);
-    }
-  }
+  
 }

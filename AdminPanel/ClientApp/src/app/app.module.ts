@@ -19,6 +19,7 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpModule } from '@angular/http';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { HttpModule } from '@angular/http';
     SpinnerComponent,
     ContentAnimateDirective,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    DemoComponent,
+    
   ],
   imports: [
     BrowserModule,

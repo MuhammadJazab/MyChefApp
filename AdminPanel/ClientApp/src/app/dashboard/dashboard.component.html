@@ -44,163 +44,164 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4 grid-margin grid-margin-md-0 stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Free Users</h4>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    User Id
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Email
-                                </th>
-                                <th>
-                                    Account Type
-                                </th>
-                                <th>
-                                    Cooking Skill
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let user of usersList">
-                                <td>
-                                    {{user.userId}}
-                                </td>
-                                <td>
-                                    {{user.userName}}
-                                </td>
-                                <td>
-                                    {{user.email}}
-                                </td>
-                                <td>
-                                    {{user.accountTypeId}}
-                                </td>
-                                <td>
-                                    {{user.cookingSkillId}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+  <div class="col-md-4 grid-margin grid-margin-md-0 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Free Users</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  User Id
+                </th>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Account Type
+                </th>
+                <th>
+                  Cooking Skill
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of usersList">
+                <td>
+                  {{user.userId}}
+                </td>
+                <td>
+                  {{user.userName}}
+                </td>
+                <td>
+                  {{user.email}}
+                </td>
+                <td>
+                  {{user.accountTypeId}}
+                </td>
+                <td>
+                  {{user.cookingSkillId}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
-    <div class="col-md-4 stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Premium Users</h4>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    User Id
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Email
-                                </th>
-                                <th>
-                                    Account Type
-                                </th>
-                                <th>
-                                    Cooking Skill
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let user of freeUsersList">
-                                <td>
-                                    {{user.userId}}
-                                </td>
-                                <td>
-                                    {{user.userName}}
-                                </td>
-                                <td>
-                                    {{user.email}}
-                                </td>
-                                <td>
-                                    {{user.accountTypeId}}
-                                </td>
-                                <td>
-                                    {{user.cookingSkillId}}
-                                </td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+  </div>
+  <div class="col-md-4 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Premium Users</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  User Id
+                </th>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Account Type
+                </th>
+                <th>
+                  Cooking Skill
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of freeUsersList">
+                <td>
+                  {{user.userId}}
+                </td>
+                <td>
+                  {{user.userName}}
+                </td>
+                <td>
+                  {{user.email}}
+                </td>
+                <td>
+                  {{user.accountTypeId}}
+                </td>
+                <td>
+                  {{user.cookingSkillId}}
+                </td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
-    <div class="col-md-4 stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">FK Premium Users</h4>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    User Id
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Email
-                                </th>
-                                <th>
-                                    Account Type
-                                </th>
-                                <th>
-                                    Cooking Skill
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let user of freeUsersList">
-                                <td>
-                                    {{user.userId}}
-                                </td>
-                                <td>
-                                    {{user.userName}}
-                                </td>
-                                <td>
-                                    {{user.email}}
-                                </td>
-                                <td>
-                                    {{user.accountTypeId}}
-                                </td>
-                                <td>
-                                    {{user.cookingSkillId}}
-                                </td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+  </div>
+  <div class="col-md-4 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">FK Premium Users</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  User Id
+                </th>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Account Type
+                </th>
+                <th>
+                  Cooking Skill
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of freeUsersList">
+                <td>
+                  {{user.userId}}
+                </td>
+                <td>
+                  {{user.userName}}
+                </td>
+                <td>
+                  {{user.email}}
+                </td>
+                <td>
+                  {{user.accountTypeId}}
+                </td>
+                <td>
+                  {{user.cookingSkillId}}
+                </td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
+  </div>
+
 </div>
 <!--
     accountTypeId: 1
@@ -212,3 +213,8 @@ profileImage: null
 userId: 5
 userName: "test"
   -->
+
+
+
+
+

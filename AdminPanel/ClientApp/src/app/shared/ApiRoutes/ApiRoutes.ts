@@ -6,3 +6,4 @@ export var ApiRoutes = {
     GetUsersList: "api/Admin/GetUsersList"
   }
 }
+
