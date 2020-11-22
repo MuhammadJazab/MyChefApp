@@ -1,25 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
 })
 export class DemoComponent implements OnInit {
-  public usersList = [];
-  public text = "Hello Word";
-  constructor() { }
+  public appValForm: FormGroup;
+
+  constructor(private formBuilder:FormBuilder) { }
 
   public ngOnInit(): void {
-    debugger;
-    this.GetUsersList();
+    this.appValForm = this.formBuilder.group({
+      day: [],
+      title: [],
+      direction: [],
+      gridient:[]
+    });
   }
-  GetUsersList() {
+
+  submitt() {
     debugger;
-    let freeuser = { userId: 1, userName: 'xyz', email: 'muhammadawais@gamil.com', accountTypeId: 'Active', cookingSkillId: 'abc' };
-    for (var i = 0; i < 5; i++) {
-      this.usersList.push(freeuser);
-      console.log(this.usersList);
-    }
+    var aa = this.appValForm.value;
+    var bb = this.appValForm.value.gridient[0].value;
+    debugger;
   }
+  
 
 }

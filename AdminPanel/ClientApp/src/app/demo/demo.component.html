@@ -1,23 +1,199 @@
-<p>{{text}}</p>
+<div class="container-fluid">
 
-<table>
-  <tbody>
-    <tr *ngFor="let item of usersList">
-      <td>
-        {{item.userId}}
-      </td>
-      <td>
-        {{item.userName}}
-      </td>
-      <td>
-        {{item.email}}
-      </td>
-      <td>
-        {{item.accountTypeId}}
-      </td>
-      <td>
-        {{item.cookingSkillId}}
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <div class="contentWrapper">
+
+    <form [formGroup]="appValForm" class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="day">Day</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" placeholder="Enter Day" formControlName="day">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Title</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" placeholder="Enter Title" formControlName="title">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Direction</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" placeholder="Enter Direction" formControlName="direction">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Gridient</label>
+        <ngx-chip-select formControlName="gridient">
+
+        </ngx-chip-select>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4" style="text-align:center">
+          <button type="submit" class="btn btn-primary" (click)="submitt()">Submit</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card shadow mb-4">
+
+          <div class="card-header bg-primary">
+            <h6 class="text-white fa-pull-left m-0 font-weight-bold">Menu List</h6>
+            <div class="fa-pull-right d-flex align-items-center">
+              <button class="btn-sm btn btn-secondary btn-sm" style="position:absolute;right:0px;top:5px">Add New Menu</button>
+              <!--(click)="showModal(content)"-->
+              <!--<div class="g-pagination">
+                <div class="data-count">
+                  <span class="text-white">{{recoardNoFrom}}-{{recoardNoTo}} of {{totalRecoards}}</span>
+                  <div class="newOrOld-Data">
+                    <ul>
+                      <li><a (click)="LoadNewestRecoards()"> Newest</a></li>
+                      <li><a (click)="LoadOldestRecoards()">Oldest</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="indicators text-white">
+                  <i class="fa fa-angle-left" (click)="PriviousClick()"></i>
+                  <i class="fa fa-angle-right" (click)="NextClick()"></i>
+                </div>
+              </div>-->
+
+            </div>
+          </div>
+          <div class="card-body">
+            <!--<div class="show_entries">
+              <div class="no-of-entries">
+                <label>No of Entries</label>
+                <select (change)="changePageSize()" [(ngModel)]="pageSize">
+                  <option value="50" selected>50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+              <div class="n0-of-pages">
+                <label>No of Pages</label>
+                <select class="" [(ngModel)]="pageNumber" (change)="clickchange()">
+                  <option *ngFor="let item of pageing1" value="{{item}}">{{item}} </option>
+                </select>
+              </div>
+            </div>-->
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th width="5%">ID</th>
+                    <th width="15%">Days</th>
+                    <th width="15%">Menu Title</th>
+                    <th width="35%">Direction</th>
+                    <th width="20%">Ingredient</th>
+                    <th width="5%">Edit</th>
+                    <th title="Delete" width="5%">Del</th>
+                  </tr>
+                </thead>
+                <!--<tbody>
+                  <tr *ngFor="let list  of packagesList">-->
+                <!--<td>{{list.packageId}}</td>-->
+                <!--<td>{{list.packageName}}</td>
+                <td>{{list.packageCode}}</td>
+                <td *ngIf="list.userRoleId == 1">Tradesman Solo</td>
+                <td *ngIf="list.userRoleId == 2">Tradesman Org</td>
+                <td *ngIf="list.userRoleId == 3">Customer</td>
+                <td *ngIf="list.userRoleId == 4">Supplier</td>
+
+                <td>{{list.isActive}}</td>
+                <td>{{list.tradePrice}}</td>
+                <td>{{list.salePrice}}</td>
+                <td>{{list.validityDays}}</td>
+                <td>{{list.totalApplicableJobs}}</td>
+                <td>{{list.totalCategories}}</td>
+                <td>{{list.createdDate | date: "dd MMM yyy "}}</td>
+                <td>{{list.createdBy}}</td>
+                <td>{{list.updatedDate | date: "dd MMM yyy "}}</td>
+                <td>{{list.updatedBy}}</td>
+                <td><i class="text-info fa fa-pencil-alt" (click)="updatePackages(list , content)"></i></td>-->
+                <!--<td><i class="text-danger fa fa-trash-alt" (click)="deletepackage(list , deleteContent)"></i></td>-->
+                <!--<td *ngIf="sprights == 'true'">
+                      <label class="switch block-user-switch">
+                        <input type="checkbox" (change)="deletepackage(list , deleteContent)" [checked]="list.isActive" id="{{list.packageId}}">
+                        <span class="slider"></span>
+                      </label>
+                    </td>
+                  </tr>
+                </tbody>-->
+              </table>
+            </div>
+            <!--<div class="card-body" style="padding:0px !important">
+              <div class="show_entries">
+                <div class="no-of-entries">
+                  <label>No of Entries</label>
+                  <select (change)="changePageSize()" [(ngModel)]="pageSize">
+                    <option value="50" selected>50</option>
+                    <option value="100">100</option>
+                  </select>
+                </div>
+                <div class="n0-of-pages">
+                  <label>No of Pages</label>
+                  <select class="" [(ngModel)]="pageNumber" (change)="clickchange()">
+                    <option *ngFor="let item of pageing1" value="{{item}}">{{item}} </option>
+                  </select>
+                </div>
+              </div>
+            </div>-->
+            <!--<div class="card-header justify-header">
+              <h6 class="m-0 font-weight-bold">Package List</h6>
+              <div class="g-pagination">
+                <div class="data-count">
+                  <span>{{recoardNoFrom}}-{{recoardNoTo}} of {{totalRecoards}}</span>
+                  <div class="newOrOld-Data">
+                    <ul>
+                      <li><a (click)="LoadNewestRecoards()"> Newest</a></li>
+                      <li><a (click)="LoadOldestRecoards()">Oldest</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="indicators">
+                  <i class="fa fa-angle-left" (click)="PriviousClick()"></i>
+                  <i class="fa fa-angle-right" (click)="NextClick()"></i>
+                </div>
+              </div>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

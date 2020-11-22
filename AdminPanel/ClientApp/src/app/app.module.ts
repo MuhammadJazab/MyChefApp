@@ -19,6 +19,7 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpModule } from '@angular/http';
+import { ChipSelectModule } from 'ngx-chip-select';
 import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
@@ -41,6 +42,7 @@ import { DemoComponent } from './demo/demo.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    ChipSelectModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,

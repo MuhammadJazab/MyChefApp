@@ -18,54 +18,14 @@
         <i class="mdi mdi-home menu-icon"></i>
       </a>
     </li>
-    <li class="nav-item" [ngClass]="{'active' : accordions.isActive || buttons.isActive || badges.isActive || breadcrumbs.isActive || dropdowns.isActive || modals.isActive || notifications.isActive || progressbar.isActive || pagination.isActive || tabs.isActive || typography.isActive || tooltips.isActive }">
-      <a class="nav-link" (click)="uiBasicCollapsed = !uiBasicCollapsed" [attr.aria-expanded]="uiBasicCollapsed" aria-controls="ui-basic">
+    <li class="nav-item"  [ngClass]="{'active' : accordions.isActive || buttons.isActive || badges.isActive || breadcrumbs.isActive || dropdowns.isActive || modals.isActive || notifications.isActive || progressbar.isActive || pagination.isActive || tabs.isActive || typography.isActive || tooltips.isActive }">
+      <a class="nav-link" routerLink="/demo" routerLinkActive #demo="routerLinkActive">
         <span class="menu-title">Menu</span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+        <!--<i class="menu-arrow"></i>-->
       </a>
-      <div class="collapse" id="ui-basic" [ngbCollapse]="!uiBasicCollapsed">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/accordions" routerLinkActive="active" #accordions="routerLinkActive">Accordions</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/buttons" routerLinkActive="active" #buttons="routerLinkActive">Buttons</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/badges" routerLinkActive="active" #badges="routerLinkActive">Badges</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/breadcrumbs" routerLinkActive="active" #breadcrumbs="routerLinkActive">Breadcrumbs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/dropdowns" routerLinkActive="active" #dropdowns="routerLinkActive">Dropdowns</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/modals" routerLinkActive="active" #modals="routerLinkActive">Modals</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/notifications" routerLinkActive="active" #notifications="routerLinkActive">Notifications</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/progressbar" routerLinkActive="active" #progressbar="routerLinkActive">Progress bar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/pagination" routerLinkActive="active" #pagination="routerLinkActive">Pagination</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/tabs" routerLinkActive="active" #tabs="routerLinkActive">Tabs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/typography" routerLinkActive="active" #typography="routerLinkActive">Typography</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="basic-ui/tooltips" routerLinkActive="active" #tooltips="routerLinkActive">Tooltips</a>
-          </li>
-        </ul>
-      </div>
+      
     </li>
-    <li class="nav-item" [ngClass]="{ 'active': forms.isActive }">
+    <!--<li class="nav-item" [ngClass]="{ 'active': forms.isActive }">
       <a class="nav-link" routerLink="forms/basic-elements" routerLinkActive #forms="routerLinkActive">
         <span class="menu-title">Form elements</span>
         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
@@ -99,11 +59,11 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" routerLink="general-pages/blank-page" routerLinkActive="active" #blankPage="routerLinkActive"> Blank Page </a></li>
           <li class="nav-item"> <a class="nav-link" routerLink="login" routerLinkActive="active" #login="routerLinkActive"> Login </a></li>
-          <li class="nav-item"> <a class="nav-link" routerLink="register" routerLinkActive="active" #register="routerLinkActive"> Register </a></li>
+          <li class="nav-item"> <a class="nav-link" routerLink="register" routerLinkActive="active" #register="routerLinkActive"> Register </a></li>-->
           <!--<li class="nav-item"> <a class="nav-link" routerLink="error-pages/404" routerLinkActive="active" #error404="routerLinkActive"> 404 </a></li>
           <li class="nav-item"> <a class="nav-link" routerLink="error-pages/500" routerLinkActive="active" #error500="routerLinkActive"> 500 </a></li>-->
-        </ul>
+        <!--</ul>
       </div>
-    </li>
+    </li>-->
   </ul>
 </nav>
