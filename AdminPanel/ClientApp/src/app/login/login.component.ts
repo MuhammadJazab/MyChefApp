@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { ApiRoutes } from '../../app/shared/ApiRoutes/ApiRoutes';
+import { UserVM } from '../../app/shared/Common/Classes'
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ export class LoginComponent {
 
   TxtEmail: string;
   TxtPassword: string;
+
+  userVm: UserVM = new UserVM();
 
   constructor(private http: Http) {
   }
@@ -28,6 +31,18 @@ export class LoginComponent {
   }
 
   private ProceedToLogin(_email: string, _password: string) {
-    // this.http.post();
+
+    this.userVm.email = _email;
+    this.userVm.password = _password;
+    this.userVm.isAdmin = true;
+
+    try {
+      this.http.post(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.LoginAdmin, this.userVm).subscribe(result => {
+        var aa = result.json();
+      })
+    }
+    catch (e) {
+
+    }
   }
 }
