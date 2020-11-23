@@ -22,12 +22,9 @@ namespace MyChefApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-
-            services.AddCors();
-
-            services
-                .AddDbContext<MyChefContext>(
+            services.AddControllers().AddNewtonsoftJson();
+            
+            services.AddDbContext<MyChefContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("MyChefApiContext"), builder => builder.EnableRetryOnFailure()));
 
             services.AddScoped<IIdentityServices, IdentityServices>();
@@ -43,7 +40,7 @@ namespace MyChefApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+           app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthentication();
 

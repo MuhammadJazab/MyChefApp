@@ -4,7 +4,8 @@ export var ApiRoutes = {
   },
   Admin: {
     GetUsersList: "api/Admin/GetUsersList",
-    LoginAdmin: "api/Admin/LoginAdmin"
+    LoginAdmin: "api/Admin/LoginAdmin",
+    AddMenuItem:"api/Admin/AddMenuItem"
   }
 }
 

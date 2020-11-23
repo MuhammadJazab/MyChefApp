@@ -26,9 +26,11 @@
 
       <div class="form-group">
         <label class="control-label col-sm-2" for="pwd">Gridient</label>
-        <ngx-chip-select formControlName="gridient">
+        <ngx-chip-select formControlName="gridient" [ngClass]="{ 'is-invalid':submitted &&  f.gridient.errors }">
 
         </ngx-chip-select>
+        <span class="text-danger" *ngIf=" submitted && f.gridient.errors?.required">error</span>
+
       </div>
 
       <div class="form-group">

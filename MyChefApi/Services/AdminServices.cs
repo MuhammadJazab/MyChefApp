@@ -6,6 +6,7 @@ using MyChefAppViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Utilities;
 
 namespace MyChefApi.Services
@@ -17,6 +18,7 @@ namespace MyChefApi.Services
         Response RegisterNewAdmin(UserVM user);
         Response RemoveUserByUserID(long userId);
         Response LoginAdmin(UserVM user);
+        Task<Response> AddMenuItem(MenuItemVM menuItemVM);
     }
 
     public class AdminServices : IAdminServices
@@ -237,6 +239,24 @@ namespace MyChefApi.Services
                     Status = ResponseStatus.Error
                 };
             }
+
+            return response;
+        }
+
+        public async Task<Response> AddMenuItem(MenuItemVM menuItemVM)
+        {
+            Response response = new Response();
+            WeekMenu menu = new WeekMenu()
+            {
+                MenuTitle = menuItemVM.Title,
+                WeekDay=menuItemVM.Day,
+                IsEven=false
+            };
+           await uow.Repository<WeekMenu>().AddAsync(menu);
+           await uow.SaveAsync();
+
+            response.Status =ResponseStatus.OK;
+            response.Message = "Successfully Inserted";
 
             return response;
         }

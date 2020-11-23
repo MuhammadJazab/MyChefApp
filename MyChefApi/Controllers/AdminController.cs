@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyChefApi.Services;
 using MyChefApp.ViewModels;
+using MyChefAppViewModels;
+using System.Threading.Tasks;
 using Utilities;
 
 namespace MyChefApi.Controllers
@@ -43,6 +45,12 @@ namespace MyChefApi.Controllers
         public Response RemoveUserByUserID(long userId)
         {
             return adminServices.RemoveUserByUserID(userId);
+        }
+        [HttpPost]
+        public Task<Response> AddMenuItem([FromBody] MenuItemVM menuItemVM)
+        {
+
+            return adminServices.AddMenuItem(menuItemVM);
         }
     }
 }
