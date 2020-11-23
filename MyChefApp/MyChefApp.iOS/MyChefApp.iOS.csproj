@@ -63,6 +63,7 @@
     <CodesignKey>Apple Distribution: Fayyaz Ur Rehman (Q54G72N586)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>Chef.Distribution</CodesignProvision>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
