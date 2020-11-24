@@ -40,5 +40,11 @@
 	<false/>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>My-Chef needs Photos access to upload your profile image.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>My-Chef needs Photos access to upload your profile image.</string>
 </dict>
 </plist>

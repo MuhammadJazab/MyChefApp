@@ -140,11 +140,14 @@ namespace MyChefApp.Views
             Busy();
 
             userVM.ProfileImage = GetByteArrayFromStream(stream);
-            await httpRequests.UpdateUser(userVM);
+            Response response = await httpRequests.UpdateUser(userVM);
+
+            if (response.Status == ResponseStatus.OK)
+                await DisplayAlert("Uploaded", "Profile image uploaded Successfully!", "OK");
+            else await DisplayAlert("Uploaded", response.Message, "OK");
 
             NotBusy();
 
-            await DisplayAlert("Uploaded", "Profile image uploaded Successfully!", "OK");
         }
 
         public void Busy()
