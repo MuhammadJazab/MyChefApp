@@ -7,12 +7,12 @@
             /// <summary>
             /// Local
             /// </summary>
-            //public static readonly string BaseUrl = "http://172.16.2.101:8800/";
+            //public static readonly string BaseUrl = "http://localhost:8800/";
 
             /// <summary>
             /// Live
             /// </summary>
-            public static readonly string BaseUrl = "http://ec2-54-177-128-8.us-west-1.compute.amazonaws.com/";
+            public static readonly string BaseUrl = "http://185.15.244.235/test/";
         }
 
         public static class MyChefAPI
