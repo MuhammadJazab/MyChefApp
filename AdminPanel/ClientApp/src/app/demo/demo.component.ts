@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MenuVM } from '../shared/Common/Classes';
-import { Http } from '@angular/http';
+import { MenuVM, ResponseVm, httpStatus } from '../shared/Common/Classes';
+import { Http, Response } from '@angular/http';
 import { ApiRoutes } from '../shared/ApiRoutes/ApiRoutes';
 
 @Component({
@@ -11,7 +11,10 @@ import { ApiRoutes } from '../shared/ApiRoutes/ApiRoutes';
 export class DemoComponent implements OnInit {
   public appValForm: FormGroup;
   public menuvm: MenuVM = new MenuVM();
+  public respons: ResponseVm = new ResponseVm();
   public submitted = false;
+  public menueList = [];
+  public messageShow: boolean = false;
 
 
   constructor(private formBuilder: FormBuilder, private http: Http) { }
@@ -23,7 +26,17 @@ export class DemoComponent implements OnInit {
       direction: ['', Validators.required],
       gridient: ['', [Validators.required]]
     });
+
+    this.GetMenuItem();
+
   }
+  GetMenuItem() {
+    debugger;
+    this.http.get('http://localhost:8800/api/Admin/GetMenuItem').subscribe(result => {
+      debugger;
+      this.menueList = result.json();
+    });
+    }
 
   get f() { return this.appValForm.controls; }
 
@@ -40,7 +53,11 @@ export class DemoComponent implements OnInit {
       debugger;
       this.http.post('http://localhost:8800/api/Admin/AddMenuItem', this.menuvm).subscribe(result => {
         debugger;
-        var aa = result.json();
+        this.respons = result.json();
+        if (this.respons.status == httpStatus.Ok) {
+          this.GetMenuItem();
+          this.messageShow = true;
+        }
       });
     }
     else {

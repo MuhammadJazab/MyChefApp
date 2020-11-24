@@ -2,6 +2,7 @@
 using MyChefApi.Services;
 using MyChefApp.ViewModels;
 using MyChefAppViewModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Utilities;
 
@@ -51,6 +52,11 @@ namespace MyChefApi.Controllers
         {
 
             return adminServices.AddMenuItem(menuItemVM);
+        }
+        [HttpGet]
+        public Task<List<MenuItemVM>> GetMenuItem()
+        {
+            return adminServices.GetMenuItem();
         }
     }
 }

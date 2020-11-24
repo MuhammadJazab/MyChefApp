@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { ApiRoutes } from '../../app/shared/ApiRoutes/ApiRoutes';
-import { UserVM, Common } from '../../app/shared/Common/Classes';
+import { UserVM } from '../../app/shared/Common/Classes';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent {
   TxtPassword: string;
 
   userVm: UserVM = new UserVM();
-  common: Common = new Common()
+  //common: Common = new Common()
 
   constructor(private router: Router, private http: Http) {
   }
@@ -43,7 +43,7 @@ export class LoginComponent {
         debugger;
         var aa = result.json();
         if (true) {
-          this.common.NavigateToRoute("DashboardComponent")
+       //   this.common.NavigateToRoute("DashboardComponent")
         } else {
 
         }

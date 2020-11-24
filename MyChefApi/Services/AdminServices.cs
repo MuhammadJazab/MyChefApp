@@ -19,6 +19,7 @@ namespace MyChefApi.Services
         Response RemoveUserByUserID(long userId);
         Response LoginAdmin(UserVM user);
         Task<Response> AddMenuItem(MenuItemVM menuItemVM);
+        Task<List<MenuItemVM>> GetMenuItem();
     }
 
     public class AdminServices : IAdminServices
@@ -245,20 +246,82 @@ namespace MyChefApi.Services
 
         public async Task<Response> AddMenuItem(MenuItemVM menuItemVM)
         {
-            Response response = new Response();
-            WeekMenu menu = new WeekMenu()
+            try
             {
-                MenuTitle = menuItemVM.Title,
-                WeekDay=menuItemVM.Day,
-                IsEven=false
-            };
-           await uow.Repository<WeekMenu>().AddAsync(menu);
-           await uow.SaveAsync();
+                Response response = new Response();
+                WeekMenu menu = new WeekMenu()
+                {
+                    MenuTitle = menuItemVM.Title,
+                    WeekDay = menuItemVM.Day,
+                    IsEven = false
+                };
+                await uow.Repository<WeekMenu>().AddAsync(menu);
+                await uow.SaveAsync();
+                Recipes recipes = new Recipes()
+                {
+                    MenuDay = menuItemVM.Day,
+                    Directions = menuItemVM.Direction,
+                    MenuId = menu.MenuId
+                };
 
-            response.Status =ResponseStatus.OK;
-            response.Message = "Successfully Inserted";
+                await uow.Repository<Recipes>().AddAsync(recipes);
+                await uow.SaveAsync();
 
-            return response;
+                foreach (var item in menuItemVM.InGridient)
+                {
+                    Ingredients ingredients = new Ingredients()
+                    {
+                        MenuRecipeId = recipes.MenuRecipeId,
+                        MenuIngredients = item
+                    };
+                    await uow.Repository<Ingredients>().AddAsync(ingredients);
+
+                }
+                await uow.SaveAsync();
+                response.Status = ResponseStatus.OK;
+                response.Message = "Successfully Inserted";
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return new Response();
+            }
+        }
+
+        public async Task<List<MenuItemVM>> GetMenuItem()
+        {
+
+            List<MenuItemVM> menuItemVMs = new List<MenuItemVM>();
+            List<Recipes> recipes = new List<Recipes>();
+            List<WeekMenu> weekMenu = new List<WeekMenu>();
+            List<Ingredients> ingredients = new List<Ingredients>();
+            List<long> menuId = new List<long>();
+            List<long> menuRecipeId = new List<long>();
+
+            weekMenu = uow.Repository<WeekMenu>().Get().ToList();
+            menuId = weekMenu.Select(x => x.MenuId).ToList();
+            recipes = uow.Repository<Recipes>().Get(x => menuId.Contains(x.MenuId)).ToList();
+            menuRecipeId = recipes.Select(x => x.MenuRecipeId).ToList();
+            ingredients = uow.Repository<Ingredients>().Get(x => menuRecipeId.Contains(x.MenuRecipeId)).ToList();
+
+            menuItemVMs = weekMenu.Select(y => new MenuItemVM
+            {
+                MenuId=y.MenuId,
+                MenuRecipeId= recipes.FirstOrDefault(x => x.MenuId == y.MenuId).MenuRecipeId,
+                Day = y.WeekDay,
+                Title = y.MenuTitle,
+                Direction = recipes.FirstOrDefault(x => x.MenuId == y.MenuId).Directions,
+                //InGridient = ingredients.FirstOrDefault(x => x.MenuRecipeId == recipes.FirstOrDefault(x => x.MenuId == y.MenuId).MenuRecipeId).MenuIngredients.ToList()
+                InGridient = ingredients.Where(x => recipes.Where(w => w.MenuId == y.MenuId).Select(s => s.MenuRecipeId).ToList().Contains(x.MenuRecipeId)).Select(o => o.MenuIngredients
+                ).ToList()
+            }).ToList();
+
+
+
+
+
+            return menuItemVMs;
+
         }
 
         //public Response AddUpdateRecipes(RecipeVM recipeVM)

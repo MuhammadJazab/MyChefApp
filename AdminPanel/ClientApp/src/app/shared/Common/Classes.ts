@@ -16,3 +16,14 @@ export class MenuVM {
   inGridient: any=[];
 
 }
+export class ResponseVm {
+  status: any;
+  message: string;
+  resultData: any;
+}
+
+export var httpStatus = {
+  Ok: "200",
+  Restricted: "403",
+  loginError: "invalid email address/phone number or password."
+}

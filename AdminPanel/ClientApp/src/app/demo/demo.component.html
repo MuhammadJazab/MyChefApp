@@ -1,54 +1,50 @@
 <div class="container-fluid">
-
-  <div class="contentWrapper">
-
     <form [formGroup]="appValForm" class="form-horizontal">
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="day">Day</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" placeholder="Enter Day" formControlName="day">
+      <div class="row">
+        <div class="col-xl-8 col-lg-10 col-sm-12 col-md-12 col-12">
+          <div class="col-sm-12 col-xl-6 col-lg-6">
+            <div class="form-group">
+              <label class="control-label" for="day">Day</label>
+              <input type="text" class="form-control" placeholder="Enter Day" formControlName="day">
+            </div>
+          </div>
+          <div class="col-sm-12 col-xl-6 col-lg-6">
+            <div class="form-group">
+              <label class="control-label" for="pwd">Title</label>
+              <input type="text" class="form-control" placeholder="Enter Title" formControlName="title">
+            </div>
+          </div>
+          <div class="col-sm-12 col-xl-6 col-lg-6">
+            <div class="form-group">
+              <label class="control-label" for="pwd">Direction</label>
+              <input type="text" class="form-control" placeholder="Enter Direction" formControlName="direction">
+            </div>
+          </div>
+          <div class="col-sm-12 col-xl-6 col-lg-6">
+            <div class="form-group">
+              <label class="control-label" for="pwd">Gridient</label>
+              <ngx-chip-select formControlName="gridient" [ngClass]="{ 'is-invalid':submitted &&  f.gridient.errors }" style="background-color:white">
+
+              </ngx-chip-select>
+              <span class="text-danger" *ngIf=" submitted && f.gridient.errors?.required">error</span>
+
+            </div>
+          </div>
+          <div class="col-sm-12 col-xl-6 col-lg-6">
+            <button type="button" class="btn btn-danger" style="margin:10px 0px" (click)="submitt()">Submit</button>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="pwd">Title</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" placeholder="Enter Title" formControlName="title">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="pwd">Direction</label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" placeholder="Enter Direction" formControlName="direction">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="pwd">Gridient</label>
-        <ngx-chip-select formControlName="gridient" [ngClass]="{ 'is-invalid':submitted &&  f.gridient.errors }">
-
-        </ngx-chip-select>
-        <span class="text-danger" *ngIf=" submitted && f.gridient.errors?.required">error</span>
+        <span class="text-danger" *ngIf="messageShow">Record Successfully Saved</span>
 
       </div>
-
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-4" style="text-align:center">
-          <button type="submit" class="btn btn-primary" (click)="submitt()">Submit</button>
-        </div>
-      </div>
-
     </form>
-
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 col-xl-12">
         <div class="card shadow mb-4">
-
           <div class="card-header bg-primary">
             <h6 class="text-white fa-pull-left m-0 font-weight-bold">Menu List</h6>
             <div class="fa-pull-right d-flex align-items-center">
-              <button class="btn-sm btn btn-secondary btn-sm" style="position:absolute;right:0px;top:5px">Add New Menu</button>
               <!--(click)="showModal(content)"-->
               <!--<div class="g-pagination">
                 <div class="data-count">
@@ -88,45 +84,26 @@
               <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th width="5%">ID</th>
-                    <th width="15%">Days</th>
+                    <th width="1%">ID</th>
+                    <th width="5%">Days</th>
                     <th width="15%">Menu Title</th>
-                    <th width="35%">Direction</th>
-                    <th width="20%">Ingredient</th>
-                    <th width="5%">Edit</th>
-                    <th title="Delete" width="5%">Del</th>
+                    <th width="20%">Direction</th>
+                    <th width="40%">Ingredient</th>
+                    <th width="2%">Edit</th>
+                    <th title="Delete" width="2%">Del</th>
                   </tr>
                 </thead>
-                <!--<tbody>
-                  <tr *ngFor="let list  of packagesList">-->
-                <!--<td>{{list.packageId}}</td>-->
-                <!--<td>{{list.packageName}}</td>
-                <td>{{list.packageCode}}</td>
-                <td *ngIf="list.userRoleId == 1">Tradesman Solo</td>
-                <td *ngIf="list.userRoleId == 2">Tradesman Org</td>
-                <td *ngIf="list.userRoleId == 3">Customer</td>
-                <td *ngIf="list.userRoleId == 4">Supplier</td>
-
-                <td>{{list.isActive}}</td>
-                <td>{{list.tradePrice}}</td>
-                <td>{{list.salePrice}}</td>
-                <td>{{list.validityDays}}</td>
-                <td>{{list.totalApplicableJobs}}</td>
-                <td>{{list.totalCategories}}</td>
-                <td>{{list.createdDate | date: "dd MMM yyy "}}</td>
-                <td>{{list.createdBy}}</td>
-                <td>{{list.updatedDate | date: "dd MMM yyy "}}</td>
-                <td>{{list.updatedBy}}</td>
-                <td><i class="text-info fa fa-pencil-alt" (click)="updatePackages(list , content)"></i></td>-->
-                <!--<td><i class="text-danger fa fa-trash-alt" (click)="deletepackage(list , deleteContent)"></i></td>-->
-                <!--<td *ngIf="sprights == 'true'">
-                      <label class="switch block-user-switch">
-                        <input type="checkbox" (change)="deletepackage(list , deleteContent)" [checked]="list.isActive" id="{{list.packageId}}">
-                        <span class="slider"></span>
-                      </label>
-                    </td>
+                <tbody>
+                  <tr *ngFor="let list  of menueList; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{list.day}}</td>
+                    <td>{{list.title}}</td>
+                    <td>{{list.direction}}</td>
+                    <td><span *ngFor="let item of list.inGridient" style="    padding: 7px 10px;background-color: #fe7c96;margin-right: 5px;color:white;font-weight:600;text-transform:capitalize;font-size:11px">{{item}}</span></td>
+                    <td><i class="mdi mdi-table-edit"></i></td>
+                    <td><i class="mdi mdi-delete"></i></td>
                   </tr>
-                </tbody>-->
+                </tbody>
               </table>
             </div>
             <!--<div class="card-body" style="padding:0px !important">
@@ -168,9 +145,6 @@
         </div>
       </div>
     </div>
-
-
-  </div>
 
 </div>
 
