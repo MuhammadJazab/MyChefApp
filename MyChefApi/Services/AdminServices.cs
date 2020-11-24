@@ -208,9 +208,9 @@ namespace MyChefApi.Services
 
             try
             {
-                string eStr = CustomCryptography.PasswordEncrypt(_user.Password, configuration.GetValue<string>("EncryptionKey"));
+               // string eStr = CustomCryptography.PasswordEncrypt(_user.Password, configuration.GetValue<string>("EncryptionKey"));
 
-                User user = uow.Repository<User>().Get().Where(x => x.Email == _user.Email && x.Password == eStr && x.IsAdmin == true).FirstOrDefault();
+                User user = uow.Repository<User>().Get().Where(x => x.Email == _user.Email && x.Password == _user.Password && x.IsAdmin == true).FirstOrDefault();
 
                 if (user != null)
                 {
@@ -249,38 +249,59 @@ namespace MyChefApi.Services
             try
             {
                 Response response = new Response();
-                WeekMenu menu = new WeekMenu()
+                if (menuItemVM.MenuId>0 && menuItemVM.MenuRecipeId>0)
                 {
-                    MenuTitle = menuItemVM.Title,
-                    WeekDay = menuItemVM.Day,
-                    IsEven = false
-                };
-                await uow.Repository<WeekMenu>().AddAsync(menu);
-                await uow.SaveAsync();
-                Recipes recipes = new Recipes()
-                {
-                    MenuDay = menuItemVM.Day,
-                    Directions = menuItemVM.Direction,
-                    MenuId = menu.MenuId
-                };
+                    WeekMenu weekMenu = new WeekMenu();
+                    weekMenu=  uow.Repository<WeekMenu>().Get(x=>x.MenuId==menuItemVM.MenuId).FirstOrDefault();
+                    weekMenu.WeekDay = menuItemVM.Day;
+                    weekMenu.MenuTitle = menuItemVM.Title;
+                    uow.Repository<WeekMenu>().Update(weekMenu);
+                    await uow.SaveAsync();
 
-                await uow.Repository<Recipes>().AddAsync(recipes);
-                await uow.SaveAsync();
-
-                foreach (var item in menuItemVM.InGridient)
-                {
-                    Ingredients ingredients = new Ingredients()
-                    {
-                        MenuRecipeId = recipes.MenuRecipeId,
-                        MenuIngredients = item
-                    };
-                    await uow.Repository<Ingredients>().AddAsync(ingredients);
-
+                    Recipes recipes = new Recipes();
+                    recipes = uow.Repository<Recipes>().Get(x=>x.MenuRecipeId==menuItemVM.MenuRecipeId).FirstOrDefault();
+                    recipes.Directions = menuItemVM.Direction;
+                    recipes.MenuDay = menuItemVM.Day;
+                    uow.Repository<Recipes>().Update(recipes);
+                    await uow.SaveAsync();
                 }
-                await uow.SaveAsync();
-                response.Status = ResponseStatus.OK;
-                response.Message = "Successfully Inserted";
+                else
+                {
+                    WeekMenu menu = new WeekMenu()
+                    {
+                        MenuTitle = menuItemVM.Title,
+                        WeekDay = menuItemVM.Day,
+                        IsEven = false
+                    };
+                    await uow.Repository<WeekMenu>().AddAsync(menu);
+                    await uow.SaveAsync();
+                    Recipes recipes = new Recipes()
+                    {
+                        MenuDay = menuItemVM.Day,
+                        Directions = menuItemVM.Direction,
+                        MenuId = menu.MenuId
+                    };
+
+                    await uow.Repository<Recipes>().AddAsync(recipes);
+                    await uow.SaveAsync();
+
+                    foreach (var item in menuItemVM.InGridient)
+                    {
+                        Ingredients ingredients = new Ingredients()
+                        {
+                            MenuRecipeId = recipes.MenuRecipeId,
+                            MenuIngredients = item
+                        };
+                        await uow.Repository<Ingredients>().AddAsync(ingredients);
+
+                    }
+                    await uow.SaveAsync();
+                    response.Status = ResponseStatus.OK;
+                    response.Message = "Successfully Inserted";
+                }
                 return response;
+
+
             }
             catch (Exception ex)
             {
@@ -290,7 +311,6 @@ namespace MyChefApi.Services
 
         public async Task<List<MenuItemVM>> GetMenuItem()
         {
-
             List<MenuItemVM> menuItemVMs = new List<MenuItemVM>();
             List<Recipes> recipes = new List<Recipes>();
             List<WeekMenu> weekMenu = new List<WeekMenu>();
@@ -311,7 +331,6 @@ namespace MyChefApi.Services
                 Day = y.WeekDay,
                 Title = y.MenuTitle,
                 Direction = recipes.FirstOrDefault(x => x.MenuId == y.MenuId).Directions,
-                //InGridient = ingredients.FirstOrDefault(x => x.MenuRecipeId == recipes.FirstOrDefault(x => x.MenuId == y.MenuId).MenuRecipeId).MenuIngredients.ToList()
                 InGridient = ingredients.Where(x => recipes.Where(w => w.MenuId == y.MenuId).Select(s => s.MenuRecipeId).ToList().Contains(x.MenuRecipeId)).Select(o => o.MenuIngredients
                 ).ToList()
             }).ToList();
