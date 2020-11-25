@@ -5,19 +5,25 @@
           <div class="col-sm-12 col-xl-6 col-lg-6">
             <div class="form-group">
               <label class="control-label" for="day">Day</label>
-              <input type="text" class="form-control" placeholder="Enter Day" formControlName="day">
+              <input type="text" class="form-control" placeholder="Enter Day" formControlName="day" [ngClass]="{ 'is-invalid':submitted &&  f.day.errors }">
+              <span class="text-danger" *ngIf=" submitted && f.gridient.errors?.required">Please Enter Day</span>
+
             </div>
           </div>
           <div class="col-sm-12 col-xl-6 col-lg-6">
             <div class="form-group">
               <label class="control-label" for="pwd">Title</label>
-              <input type="text" class="form-control" placeholder="Enter Title" formControlName="title">
+              <input type="text" class="form-control" placeholder="Enter Title" formControlName="title" [ngClass]="{ 'is-invalid':submitted &&  f.title.errors }">
+              <span class="text-danger" *ngIf=" submitted && f.gridient.errors?.required">Please Enter Title</span>
+
             </div>
           </div>
           <div class="col-sm-12 col-xl-6 col-lg-6">
             <div class="form-group">
               <label class="control-label" for="pwd">Direction</label>
-              <input type="text" class="form-control" placeholder="Enter Direction" formControlName="direction">
+              <input type="text" class="form-control" placeholder="Enter Direction" formControlName="direction" [ngClass]="{ 'is-invalid':submitted &&  f.direction.errors }">
+              <span class="text-danger" *ngIf=" submitted && f.gridient.errors?.required">Please Enter Direction</span>
+
             </div>
           </div>
           <div class="col-sm-12 col-xl-6 col-lg-6">
@@ -26,7 +32,7 @@
               <ngx-chip-select formControlName="gridient" [ngClass]="{ 'is-invalid':submitted &&  f.gridient.errors }" style="background-color:white">
 
               </ngx-chip-select>
-              <span class="text-danger" *ngIf=" submitted && f.gridient.errors?.required">error</span>
+              <span class="text-danger" *ngIf=" submitted && f.gridient.errors?.required">please Enter Gridient</span>
 
             </div>
           </div>
@@ -90,7 +96,7 @@
                     <th width="20%">Direction</th>
                     <th width="40%">Ingredient</th>
                     <th width="2%">Edit</th>
-                    <th title="Delete" width="2%">Del</th>
+                    <!--<th title="Delete" width="2%">Del</th>-->
                   </tr>
                 </thead>
                 <tbody>
@@ -100,8 +106,8 @@
                     <td>{{list.title}}</td>
                     <td>{{list.direction}}</td>
                     <td><span *ngFor="let item of list.inGridient" style="    padding: 7px 10px;background-color: #fe7c96;margin-right: 5px;color:white;font-weight:600;text-transform:capitalize;font-size:11px">{{item}}</span></td>
-                    <td><i class="mdi mdi-table-edit"></i></td>
-                    <td><i class="mdi mdi-delete"></i></td>
+                    <td><i class="mdi mdi-table-edit" (click)="updateMenu(list)"></i></td>
+                    <!--<td><i class="mdi mdi-delete"></i></td>-->
                   </tr>
                 </tbody>
               </table>

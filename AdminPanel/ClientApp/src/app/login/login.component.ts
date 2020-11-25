@@ -2,52 +2,61 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { ApiRoutes } from '../../app/shared/ApiRoutes/ApiRoutes';
-import { UserVM } from '../../app/shared/Common/Classes';
+import { UserVM, ResponseVm, httpStatus } from '../../app/shared/Common/Classes';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  TxtEmail: string;
-  TxtPassword: string;
+  public appValForm: FormGroup;
+  public userVm: UserVM = new UserVM();
+  public response: ResponseVm = new ResponseVm();
 
-  userVm: UserVM = new UserVM();
   //common: Common = new Common()
 
-  constructor(private router: Router, private http: Http) {
+  constructor(private router: Router, private http: Http, private buider: FormBuilder) {
   }
+  ngOnInit(): void {
+    this.appValForm = this.buider.group({
+      email: [''],
+      password:['']
+    });
 
-  public Login() {
-    if (this.TxtEmail != null) {
-      if (this.TxtPassword != null) {
-        this.ProceedToLogin(this.TxtEmail, this.TxtPassword)
-      } else {
-        // password is empty
-      }
     }
-    else {
-      // Email is empty
-    }
-  }
 
-  private ProceedToLogin(_email: string, _password: string) {
+  //public Login() {
+  //  if (this.TxtEmail != null) {
+  //    if (this.TxtPassword != null) {
+  //      this.ProceedToLogin(this.TxtEmail, this.TxtPassword)
+  //    } else {
+  //      // password is empty
+  //    }
+  //  }
+  //  else {
+  //    // Email is empty
+  //  }
+  //}
 
-    this.userVm.email = _email;
-    this.userVm.password = _password;
+   ProceedToLogin() {
+    debugger;
+     this.appValForm.value;
+     debugger;
+     this.userVm.email = this.appValForm.value.email;
+     this.userVm.password = this.appValForm.value.password;
     this.userVm.isAdmin = true;
 
     try {
       this.http.post(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.LoginAdmin, this.userVm).subscribe(result => {
         debugger;
-        var aa = result.json();
-        if (true) {
-       //   this.common.NavigateToRoute("DashboardComponent")
-        } else {
 
+        this.response = result.json();
+        if (this.response.status == httpStatus.Ok) {
+          this.router.navigate(['/dashboard']);
         }
-      })
+      });
     }
     catch (e) {
 

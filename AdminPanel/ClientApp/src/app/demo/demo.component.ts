@@ -15,7 +15,8 @@ export class DemoComponent implements OnInit {
   public submitted = false;
   public menueList = [];
   public messageShow: boolean = false;
-
+  public menuId;
+  public recipies;
 
   constructor(private formBuilder: FormBuilder, private http: Http) { }
 
@@ -68,6 +69,18 @@ export class DemoComponent implements OnInit {
 
 
   }
+
+  updateMenu(item) {
+    debugger;
+    this.menuvm.menuId = item.menuId;
+    this.menuvm.menuRecipeId = item.menuRecipeId;
+    this.appValForm.patchValue(item);
+    this.appValForm.controls.gridient.setValue(item.inGridient);
+    //item.inGridient.foreach(value => {
+    //  this.appValForm.controls.gridient.patchValue(value);
+    //});
+  }
+
   
 
 }

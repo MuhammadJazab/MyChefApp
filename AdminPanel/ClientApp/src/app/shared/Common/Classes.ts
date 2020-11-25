@@ -13,7 +13,9 @@ export class MenuVM {
   day: string;
   title: string;
   direction: string;
-  inGridient: any=[];
+  inGridient: any = [];
+  menuId: number;
+  menuRecipeId: number;
 
 }
 export class ResponseVm {
