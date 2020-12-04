@@ -20,9 +20,10 @@ export class AppComponent implements OnInit {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
 
-        debugger;
-
         if ((event['url'] == '/app-login') || (event['url'] == '/') || (event['url'] == '/register') || (event['url'] == '/error-pages/404') || (event['url'] == '/error-pages/500')) {
+
+          debugger;
+
           this.showSidebar = false;
           this.showNavbar = false;
           this.showFooter = false;

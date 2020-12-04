@@ -8,6 +8,7 @@ import { ApiRoutes } from '../shared/ApiRoutes/ApiRoutes';
   selector: 'app-demo',
   templateUrl: './demo.component.html',
 })
+
 export class DemoComponent implements OnInit {
   public appValForm: FormGroup;
   public menuvm: MenuVM = new MenuVM();
@@ -17,6 +18,8 @@ export class DemoComponent implements OnInit {
   public messageShow: boolean = false;
   public menuId;
   public recipies;
+  public ShowHideForm: boolean = true;
+  public listCount: number;
 
   constructor(private formBuilder: FormBuilder, private http: Http) { }
 
@@ -28,21 +31,31 @@ export class DemoComponent implements OnInit {
       gridient: ['', [Validators.required]]
     });
 
+    this.GetMenuCount();
     this.GetMenuItem();
-
   }
+
   GetMenuItem() {
-    debugger;
-    this.http.get('http://localhost:8800/api/Admin/GetMenuItem').subscribe(result => {
-      debugger;
-      this.menueList = result.json();
+    this.http.get(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.GetMenuItem).subscribe(result => {
+      this.menueList = result.json().resultData;
     });
-    }
+  }
+
+  GetMenuCount() {
+    this.http.get(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.GetMenuCount).subscribe(result => {
+      this.listCount = result.json().resultData;
+      if (this.listCount <= 5) {
+        this.ShowHideForm = true;
+      }
+      else {
+        this.ShowHideForm = false;
+      }
+    });
+  }
 
   get f() { return this.appValForm.controls; }
 
   submitt() {
-    debugger;
     this.submitted = true;
     if (this.appValForm.valid) {
       this.menuvm.day = this.appValForm.value.day;
@@ -51,8 +64,7 @@ export class DemoComponent implements OnInit {
       for (var i = 0; i < this.appValForm.value.gridient.length; i++) {
         this.menuvm.inGridient.push(this.appValForm.value.gridient[i].value);
       }
-      debugger;
-      this.http.post('http://localhost:8800/api/Admin/AddMenuItem', this.menuvm).subscribe(result => {
+      this.http.post(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.AddMenuItem, this.menuvm).subscribe(result => {
         debugger;
         this.respons = result.json();
         if (this.respons.status == httpStatus.Ok) {
@@ -64,10 +76,6 @@ export class DemoComponent implements OnInit {
     else {
       return;
     }
-   
-  
-
-
   }
 
   updateMenu(item) {
@@ -76,11 +84,5 @@ export class DemoComponent implements OnInit {
     this.menuvm.menuRecipeId = item.menuRecipeId;
     this.appValForm.patchValue(item);
     this.appValForm.controls.gridient.setValue(item.inGridient);
-    //item.inGridient.foreach(value => {
-    //  this.appValForm.controls.gridient.patchValue(value);
-    //});
   }
-
-  
-
 }

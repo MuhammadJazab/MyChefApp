@@ -19,9 +19,9 @@ namespace MyChefApi.Controllers
         }
 
         [HttpGet]
-        public Response GetMenuList()
+        public Response GetMenuCount()
         {
-            return adminServices.GetMenuList();
+            return adminServices.GetMenuCount();
         }
 
         [HttpGet]
@@ -47,14 +47,16 @@ namespace MyChefApi.Controllers
         {
             return adminServices.RemoveUserByUserID(userId);
         }
+
         [HttpPost]
         public Task<Response> AddMenuItem([FromBody] MenuItemVM menuItemVM)
         {
 
             return adminServices.AddMenuItem(menuItemVM);
         }
+
         [HttpGet]
-        public Task<List<MenuItemVM>> GetMenuItem()
+        public Response GetMenuItem()
         {
             return adminServices.GetMenuItem();
         }

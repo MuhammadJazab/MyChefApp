@@ -22,36 +22,21 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.appValForm = this.buider.group({
       email: [''],
-      password:['']
+      password: ['']
     });
 
-    }
+  }
 
-  //public Login() {
-  //  if (this.TxtEmail != null) {
-  //    if (this.TxtPassword != null) {
-  //      this.ProceedToLogin(this.TxtEmail, this.TxtPassword)
-  //    } else {
-  //      // password is empty
-  //    }
-  //  }
-  //  else {
-  //    // Email is empty
-  //  }
-  //}
-
-   ProceedToLogin() {
+  ProceedToLogin() {
     debugger;
-     this.appValForm.value;
-     debugger;
-     this.userVm.email = this.appValForm.value.email;
-     this.userVm.password = this.appValForm.value.password;
+    this.appValForm.value;
+    debugger;
+    this.userVm.email = this.appValForm.value.email;
+    this.userVm.password = this.appValForm.value.password;
     this.userVm.isAdmin = true;
 
     try {
       this.http.post(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.LoginAdmin, this.userVm).subscribe(result => {
-        debugger;
-
         this.response = result.json();
         if (this.response.status == httpStatus.Ok) {
           this.router.navigate(['/dashboard']);
