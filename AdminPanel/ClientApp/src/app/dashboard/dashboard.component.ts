@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
       const _this = this;
 
       this.http.get(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.GetUsersList).subscribe(result => {
-        debugger;
         var resultJson = result.json();
 
         if (result.status == 200) {
