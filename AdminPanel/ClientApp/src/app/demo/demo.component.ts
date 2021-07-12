@@ -65,7 +65,6 @@ export class DemoComponent implements OnInit {
         this.menuvm.inGridient.push(this.appValForm.value.gridient[i].value);
       }
       this.http.post(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.AddMenuItem, this.menuvm).subscribe(result => {
-        debugger;
         this.respons = result.json();
         if (this.respons.status == httpStatus.Ok) {
           this.GetMenuItem();
@@ -79,10 +78,17 @@ export class DemoComponent implements OnInit {
   }
 
   updateMenu(item) {
-    debugger;
     this.menuvm.menuId = item.menuId;
     this.menuvm.menuRecipeId = item.menuRecipeId;
     this.appValForm.patchValue(item);
     this.appValForm.controls.gridient.setValue(item.inGridient);
+  }
+
+  deleteMenu(item) {
+    this.menuvm.menuId = item.menuId;
+
+    this.http.get(ApiRoutes.BaseUrl.baseUrl + ApiRoutes.Admin.DeleteMenu + "?menuId=" + this.menuvm.menuId).subscribe(rest => {
+      var resp = rest.json();
+    });
   }
 }

@@ -9,6 +9,7 @@ export var ApiRoutes = {
     AddMenuItem: "api/Admin/AddMenuItem",
     GetMenuCount: "api/Admin/GetMenuCount",
     GetMenuItem: "api/Admin/GetMenuItem"
+    DeleteMenu: "api/Admin/DeleteMenu"
   }
 }
 

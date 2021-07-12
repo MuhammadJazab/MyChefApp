@@ -60,5 +60,11 @@ namespace MyChefApi.Controllers
         {
             return adminServices.GetMenuItem();
         }
+
+        [HttpGet]
+        public Response DeleteMenu(long menuId)
+        {
+            return adminServices.DeleteMenu(menuId);
+        }
     }
 }

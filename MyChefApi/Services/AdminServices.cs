@@ -20,6 +20,7 @@ namespace MyChefApi.Services
         Response LoginAdmin(UserVM user);
         Task<Response> AddMenuItem(MenuItemVM menuItemVM);
         Response GetMenuItem();
+        Response DeleteMenu(long menuId);
     }
 
     public class AdminServices : IAdminServices
@@ -356,6 +357,48 @@ namespace MyChefApi.Services
                     Message = ex.Message,
                     Status = ResponseStatus.Error,
                     ResultData = ex
+                };
+            }
+
+            return response;
+        }
+
+        public Response DeleteMenu(long menuId)
+        {
+            Response response;
+
+            try
+            {
+                WeekMenu weekMenu = uow.Repository<WeekMenu>().Get().Where(x => x.MenuId == menuId).FirstOrDefault();
+
+                if (weekMenu != null)
+                {
+                    uow.Repository<WeekMenu>().Delete(weekMenu);
+
+                    response = new Response()
+                    {
+                        Message = "weekMenu Deleted Successfully",
+                        ResultData = weekMenu,
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "weekMenu Not Found",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
                 };
             }
 
