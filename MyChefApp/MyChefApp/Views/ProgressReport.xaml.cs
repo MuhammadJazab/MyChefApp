@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+/// <summary>
+/// Replaced with gallary page
+/// </summary>
 namespace MyChefApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]

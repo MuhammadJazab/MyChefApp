@@ -27,12 +27,12 @@ namespace MyChefApp.Droid
             Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App());
-            
+
             Window.SetSoftInputMode(SoftInput.AdjustResize);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }

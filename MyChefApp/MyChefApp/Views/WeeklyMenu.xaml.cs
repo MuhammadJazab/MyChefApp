@@ -104,7 +104,7 @@ namespace MyChefApp.Views
 
         private async void UserProfile(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ProgressReport(userVM, skill));
+            await Navigation.PushAsync(new GallaryPage(userVM));
         }
     }
 }

@@ -72,6 +72,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ScreenSizeDependency.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\account.imageset\account3.png">
@@ -529,5 +530,8 @@
       <Project>{273016F4-1FF3-4D42-AB08-F5375583E6E7}</Project>
       <Name>MyChefApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

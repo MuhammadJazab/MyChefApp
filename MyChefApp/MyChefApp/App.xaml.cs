@@ -1,4 +1,6 @@
 ﻿using MyChefApp.Services;
+using MyChefApp.ViewModels;
+using MyChefApp.Views;
 using Syncfusion.Licensing;
 using Xamarin.Forms;
 
@@ -14,7 +16,8 @@ namespace MyChefApp
 
             InitializeComponent();
 
-            SessionManagement.LoginMechanism();
+            MainPage = new NavigationPage(new GallaryPage(new UserVM()));
+            //SessionManagement.LoginMechanism();
         }
 
         protected override void OnStart()
