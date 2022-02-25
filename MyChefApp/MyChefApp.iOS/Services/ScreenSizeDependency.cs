@@ -1,8 +1,11 @@
 ﻿using System;
+using MyChefApp.iOS.Services;
 using MyChefApp.Services;
 using MyChefApp.ViewModels;
 using UIKit;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(ScreenSizeDependency))]
 namespace MyChefApp.iOS.Services
 {
     public class ScreenSizeDependency : IDeviceStatics
