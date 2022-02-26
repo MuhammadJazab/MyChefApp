@@ -22,7 +22,7 @@ namespace MyChefApp.Droid
             Window.AddFlags(WindowManagerFlags.Fullscreen);
             Window.ClearFlags(WindowManagerFlags.ForceNotFullscreen);
 
-            Popup.Init(this, savedInstanceState);
+            Popup.Init(this);
             Platform.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
 

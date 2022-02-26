@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using MyChefApi.Services;
 using MyChefAppModels;
 using Utilities;
@@ -22,8 +21,8 @@ namespace MyChefApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddNewtonsoftJson();
-            
+            services.AddMvc();
+
             services.AddDbContext<MyChefContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("MyChefApiContext"), builder => builder.EnableRetryOnFailure()));
 
@@ -33,7 +32,7 @@ namespace MyChefApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -46,13 +45,11 @@ namespace MyChefApi
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(endpoints =>
             {
-                endpoints.MapControllerRoute(
+                endpoints.MapRoute(
                     name: "default",
-                    pattern: "api/{controller}/{action}/{id?}");
+                    template: "api/{controller}/{action}/{id?}");
             });
         }
     }
