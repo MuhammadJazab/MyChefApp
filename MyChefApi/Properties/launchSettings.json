@@ -15,17 +15,16 @@
       "launchUrl": "api/Identity/start",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "ancmHostingModel": "InProcess"
+      }
     },
     "MyChefApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/Identity/start",
+      "applicationUrl": "http://localhost:8800",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:8800"
+      }
     }
   }
 }

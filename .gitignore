@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 MyChefApp/.DS_Store
+MyChefApi/.DS_Store
