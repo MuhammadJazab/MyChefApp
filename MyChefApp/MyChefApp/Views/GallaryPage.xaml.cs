@@ -17,16 +17,18 @@ namespace MyChefApp.Views
                 new ImageGalleryVM
                 {
                     ID = 1,
-                    Title = "Yedek parça siparişlerinizde %22' ye varan indirim!",
-                    ImagePath = "https://image5.sahibinden.com/photos/08/54/18/x5_719085418j7p.jpg",
+                    Title = "Dish Name",
+                    //ImagePath = "https://image5.sahibinden.com/photos/08/54/18/x5_719085418j7p.jpg",
+                    ImagePath = "five",
                     IsActive = true,
                     CreateDate = DateTime.Now,
-                },
-                new ImageGalleryVM
+                }
+                ,new ImageGalleryVM
                 {
                     ID = 2,
-                    Title = "Fren Balataları Hangi Sıklıkla Değiştirilmelidir?",
-                    ImagePath = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTJzQfduSrJ3Nh7SHzGSGrCmTnWses4AcfuRSnU7hX4y9XN4TSU&usqp=CAU",
+                    Title = "Dish Name",
+                    //ImagePath = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTJzQfduSrJ3Nh7SHzGSGrCmTnWses4AcfuRSnU7hX4y9XN4TSU&usqp=CAU",
+                    ImagePath = "four",
                     IsActive = true,
                     CreateDate = DateTime.Now,
                 }

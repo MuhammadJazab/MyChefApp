@@ -50,6 +50,8 @@
 <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
 <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
 <LangVersion>latestmajor</LangVersion>
+<AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
+<AndroidSupportedAbis>x86_64;arm64-v8a;x86;armeabi-v7a</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -63,13 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FirebaseDatabase.net">
-      <Version>4.0.6</Version>
+      <Version>4.0.7</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Expander">
-      <Version>19.3.0.46</Version>
+      <Version>19.4.0.54</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

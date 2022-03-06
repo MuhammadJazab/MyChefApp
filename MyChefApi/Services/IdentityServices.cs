@@ -305,7 +305,7 @@ namespace MyChefApi.Services
                 response = new Response()
                 {
                     Message = "Something went wrong, try again",
-                    ResultData = ex.Message,
+                    ResultData = ex,
                     Status = ResponseStatus.Error
                 };
             }

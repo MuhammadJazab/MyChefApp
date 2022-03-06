@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyChefApp.Services
 {
-    class FirebaseHelper
+    public class FirebaseHelper
     {
         public FirebaseClient firebase = new FirebaseClient("https://mychef-app-c0406.firebaseio.com/");
 

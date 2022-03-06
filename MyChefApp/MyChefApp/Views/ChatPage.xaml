@@ -5,6 +5,8 @@
     xmlns:template="clr-namespace:MyChefApp.ControlHelpers" 
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     NavigationPage.HasNavigationBar="True"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
     NavigationPage.IconColor="Black"
     x:Class="MyChefApp.Views.ChatPage">
     <ContentPage.Resources>

@@ -1,160 +1,144 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<ContentPage
+    x:Class="MyChefApp.Views.WeeklyMenu"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
-    x:Class="MyChefApp.Views.WeeklyMenu">
+    mc:Ignorable="d">
     <ContentPage.Content>
         <StackLayout
+            BackgroundColor="{DynamicResource SlatBlack}"
             HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
             Orientation="Vertical"
-            BackgroundColor="{DynamicResource SlatBlack}">
+            VerticalOptions="FillAndExpand">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="20*" />
                 </Grid.RowDefinitions>
             </Grid>
             <StackLayout
                 Grid.Row="0"
+                HorizontalOptions="CenterAndExpand"
                 Orientation="Vertical"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand">
+                VerticalOptions="CenterAndExpand">
                 <Grid>
-                    <Image
-                        Aspect="AspectFill"
-                        Source="one"/>
+                    <Image Aspect="AspectFill" Source="one" />
                     <Button
                         x:Name="Btn_WeekMenu"
-                        CornerRadius="30"
                         Padding="10"
-                        HorizontalOptions="Center"
-                        VerticalOptions="CenterAndExpand"
                         BackgroundColor="{DynamicResource SlatBlack}"
-                        TextColor="White"
+                        Clicked="WeekMenu"
+                        CornerRadius="30"
                         FontFamily="Arlrdbd"
                         FontSize="15"
+                        HorizontalOptions="Center"
                         Text="This Week's Menu"
-                        Clicked="WeekMenu"/>
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
                     <StackLayout
-                        VerticalOptions="Start"
                         HorizontalOptions="End"
-                        Orientation="Horizontal">
-                        <Button 
+                        Orientation="Horizontal"
+                        VerticalOptions="Start">
+                        <Button
                             BackgroundColor="Transparent"
                             Clicked="Settings_Click"
-                            ImageSource="setting"/>
+                            ImageSource="setting" />
                     </StackLayout>
                 </Grid>
             </StackLayout>
             <StackLayout
                 Grid.Row="1"
-                Spacing="0"
-                Orientation="Vertical">
+                Orientation="Vertical"
+                Spacing="0">
                 <Grid>
-                    <Image
-                        Aspect="AspectFill"
-                        Source="two"/>
+                    <Image Aspect="AspectFill" Source="two" />
                     <Button
+                        Padding="10"
+                        BackgroundColor="{DynamicResource SlatBlack}"
+                        Clicked="MYChefFolk"
                         CornerRadius="30"
                         FontFamily="Arlrdbd"
                         FontSize="15"
-                        Padding="10"
                         HorizontalOptions="Center"
-                        VerticalOptions="CenterAndExpand"
-                        BackgroundColor="{DynamicResource SlatBlack}"
-                        TextColor="White"
                         Text="MYChef Folk"
-                        Clicked="MYChefFolk"/>
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
                 </Grid>
             </StackLayout>
-            <StackLayout
-                Grid.Row="2">
-                <ActivityIndicator 
+            <StackLayout Grid.Row="2">
+                <ActivityIndicator
                     x:Name="ActivityIndicator"
-                    Color="{DynamicResource Green}"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center"
+                    Color="{DynamicResource Green}" />
             </StackLayout>
             <StackLayout
                 x:Name="NameContainer"
-                IsVisible="false"
                 Grid.Row="2"
+                IsVisible="false"
                 Orientation="Vertical">
                 <Grid>
-                    <Image
-                        Aspect="AspectFill"
-                        Source="three"/>
-                    <StackLayout
-                        Orientation="Vertical"
-                        Padding="30,0">
+                    <Image Aspect="AspectFill" Source="three" />
+                    <StackLayout Padding="30,0" Orientation="Vertical">
                         <Label
-                            Grid.Row="0"
                             x:Name="Lbl_Name"
+                            Grid.Row="0"
+                            FontFamily="Arlrdbd"
+                            FontSize="25"
                             HorizontalOptions="Center"
-                            VerticalOptions="CenterAndExpand"
                             TextColor="{DynamicResource BadgeColor}"
-                            FontFamily="Arlrdbd"
-                            FontSize="25"/>
+                            VerticalOptions="CenterAndExpand" />
                         <Button
-                            Grid.Row="1"
                             x:Name="ButtonXPLevel"
-                            CornerRadius="20"
-                            FontSize="15"
+                            Grid.Row="1"
                             Padding="5"
-                            Clicked="UserProfile"
-                            FontFamily="Arlrdbd"
-                            HorizontalOptions="Center"
-                            VerticalOptions="CenterAndExpand"
                             BackgroundColor="{DynamicResource BadgeColor}"
-                            TextColor="White"/>
+                            CornerRadius="20"
+                            FontFamily="Arlrdbd"
+                            FontSize="15"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                 </Grid>
             </StackLayout>
-            <StackLayout
-                Grid.Row="3"
-                Orientation="Vertical">
+            <StackLayout Grid.Row="3" Orientation="Vertical">
                 <Grid>
-                    <Image
-                        Aspect="AspectFill"
-                        Source="four"/>
+                    <Image Aspect="AspectFill" Source="four" />
                     <Button
-                        FontSize="15"
-                        FontFamily="Arlrdbd"
-                        CornerRadius="30"
                         Padding="10"
-                        HorizontalOptions="Center"
-                        VerticalOptions="CenterAndExpand"
-                        TextColor="{DynamicResource SlatBlack}"
                         BackgroundColor="{DynamicResource BadgeColor}"
+                        Clicked="ChefChallenges"
+                        CornerRadius="30"
+                        FontFamily="Arlrdbd"
+                        FontSize="15"
+                        HorizontalOptions="Center"
                         Text="Chef Challenges"
-                        Clicked="ChefChallenges"/>
+                        TextColor="{DynamicResource SlatBlack}"
+                        VerticalOptions="CenterAndExpand" />
                 </Grid>
             </StackLayout>
-            <StackLayout
-                Grid.Row="4"
-                Orientation="Vertical">
+            <StackLayout Grid.Row="4" Orientation="Vertical">
                 <Grid>
-                    <Image
-                        Aspect="AspectFill"
-                        Source="five"/>
+                    <Image Aspect="AspectFill" Source="five" />
                     <Button
+                        Padding="10"
+                        BackgroundColor="{DynamicResource BadgeColor}"
+                        Clicked="PhotoGallery"
+                        CornerRadius="30"
                         FontFamily="Arlrdbd"
                         FontSize="15"
-                        CornerRadius="30"
-                        Padding="10"
-                        Clicked="UserProfile"
                         HorizontalOptions="Center"
-                        VerticalOptions="CenterAndExpand"
+                        Text="Gallery"
                         TextColor="{DynamicResource SlatBlack}"
-                        BackgroundColor="{DynamicResource BadgeColor}"
-                        Text="My Goals"/>
+                        VerticalOptions="CenterAndExpand" />
                 </Grid>
             </StackLayout>
         </StackLayout>

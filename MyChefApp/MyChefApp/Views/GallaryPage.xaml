@@ -2,9 +2,12 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False"
     x:Class="MyChefApp.Views.GallaryPage">
     <ContentPage.Content>
-        <Grid x:Name="mainGrid" VerticalOptions="FillAndExpand" BackgroundColor="Purple">
+        <Grid x:Name="mainGrid" VerticalOptions="FillAndExpand">
 
             <StackLayout Margin="20,6,20,0">
                 <!--<StackLayout.Padding>

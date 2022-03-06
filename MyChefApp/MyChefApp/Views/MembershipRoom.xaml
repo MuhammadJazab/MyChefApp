@@ -1,188 +1,171 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+<ContentPage
     x:Class="MyChefApp.Views.MembershipRoom"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout
-            Margin="10">
-            <Grid
-                VerticalOptions="FillAndExpand">
+        <StackLayout Margin="10">
+            <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="33*"/>
-                    <RowDefinition Height="33*"/>
-                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*" />
+                    <RowDefinition Height="33*" />
+                    <RowDefinition Height="33*" />
                 </Grid.RowDefinitions>
-                <Grid
-                    Grid.Row="0">
+                <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="70*" />
                     </Grid.ColumnDefinitions>
                     <border:SfBorder
                         Grid.Column="0"
-                        BorderWidth="5"
-                        BorderColor="{DynamicResource Green}">
-                        <StackLayout
-                            Orientation="Vertical">
-                            <Label 
-                                Text="BOH"
+                        BorderColor="{DynamicResource Green}"
+                        BorderWidth="5">
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                FontFamily="Rockwall"
                                 HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                FontFamily="Rockwall">
+                                Text="BOH"
+                                VerticalOptions="CenterAndExpand">
                                 <Label.FontSize>
                                     <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="Android" Value="40"/>
-                                        <On Platform="iOS" Value="40"/>
+                                        <On Platform="Android" Value="40" />
+                                        <On Platform="iOS" Value="40" />
                                     </OnPlatform>
                                 </Label.FontSize>
                             </Label>
                             <Image
                                 HeightRequest="150"
-                                WidthRequest="150"
-                                Source="StageLadders"/>
+                                Source="StageLadders"
+                                WidthRequest="150" />
                         </StackLayout>
                     </border:SfBorder>
-                    <StackLayout
-                        Grid.Column="1">
+                    <StackLayout Grid.Column="1">
                         <Grid
                             BackgroundColor="Yellow"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand">
                             <Image
                                 Aspect="AspectFill"
-                                Source="seven"
                                 HeightRequest="150"
-                                WidthRequest="150"/>
+                                Source="seven"
+                                WidthRequest="150" />
                             <Label
                                 Margin="10"
                                 Padding="3"
                                 BackgroundColor="SlateGray"
-                                HorizontalOptions="Center"
-                                VerticalOptions="StartAndExpand"
-                                TextColor="White"
                                 FontSize="20"
-                                Text="BACK OF HOUSE"/>
-                            <StackLayout
-                                Spacing="-30"
-                                VerticalOptions="End">
-                                <Image
-                                    Source="MyChefCommunity"/>
+                                HorizontalOptions="Center"
+                                Text="BACK OF HOUSE"
+                                TextColor="White"
+                                VerticalOptions="StartAndExpand" />
+                            <StackLayout Spacing="-30" VerticalOptions="End">
+                                <Image Source="MyChefCommunity" />
                             </StackLayout>
                         </Grid>
                     </StackLayout>
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="BOHTapped"/>
+                        <TapGestureRecognizer Tapped="BOHTapped" />
                     </Grid.GestureRecognizers>
                 </Grid>
-                <Grid
-                    Grid.Row="1">
+                <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="70*"/>
-                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*" />
+                        <ColumnDefinition Width="30*" />
                     </Grid.ColumnDefinitions>
-                    <StackLayout
-                        Grid.Column="0">
+                    <StackLayout Grid.Column="0">
                         <Grid
                             BackgroundColor="Yellow"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand">
                             <Image
                                 Aspect="AspectFill"
-                                Source="eight"
                                 HeightRequest="150"
-                                WidthRequest="150"/>
-                            <StackLayout
-                                Spacing="-20"
-                                VerticalOptions="Center">
-                                <Image
-                                    Source="MyChefChallenge"/>
+                                Source="eight"
+                                WidthRequest="150" />
+                            <StackLayout Spacing="-20" VerticalOptions="Center">
+                                <Image Source="MyChefChallenge" />
                             </StackLayout>
                         </Grid>
                     </StackLayout>
                     <border:SfBorder
                         Grid.Column="1"
-                        BorderWidth="5"
-                        BorderColor="{DynamicResource Green}">
-                        <StackLayout
-                            Orientation="Vertical">
-                            <Label 
-                                Text="CC"
-                                HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
+                        BorderColor="{DynamicResource Green}"
+                        BorderWidth="5">
+                        <StackLayout Orientation="Vertical">
+                            <Label
                                 FontFamily="Rockwall"
-                                FontSize="40"/>
+                                FontSize="40"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="CC"
+                                VerticalOptions="CenterAndExpand" />
                             <Image
                                 HeightRequest="150"
-                                WidthRequest="150"
-                                Source="StageLadders"/>
+                                Source="StageLadders"
+                                WidthRequest="150" />
                         </StackLayout>
                     </border:SfBorder>
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="CCTapped"/>
+                        <TapGestureRecognizer Tapped="CCTapped" />
                     </Grid.GestureRecognizers>
                 </Grid>
-                <Grid
-                    Grid.Row="2">
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="70*"/>
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="70*" />
                     </Grid.ColumnDefinitions>
                     <border:SfBorder
                         Grid.Column="0"
-                        BorderWidth="5"
-                        BorderColor="{DynamicResource Green}">
-                        <StackLayout
-                            Orientation="Vertical">
-                            <Label 
-                                Text="OT"
+                        BorderColor="{DynamicResource Green}"
+                        BorderWidth="5">
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                FontFamily="Rockwall"
                                 HorizontalOptions="CenterAndExpand"
-                                VerticalOptions="CenterAndExpand"
-                                FontFamily="Rockwall">
+                                Text="OT"
+                                VerticalOptions="CenterAndExpand">
                                 <Label.FontSize>
                                     <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="Android" Value="40"/>
-                                        <On Platform="iOS" Value="40"/>
+                                        <On Platform="Android" Value="40" />
+                                        <On Platform="iOS" Value="40" />
                                     </OnPlatform>
                                 </Label.FontSize>
                             </Label>
                             <Image
                                 HeightRequest="150"
-                                WidthRequest="150"
-                                Source="StageLadders"/>
+                                Source="StageLadders"
+                                WidthRequest="150" />
                         </StackLayout>
                     </border:SfBorder>
-                    <StackLayout
-                        Grid.Column="1">
+                    <StackLayout Grid.Column="1">
                         <Grid
                             BackgroundColor="Yellow"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand">
                             <Image
                                 Aspect="AspectFill"
-                                Source="six"
                                 HeightRequest="150"
-                                WidthRequest="150"/>
+                                Source="six"
+                                WidthRequest="150" />
                             <Label
                                 Margin="10"
                                 Padding="3"
                                 BackgroundColor="DarkSlateGray"
-                                HorizontalOptions="Center"
-                                VerticalOptions="StartAndExpand"
-                                TextColor="White"
                                 FontSize="20"
-                                Text="OVERTIME"/>
-                            <StackLayout
-                                Spacing="-30"
-                                VerticalOptions="End">
-                                <Image
-                                    Source="XPBasedRooms"/>
+                                HorizontalOptions="Center"
+                                Text="OVERTIME"
+                                TextColor="White"
+                                VerticalOptions="StartAndExpand" />
+                            <StackLayout Spacing="-30" VerticalOptions="End">
+                                <Image Source="XPBasedRooms" />
                             </StackLayout>
                         </Grid>
                     </StackLayout>
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OTTapped"/>
+                        <TapGestureRecognizer Tapped="OTTapped" />
                     </Grid.GestureRecognizers>
                 </Grid>
             </Grid>

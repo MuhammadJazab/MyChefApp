@@ -44,7 +44,7 @@ namespace MyChefApp.Views
 
                 await Navigation.PushAsync(new Account(userVm));
             }
-            else await DisplayAlert("Error", "Unable to connect to the server. Check your internet connection", "OK");
+            else await DisplayAlert("Error", response.Message, "OK");
         }
 
         private void ShowActivityIndicator()

@@ -1,114 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+<ContentPage
     x:Class="MyChefApp.Views.Signup"
-    NavigationPage.HasNavigationBar="False"
-    BackgroundImageSource="main">
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="main"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout 
-            VerticalOptions="FillAndExpand">
-            <StackLayout
-                Margin="20,50"
-                Orientation="Vertical">
-                <Label 
-                    Text="MYCHEF APP" 
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    FontSize="Subtitle"/>
-                <Label 
-                    Text="Welcome"
-                    FontFamily="Samantha"
-                    TextColor="White"
-                    FontAttributes="Bold">
-                    <Label.FontSize>
-                        <OnPlatform 
-                            x:TypeArguments="x:Double" 
-                            Android="100"
-                            iOS="24"/>
-                    </Label.FontSize>
-                </Label>
-            </StackLayout>
-            <ActivityIndicator 
-                x:Name="ActivityIndicator"
-                Color="{DynamicResource Green}"
-                VerticalOptions="Center"/>
-            <StackLayout 
-                 Margin="30,0"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="FillAndExpand">
-                <Label 
-                    HorizontalTextAlignment="Center"
-                    Text="SIGN UP"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    FontSize="Body"/>
-
-                <inputLayout:SfTextInputLayout
-                    Hint="EMAIL"
-                    EnableFloating="False"
-                    ContainerBackgroundColor="{StaticResource Yellow}"
-                    UnfocusedColor="Black"
-                    FocusedColor="{StaticResource Yellow}"
-                    ContainerType="Outlined">
-                    <Entry 
-                        x:Name="txtEmail"
-                        Keyboard="Email"/>
-                </inputLayout:SfTextInputLayout>
-
-                <inputLayout:SfTextInputLayout
-                    Hint="PASSWORD" 
-                    EnableFloating="False"
-                    ContainerBackgroundColor="{StaticResource Yellow}"
-                    FocusedColor="{StaticResource Yellow}"
-                    UnfocusedColor="Black"
-                    EnablePasswordVisibilityToggle="True"
-                    ContainerType="Outlined">
-                    <Entry  
-                        x:Name="txtPassword"
-                        IsPassword="True"
-                        Keyboard="Plain"/>
-                </inputLayout:SfTextInputLayout>
-
-                <inputLayout:SfTextInputLayout
-                    Hint="USERNAME" 
-                    EnableFloating="False"
-                    ContainerBackgroundColor="{StaticResource Yellow}"
-                    FocusedColor="{StaticResource Yellow}"
-                    UnfocusedColor="Black"
-                    ContainerType="Outlined">
-                    <Entry  
-                        x:Name="txtUserName"
-                        Keyboard="Plain"/>
-                </inputLayout:SfTextInputLayout>
-
-                <StackLayout
-                    Padding="10,0"
-                    Orientation="Horizontal"
-                    BackgroundColor="RoyalBlue">
-                    <CheckBox
-                        HorizontalOptions="StartAndExpand"
-                        Color="Black"
-                        Scale="2"
-                        x:Name="CheckEULI"/>
-                    <Label 
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <StackLayout Margin="20,50" Orientation="Vertical">
+                    <Label
                         FontAttributes="Bold"
-                        FontSize="Large"
-                        TextColor="Black"
+                        FontSize="Subtitle"
+                        Text="MYCHEF APP"
+                        TextColor="White" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Samantha"
+                        Text="Welcome"
+                        TextColor="White">
+                        <Label.FontSize>
+                            <OnPlatform
+                                x:TypeArguments="x:Double"
+                                Android="100"
+                                iOS="24" />
+                        </Label.FontSize>
+                    </Label>
+                </StackLayout>
+                <ActivityIndicator
+                    x:Name="ActivityIndicator"
+                    VerticalOptions="Center"
+                    Color="{DynamicResource Green}" />
+                <StackLayout
+                    Margin="30,0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Body"
                         HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="{StaticResource EULIText}"/>
-                    <ImageButton
-                        x:Name="Btn_SignIn"
-                        HorizontalOptions="EndAndExpand"
-                        Scale="0.78"
+                        Text="SIGN UP"
+                        TextColor="White" />
+
+                    <inputLayout:SfTextInputLayout
+                        ContainerBackgroundColor="{StaticResource Yellow}"
+                        ContainerType="Outlined"
+                        EnableFloating="False"
+                        FocusedColor="{StaticResource Yellow}"
+                        Hint="EMAIL"
+                        UnfocusedColor="Black">
+                        <Entry x:Name="txtEmail" Keyboard="Email" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout
+                        ContainerBackgroundColor="{StaticResource Yellow}"
+                        ContainerType="Outlined"
+                        EnableFloating="False"
+                        EnablePasswordVisibilityToggle="True"
+                        FocusedColor="{StaticResource Yellow}"
+                        Hint="PASSWORD"
+                        UnfocusedColor="Black">
+                        <Entry
+                            x:Name="txtPassword"
+                            IsPassword="True"
+                            Keyboard="Plain" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout
+                        ContainerBackgroundColor="{StaticResource Yellow}"
+                        ContainerType="Outlined"
+                        EnableFloating="False"
+                        FocusedColor="{StaticResource Yellow}"
+                        Hint="USERNAME"
+                        UnfocusedColor="Black">
+                        <Entry x:Name="txtUserName" Keyboard="Plain" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <StackLayout
+                        Padding="10,0"
                         BackgroundColor="RoyalBlue"
-                        Source="ArrowFarword"
-                        Clicked="SignInClick"/>
-                </StackLayout>                
+                        Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="CheckEULI"
+                            HorizontalOptions="StartAndExpand"
+                            Scale="2"
+                            Color="Black" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="{StaticResource EULIText}"
+                            TextColor="Black"
+                            VerticalTextAlignment="Center" />
+                        <ImageButton
+                            x:Name="Btn_SignIn"
+                            BackgroundColor="RoyalBlue"
+                            Clicked="SignInClick"
+                            HorizontalOptions="EndAndExpand"
+                            Scale="0.78"
+                            Source="ArrowFarword" />
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -102,7 +102,7 @@ namespace MyChefApp.Views
             await PopupNavigation.Instance.PushAsync(new ContextMenuPopup(userVM));
         }
 
-        private async void UserProfile(object sender, EventArgs e)
+        async void PhotoGallery(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new GallaryPage(userVM));
         }

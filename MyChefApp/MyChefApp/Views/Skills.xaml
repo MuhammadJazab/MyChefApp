@@ -1,131 +1,132 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<ContentPage
+    x:Class="MyChefApp.Views.Skills"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MyChefApp.Views.Skills"
-    NavigationPage.HasNavigationBar="False"
-    BackgroundImageSource="skills">
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="skills"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout
+            Margin="20,50"
+            HorizontalOptions="CenterAndExpand"
             Orientation="Vertical"
             Spacing="20"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="CenterAndExpand"
-            Margin="20,50">
-            <Label 
-                TextColor="White"
+            VerticalOptions="CenterAndExpand">
+            <Label
                 FontSize="Title"
                 HorizontalTextAlignment="Start"
-                Text="{StaticResource SkillLevelMessage}"/>
+                Text="{StaticResource SkillLevelMessage}"
+                TextColor="White" />
             <ScrollView>
-                <StackLayout
-                    Spacing="20">
+                <StackLayout Spacing="20">
                     <Frame
-                        CornerRadius="30"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Start"
-                        IsClippedToBounds="True"
-                        HasShadow="True"
+                        Padding="20"
                         BackgroundColor="{DynamicResource ColorFreshMeat}"
-                        Padding="20">
-                        <Label 
-                            TextColor="White"
-                            FontSize="Small"
+                        CornerRadius="30"
+                        HasShadow="True"
+                        HorizontalOptions="Start"
+                        IsClippedToBounds="True"
+                        VerticalOptions="Start">
+                        <Label
                             FontAttributes="Bold"
-                            VerticalTextAlignment="Start"
-                            Text="{StaticResource FreshMeat}"/>
+                            FontSize="Small"
+                            Text="{StaticResource FreshMeat}"
+                            TextColor="White"
+                            VerticalTextAlignment="Start" />
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="1" Tapped="SelectSkill"/>
+                            <TapGestureRecognizer CommandParameter="1" Tapped="SelectSkill" />
                         </Frame.GestureRecognizers>
                     </Frame>
                     <Frame
-                        CornerRadius="30"
-                        HorizontalOptions="End"
-                        VerticalOptions="End"
-                        IsClippedToBounds="True"
-                        HasShadow="True"
+                        Padding="20"
                         BackgroundColor="{DynamicResource ColorSeasonedCook}"
-                        Padding="20">
-                        <Label 
+                        CornerRadius="30"
+                        HasShadow="True"
+                        HorizontalOptions="End"
+                        IsClippedToBounds="True"
+                        VerticalOptions="End">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            Text="{StaticResource SeasonedCook}"
                             TextColor="White"
-                            FontSize="Small"
-                            FontAttributes="Bold"
-                            VerticalTextAlignment="End"
-                            Text="{StaticResource SeasonedCook}"/>
+                            VerticalTextAlignment="End" />
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="2" Tapped="SelectSkill"/>
+                            <TapGestureRecognizer CommandParameter="2" Tapped="SelectSkill" />
                         </Frame.GestureRecognizers>
                     </Frame>
                     <Frame
-                        CornerRadius="30"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Start"
-                        IsClippedToBounds="True"
-                        HasShadow="True"
+                        Padding="20"
                         BackgroundColor="{DynamicResource ColorPrepCook}"
-                        Padding="20">
-                        <Label 
-                            TextColor="Black"
-                            FontSize="Small"
-                            FontAttributes="Bold"
-                            VerticalTextAlignment="End"
-                            Text="{StaticResource PrepCook}"/>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="3" Tapped="SelectSkill"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <Frame
                         CornerRadius="30"
-                        HorizontalOptions="End"
-                        VerticalOptions="End"
-                        IsClippedToBounds="True"
                         HasShadow="True"
-                        BackgroundColor="{DynamicResource ColorLineCook}"
-                        Padding="20">
-                        <Label 
-                            TextColor="Black"
-                            FontSize="Small"
-                            FontAttributes="Bold"
-                            VerticalTextAlignment="End"
-                            Text="{StaticResource LineCook}"/>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="4" Tapped="SelectSkill"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <Frame
-                        CornerRadius="30"
                         HorizontalOptions="Start"
-                        VerticalOptions="Start"
                         IsClippedToBounds="True"
-                        HasShadow="True"
-                        BackgroundColor="{DynamicResource ColorSousChef}"
-                        Padding="20">
-                        <Label 
-                            TextColor="Black"
-                            FontSize="Small"
+                        VerticalOptions="Start">
+                        <Label
                             FontAttributes="Bold"
-                            VerticalTextAlignment="End"
-                            Text="{StaticResource SousCook}"/>
+                            FontSize="Small"
+                            Text="{StaticResource PrepCook}"
+                            TextColor="Black"
+                            VerticalTextAlignment="End" />
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="5" Tapped="SelectSkill"/>
+                            <TapGestureRecognizer CommandParameter="3" Tapped="SelectSkill" />
                         </Frame.GestureRecognizers>
                     </Frame>
                     <Frame
+                        Padding="20"
+                        BackgroundColor="{DynamicResource ColorLineCook}"
                         CornerRadius="30"
-                        HorizontalOptions="End"
-                        VerticalOptions="End"
-                        IsClippedToBounds="True"
                         HasShadow="True"
-                        BackgroundColor="{DynamicResource ColorExecutiveChef}"
-                        Padding="20">
-                        <Label 
-                            TextColor="Black"
-                            FontSize="Small"
+                        HorizontalOptions="End"
+                        IsClippedToBounds="True"
+                        VerticalOptions="End">
+                        <Label
                             FontAttributes="Bold"
-                            VerticalTextAlignment="End"
-                            Text="{StaticResource ExecutiveChef}"/>
+                            FontSize="Small"
+                            Text="{StaticResource LineCook}"
+                            TextColor="Black"
+                            VerticalTextAlignment="End" />
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer CommandParameter="6" Tapped="SelectSkill"/>
+                            <TapGestureRecognizer CommandParameter="4" Tapped="SelectSkill" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame
+                        Padding="20"
+                        BackgroundColor="{DynamicResource ColorSousChef}"
+                        CornerRadius="30"
+                        HasShadow="True"
+                        HorizontalOptions="Start"
+                        IsClippedToBounds="True"
+                        VerticalOptions="Start">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            Text="{StaticResource SousCook}"
+                            TextColor="Black"
+                            VerticalTextAlignment="End" />
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="5" Tapped="SelectSkill" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame
+                        Padding="20"
+                        BackgroundColor="{DynamicResource ColorExecutiveChef}"
+                        CornerRadius="30"
+                        HasShadow="True"
+                        HorizontalOptions="End"
+                        IsClippedToBounds="True"
+                        VerticalOptions="End">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Small"
+                            Text="{StaticResource ExecutiveChef}"
+                            TextColor="Black"
+                            VerticalTextAlignment="End" />
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="6" Tapped="SelectSkill" />
                         </Frame.GestureRecognizers>
                     </Frame>
                 </StackLayout>

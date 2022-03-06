@@ -9,10 +9,13 @@
             /// </summary>
             //public static readonly string BaseUrl = "http://localhost:8800/";
 
+            //Android
+            //public static readonly string BaseUrl = "http://10.0.2.2:8800/";
+
             /// <summary>
             /// Live
             /// </summary>
-            public static readonly string BaseUrl = "http://185.15.244.235/test/";
+            public static readonly string BaseUrl = "http://mychefserver.gearhostpreview.com/";
         }
 
         public static class MyChefAPI

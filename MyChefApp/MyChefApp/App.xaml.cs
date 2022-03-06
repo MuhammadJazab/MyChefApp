@@ -12,12 +12,12 @@ namespace MyChefApp
 
         public App()
         {
-            SyncfusionLicenseProvider.RegisterLicense("MzM0NzI0QDMxMzgyZTMzMmUzMG1GWVZlbDVvanZVQXRaeWJEbUxKa25DUXZtTzNQRkNKSGVuRng2S05jRDQ9");
+            SyncfusionLicenseProvider.RegisterLicense("NTkxODU2QDMxMzkyZTM0MmUzMFh3Yi9VVzRyS1NOa1RFQ3hFQTltQnpRdFRKUFc4Q01YZzVyV0VQWi9sckE9");
 
             InitializeComponent();
 
-            MainPage = new NavigationPage(new GallaryPage(new UserVM()));
-            //SessionManagement.LoginMechanism();
+            //MainPage = new NavigationPage(new GallaryPage(new UserVM()));
+            SessionManagement.LoginMechanism();
         }
 
         protected override void OnStart()

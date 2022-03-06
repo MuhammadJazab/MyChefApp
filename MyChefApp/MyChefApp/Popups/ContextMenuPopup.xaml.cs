@@ -36,14 +36,14 @@ namespace MyChefApp.Popups
 
         private async void Preferences_Click(object sender, System.EventArgs e)
         {
+            await Navigation.PushAsync(new MyDiet(user));
             await PopupNavigation.Instance.PopAsync();
-            App.Current.MainPage = new NavigationPage(new MyDiet(user));
         }
 
         private async void Accounts_Click(object sender, System.EventArgs e)
         {
+            await Navigation.PushAsync(new Account(user));
             await PopupNavigation.Instance.PopAsync();
-            App.Current.MainPage = new NavigationPage(new Account(user));
         }
     }
 }

@@ -1,199 +1,182 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+<ContentPage
     x:Class="MyChefApp.Views.ProgressReport"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid
-            Margin="10,10">
+        <Grid Margin="10,10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
             </Grid.RowDefinitions>
-            <Grid
-                Grid.Row="0">
+            <Grid Grid.Row="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="45*"/>
-                        <ColumnDefinition Width="20"/>
-                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="45*" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
 
-                    <Grid
-                        Grid.Column="0">
-                        <Image 
-                            Aspect="AspectFill" 
-                            Source="three"/>
-                        <ActivityIndicator 
-                                x:Name="uploadIndicator" 
-                                IsVisible="False" 
-                                IsRunning="False" 
-                                Color="Green" />
-                        <StackLayout
-                            Orientation="Vertical"
-                            Margin="0,10">
+                    <Grid Grid.Column="0">
+                        <Image Aspect="AspectFill" Source="three" />
+                        <ActivityIndicator
+                            x:Name="uploadIndicator"
+                            IsRunning="False"
+                            IsVisible="False"
+                            Color="Green" />
+                        <StackLayout Margin="0,10" Orientation="Vertical">
                             <Image
                                 x:Name="Image_ProfileImage"
-                                HeightRequest="100"
-                                Aspect="AspectFit">
+                                Aspect="AspectFit"
+                                HeightRequest="100">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="UploadImage"/>
+                                    <TapGestureRecognizer Tapped="UploadImage" />
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Label 
+                            <Label
                                 x:Name="Lbl_UserName"
                                 FontFamily="Arlrdbd"
-                                Text="UserName"
-                                TextColor="White"
                                 FontSize="30"
-                                HorizontalTextAlignment="Center"/>
-                            <Label 
+                                HorizontalTextAlignment="Center"
+                                Text="UserName"
+                                TextColor="White" />
+                            <Label
                                 x:Name="Lbl_Followers"
                                 FontFamily="Arlrdbd"
-                                Text="39 Followers"
-                                TextColor="White"
                                 FontSize="20"
-                                HorizontalTextAlignment="Center"/>
-                            <StackLayout
-                                HorizontalOptions="CenterAndExpand"
-                                Orientation="Horizontal">
-                                <Image            
-                                    HeightRequest="50"
+                                HorizontalTextAlignment="Center"
+                                Text="39 Followers"
+                                TextColor="White" />
+                            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                                <Image
                                     Aspect="AspectFit"
-                                    Source="trophy"/>
-                                <Label 
+                                    HeightRequest="50"
+                                    Source="trophy" />
+                                <Label
                                     x:Name="Lbl_Trophys"
                                     FontFamily="Arlrdbd"
-                                    VerticalTextAlignment="Center"
+                                    FontSize="20"
                                     HorizontalTextAlignment="End"
-                                    TextColor="White"
                                     Text="1x"
-                                    FontSize="20"/>
+                                    TextColor="White"
+                                    VerticalTextAlignment="Center" />
                             </StackLayout>
-                            <Label 
-                                Text="CHEF CHALLANGE"
+                            <Label
                                 FontFamily="Arlrdbd"
-                                TextColor="White"
                                 FontSize="15"
-                                HorizontalTextAlignment="Center"/>
+                                HorizontalTextAlignment="Center"
+                                Text="CHEF CHALLANGE"
+                                TextColor="White" />
                         </StackLayout>
                     </Grid>
                     <StackLayout
                         Grid.Column="1"
-                        VerticalOptions="FillAndExpand"
-                        BackgroundColor="LightGreen">
+                        BackgroundColor="LightGreen"
+                        VerticalOptions="FillAndExpand">
                         <Label
                             Margin="5,0"
-                            FontFamily="Arlrdbd"
-                            VerticalTextAlignment="Center"
-                            VerticalOptions="FillAndExpand"
                             FontAttributes="Bold"
-                            Text="SOUS CHEF"/>
+                            FontFamily="Arlrdbd"
+                            Text="SOUS CHEF"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center" />
                     </StackLayout>
-                    <Grid
-                        Grid.Column="2">
+                    <Grid Grid.Column="2">
                         <Grid>
-                            <Image 
-                                Source="account"/>
-                            <StackLayout
-                                Padding="20">
+                            <Image Source="account" />
+                            <StackLayout Padding="20">
                                 <Label
-                                    FontFamily="Arlrdbd"
                                     x:Name="Lbl_XpLevel"
-                                    FontSize="20"
-                                    FontAttributes="Bold"
                                     BackgroundColor="LightGreen"
+                                    FontAttributes="Bold"
+                                    FontFamily="Arlrdbd"
+                                    FontSize="20"
                                     HorizontalTextAlignment="Center"
-                                    Text="XP LEVEL: LINE COOK"/>
+                                    Text="XP LEVEL: LINE COOK" />
                                 <Editor
                                     x:Name="txt_Editor"
+                                    FontFamily="Arlrdbd"
                                     HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand"
                                     TextChanged="Editor_Changed"
-                                    FontFamily="Arlrdbd"/>
+                                    VerticalOptions="FillAndExpand" />
                                 <Button
                                     x:Name="Btn_Save"
                                     Clicked="SaveGoles"
                                     FontFamily="Arlrdbd"
-                                    Text="Save"/>
+                                    Text="Save" />
                             </StackLayout>
                         </Grid>
                     </Grid>
 
                 </Grid>
             </Grid>
-            <Grid
-                Grid.Row="1">
+            <Grid Grid.Row="1">
                 <Grid>
-                    <Image 
-                        Aspect="AspectFill"
-                        Source="menu"/>
-                    <StackLayout
-                        Spacing="5"
-                        Orientation="Vertical">
+                    <Image Aspect="AspectFill" Source="menu" />
+                    <StackLayout Orientation="Vertical" Spacing="5">
                         <Label
                             Margin="0,10"
-                            FontFamily="Arlrdbd"
-                            Text="PROGRESS REPORT"
-                            HorizontalTextAlignment="Center"
-                            FontSize="30"
+                            BackgroundColor="{DynamicResource YellowText}"
                             FontAttributes="Bold"
-                            TextColor="Black"
-                            BackgroundColor="{DynamicResource YellowText}"/>
+                            FontFamily="Arlrdbd"
+                            FontSize="30"
+                            HorizontalTextAlignment="Center"
+                            Text="PROGRESS REPORT"
+                            TextColor="Black" />
                         <Label
                             Margin="0,20,0,0"
-                            FontFamily="Arlrdbd"
-                            Text="NEXT ACHIEVEMENT"
-                            HorizontalTextAlignment="Center"
-                            FontSize="15"
                             FontAttributes="Bold"
-                            TextColor="Black"/>
+                            FontFamily="Arlrdbd"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="NEXT ACHIEVEMENT"
+                            TextColor="Black" />
                         <Label
                             x:Name="lbl_xpLevelTxt"
+                            BackgroundColor="LightGreen"
+                            FontAttributes="Bold"
                             FontFamily="Arlrdbd"
-                            Text="XP LEVEL: SOUS CHEF"
+                            FontSize="20"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            FontSize="20"
-                            FontAttributes="Bold"
-                            TextColor="Black"
-                            BackgroundColor="LightGreen"/>
+                            Text="XP LEVEL: SOUS CHEF"
+                            TextColor="Black" />
                         <Grid
                             Margin="0,20,0,0"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="50*" />
                             </Grid.ColumnDefinitions>
                             <StackLayout
                                 Grid.Column="0"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand">
-                                <StackLayout
-                                    Spacing="5"
-                                    Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" Spacing="5">
                                     <Label
-                                        HorizontalOptions="FillAndExpand"
-                                        FontFamily="Arlrdbd"
                                         BackgroundColor="LightGreen"
-                                        Text="CHALLENGES"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"
-                                        FontSize="15"
                                         FontAttributes="Bold"
-                                        TextColor="Black"/>
-                                    <StackLayout
-                                        Orientation="Vertical">
-                                        <syncfusion:SfCheckBox 
-                                            TickColor="White"
+                                        FontFamily="Arlrdbd"
+                                        FontSize="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="CHALLENGES"
+                                        TextColor="Black"
+                                        VerticalTextAlignment="Center" />
+                                    <StackLayout Orientation="Vertical">
+                                        <syncfusion:SfCheckBox
                                             CheckedColor="Black"
-                                            HorizontalOptions="CenterAndExpand"/>
-                                        <syncfusion:SfCheckBox 
-                                            TickColor="White"
+                                            HorizontalOptions="CenterAndExpand"
+                                            TickColor="White" />
+                                        <syncfusion:SfCheckBox
                                             CheckedColor="Black"
-                                            HorizontalOptions="CenterAndExpand"/>
+                                            HorizontalOptions="CenterAndExpand"
+                                            TickColor="White" />
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -201,42 +184,39 @@
                                 Grid.Column="1"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand">
-                                <StackLayout
-                                    Spacing="5"
-                                    Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" Spacing="5">
                                     <Label
                                         BackgroundColor="LightGreen"
-                                        HorizontalOptions="FillAndExpand"
-                                        FontFamily="Arlrdbd"
-                                        Text="MY GOALS"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"
-                                        FontSize="15"
                                         FontAttributes="Bold"
-                                        TextColor="Black"/>
-                                    <StackLayout
-                                        Orientation="Vertical">
-                                        <ListView 
+                                        FontFamily="Arlrdbd"
+                                        FontSize="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="MY GOALS"
+                                        TextColor="Black"
+                                        VerticalTextAlignment="Center" />
+                                    <StackLayout Orientation="Vertical">
+                                        <ListView
                                             x:Name="listView_MyGoals"
-                                            CachingStrategy="RecycleElement"
-                                            HasUnevenRows="True"
                                             Margin="10"
                                             BackgroundColor="Transparent"
+                                            CachingStrategy="RecycleElement"
+                                            HasUnevenRows="True"
                                             IsPullToRefreshEnabled="False"
-                                            SelectionMode="None"
                                             RefreshControlColor="{DynamicResource Green}"
+                                            SelectionMode="None"
                                             SeparatorVisibility="None">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
-                                                        <syncfusion:SfCheckBox 
-                                                            HorizontalOptions="CenterAndExpand"
+                                                        <syncfusion:SfCheckBox
                                                             AutomationId="{Binding GoalId}"
-                                                            Text="{Binding GoalText}"
-                                                            IsChecked="{Binding GoalCompleted}"
-                                                            TickColor="White"
                                                             CheckedColor="Black"
-                                                            StateChanged="CheckBox_StateChanged"/>
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            IsChecked="{Binding GoalCompleted}"
+                                                            StateChanged="CheckBox_StateChanged"
+                                                            Text="{Binding GoalText}"
+                                                            TickColor="White" />
                                                     </ViewCell>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
