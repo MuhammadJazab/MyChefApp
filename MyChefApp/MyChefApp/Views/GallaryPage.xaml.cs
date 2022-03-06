@@ -1,41 +1,84 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using MyChefApp.Services;
 using MyChefApp.ViewModels;
+using MyChefAppViewModels;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace MyChefApp.Views
 {
     public partial class GallaryPage : ContentPage
     {
+        HttpRequests httpRequests;
+
+        DeviceStaticsVM helper;
+        ObservableCollection<ImageGalleryVM> imageGalleryVMs;
+
         public GallaryPage(UserVM userVM)
         {
             InitializeComponent();
 
-            var list = new ObservableCollection<ImageGalleryVM>
+            httpRequests = new HttpRequests();
+
+            helper = DependencyService.Get<IDeviceStatics>().GetDevice();
+
+            GetData();
+
+            if (imageGalleryVMs.Count > 0)
+                BindData(imageGalleryVMs);
+            else Lbl_NoImage.IsVisible = true;
+        }
+
+        private async void GetData()
+        {
+            Response response = await httpRequests.GetFoodGallery();
+
+            if (response.Status == ResponseStatus.OK)
             {
-                new ImageGalleryVM
-                {
-                    ID = 1,
-                    Title = "Dish Name",
-                    //ImagePath = "https://image5.sahibinden.com/photos/08/54/18/x5_719085418j7p.jpg",
-                    ImagePath = "five",
-                    IsActive = true,
-                    CreateDate = DateTime.Now,
-                }
-                ,new ImageGalleryVM
-                {
-                    ID = 2,
-                    Title = "Dish Name",
-                    //ImagePath = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTJzQfduSrJ3Nh7SHzGSGrCmTnWses4AcfuRSnU7hX4y9XN4TSU&usqp=CAU",
-                    ImagePath = "four",
-                    IsActive = true,
-                    CreateDate = DateTime.Now,
-                }
-            };
+                List<FoodGalleryVM> foodGalleryVMs = JsonConvert.DeserializeObject<List<FoodGalleryVM>>(response.ResultData.ToString());
 
-            DeviceStaticsVM helper = DependencyService.Get<IDeviceStatics>().GetDevice();
+                if (foodGalleryVMs.Count > 0)
+                {
+                    imageGalleryVMs = new ObservableCollection<ImageGalleryVM>();
 
+                    foreach (var foodGalleryVM in foodGalleryVMs)
+                    {
+                        imageGalleryVMs.Add(new ImageGalleryVM
+                        {
+                            ID = foodGalleryVM.ImageId,
+                            Title = foodGalleryVM.ImageName,
+                            ImageSource = ImageSource.FromStream(() => new MemoryStream(foodGalleryVM.Image)),
+                            IsActive = true,
+                            CreateDate = DateTime.Now,
+                        });
+                    }
+
+                    //,new ImageGalleryVM
+                    //{
+                    //    ID = 2,
+                    //    Title = "Dish Name",
+                    //    //ImagePath = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTJzQfduSrJ3Nh7SHzGSGrCmTnWses4AcfuRSnU7hX4y9XN4TSU&usqp=CAU",
+                    //    ImagePath = "four",
+                    //    IsActive = true,
+                    //    CreateDate = DateTime.Now,
+                    //}
+                }
+                else
+                {
+                    await DisplayAlert("Alert", "No images found", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", response.Message, "OK");
+            }
+        }
+
+        private void BindData(ObservableCollection<ImageGalleryVM> list)
+        {
             double height = 0;
             //double width = helper.ScreenWidth / 2 - 30;
 
@@ -58,7 +101,7 @@ namespace MyChefApp.Views
                     // Image
                     Image image = new Image
                     {
-                        Source = list[i].ImagePath,
+                        Source = list[i].ImageSource,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand
                     };
@@ -105,7 +148,6 @@ namespace MyChefApp.Views
 
             scrList.HeightRequest = helper.ScreenHeight - 100;
             //stckParent.HeightRequest = list.Count * 100;
-
         }
     }
 }

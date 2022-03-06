@@ -25,6 +25,7 @@ namespace MyChefApi.Services
         Response GetUserProfileImageByUserId(long userId);
         Task<Response> SetUserGoalsByUserId(GoalsVM goalsVM);
         Response UpdateGoalByGoalId(long automationId, bool? isChecked);
+        Response GetFoodGallery();
     }
 
     public class IdentityServices : IIdentityServices
@@ -562,6 +563,46 @@ namespace MyChefApi.Services
                     response = new Response()
                     {
                         Message = "Goals not found",
+                        ResultData = null,
+                        Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
+        }
+
+        public Response GetFoodGallery()
+        {
+            Response response;
+
+            try
+            {
+                List<FoodGallery> foods = uow.Repository<FoodGallery>().GetAll().ToList();
+
+                if (foods != null)
+                {
+                    response = new Response()
+                    {
+                        Message = "",
+                        ResultData = foods,
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "No images found.",
                         ResultData = null,
                         Status = ResponseStatus.Restrected
                     };

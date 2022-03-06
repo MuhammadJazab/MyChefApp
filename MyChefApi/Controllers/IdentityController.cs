@@ -50,6 +50,12 @@ namespace MyChefApi.Controllers
         }
 
         [HttpGet]
+        public Response GetFoodGallery()
+        {
+            return identityServices.GetFoodGallery();
+        }
+
+        [HttpGet]
         public Response GetCookingSkills()
         {
             return identityServices.GetCookingSkills();

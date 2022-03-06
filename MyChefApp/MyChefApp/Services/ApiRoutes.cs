@@ -31,6 +31,7 @@
             public static readonly string GetRecipeByMenuId = $"{BaseUrl}GetRecipeByMenuId";
             public static readonly string GetUserProfileImageByUserId = $"{BaseUrl}GetUserProfileImageByUserId";
             public static readonly string UpdateGoalByGoalId = $"{BaseUrl}UpdateGoalByGoalId";
+            public static readonly string GetFoodGallery = $"{BaseUrl}GetFoodGallery";
 
             /// <summary>
             /// Type: Get

@@ -46,7 +46,6 @@
     <AndroidPackageFormat>apk</AndroidPackageFormat>
     <MandroidI18n />
 <AndroidUseAapt2>true</AndroidUseAapt2>
-<AndroidLinkMode>None</AndroidLinkMode>
 <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
 <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
 <LangVersion>latestmajor</LangVersion>

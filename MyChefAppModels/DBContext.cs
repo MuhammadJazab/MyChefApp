@@ -23,6 +23,7 @@ namespace MyChefAppModels
         public virtual DbSet<Ingredients> Ingredients { get; set; }
         public virtual DbSet<Recipes> Recipes { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<FoodGallery> FoodGallery { get; set; }
         public virtual DbSet<WeekMenu> WeekMenu { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
