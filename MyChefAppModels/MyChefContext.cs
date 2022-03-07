@@ -25,6 +25,7 @@ namespace MyChefAppModels
         public virtual DbSet<Recipes> Recipes { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<WeekMenu> WeekMenu { get; set; }
+        public virtual DbSet<FoodGallery> FoodGallery { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -122,6 +123,15 @@ namespace MyChefAppModels
                 entity.Property(e => e.WeekDay)
                     .IsRequired()
                     .HasMaxLength(20);
+            });
+
+            modelBuilder.Entity<FoodGallery>(entity =>
+            {
+                entity.HasKey(e => e.ImageId);
+
+                entity.Property(e => e.ImageName)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);

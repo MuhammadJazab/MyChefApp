@@ -62,10 +62,6 @@ namespace MyChefApp.Views
                         });
                     }
                 }
-                else
-                {
-                    await DisplayAlert("Alert", "No images found", "OK");
-                }
 
                 if (imageGalleryVMs?.Count > 0)
                     BindData(imageGalleryVMs);
@@ -180,6 +176,8 @@ namespace MyChefApp.Views
                 }
 
                 await UploadImage(_mediaFile);
+
+                imageGalleryVMs.Clear();
 
                 GetData();
             }
