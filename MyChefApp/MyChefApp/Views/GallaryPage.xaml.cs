@@ -78,74 +78,62 @@ namespace MyChefApp.Views
         private void BindData(ObservableCollection<ImageGalleryVM> list)
         {
             double height = 0;
-            //double width = helper.ScreenWidth / 2 - 30;
 
-            for (int m = 0; m < 6; m++)
+            for (int i = 0; i < list.Count; i++)
             {
-                for (int i = 0; i < list.Count; i++)
+
+                Frame frame = new Frame
                 {
+                    Padding = new Thickness(0, 0, 0, 0)
+                };
 
-                    Frame frame = new Frame
-                    {
-                        Padding = new Thickness(0, 0, 0, 0)
-                    };
+                // Stack
+                StackLayout stack = new StackLayout
+                {
+                    Margin = new Thickness(10),
+                };
 
-                    // Stack
-                    StackLayout stack = new StackLayout
-                    {
-                        Margin = new Thickness(10),
-                    };
+                // Image
+                Image image = new Image
+                {
+                    Source = list[i].ImageSource,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand
+                };
 
-                    // Image
-                    Image image = new Image
-                    {
-                        Source = list[i].ImageSource,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand
-                    };
-
-                    // Title
-                    Label title = new Label
-                    {
-                        Text = list[i].Title,
-                        Margin = new Thickness(0, 6, 0, 0),
-                        FontSize = 13
-                    };
-
-                    // Date
-                    Label date = new Label
-                    {
-                        Text = list[i].CreateDate.ToString().Substring(0, 10), // temporary workaround
-                        Margin = new Thickness(0, 6, 0, 0),
-                        TextColor = Color.Gray,
-                        FontSize = 11
-                    };
-
-                    stack.Children.Add(image);
-                    stack.Children.Add(title);
-                    stack.Children.Add(date);
-
-                    frame.Content = stack;
+                // Title
+                Label title = new Label
+                {
+                    Text = list[i].Title,
+                    Margin = new Thickness(0, 6, 0, 0),
+                    FontSize = 13
+                };
 
 
-                    if (i % 2 == 0)
-                    {
-                        stckLeft.Children.Add(frame);
-                    }
-                    else
-                    {
-                        stckRight.Children.Add(frame);
+                stack.Children.Add(image);
+                stack.Children.Add(title);
 
-                        SizeRequest columnSizeRequest = frame.Measure(300, 400);
-                        height += columnSizeRequest.Request.Height * 6;
-                    }
+                frame.Content = stack;
+
+
+                if (i % 2 == 0)
+                {
+                    stckLeft.Children.Add(frame);
+                }
+                else
+                {
+                    stckRight.Children.Add(frame);
+
+                    SizeRequest columnSizeRequest = frame.Measure(300, 400);
+                    height += columnSizeRequest.Request.Height * 6;
                 }
             }
+
             stckLeft.HeightRequest = height;
             stckRight.HeightRequest = height;
 
             scrList.HeightRequest = helper.ScreenHeight - 100;
-            //stckParent.HeightRequest = list.Count * 100;
+            stckParent.HeightRequest = list.Count * 100;
         }
 
         async void AddImage_Clicked(object sender, EventArgs e)
@@ -161,9 +149,9 @@ namespace MyChefApp.Views
             {
                 var mediaOption = new PickMediaOptions()
                 {
-                    PhotoSize = PhotoSize.Medium,
-                    SaveMetaData = true,
+                    PhotoSize = PhotoSize.Full,
                     CompressionQuality = 80,
+                    SaveMetaData = true,
                     ModalPresentationStyle = MediaPickerModalPresentationStyle.FullScreen
                 };
 
@@ -176,10 +164,6 @@ namespace MyChefApp.Views
                 }
 
                 await UploadImage(_mediaFile);
-
-                imageGalleryVMs.Clear();
-
-                GetData();
             }
         }
 
@@ -199,10 +183,69 @@ namespace MyChefApp.Views
             Response response = await httpRequests.UploadFoodImage(foodGalleryVM);
 
             if (response?.Status == ResponseStatus.OK)
-                await DisplayAlert("Uploaded Successfull", "Profile image uploaded Successfully!", "OK");
+                BindImageToExistingLayout(foodGalleryVM);
             else await DisplayAlert("Uploaded Failed", string.IsNullOrWhiteSpace(response?.Message) ? "Error while uploading the image." : response?.Message, "OK");
 
             NotBusy();
+        }
+
+        private void BindImageToExistingLayout(FoodGalleryVM foodGalleryVM)
+        {
+            double height = 0;
+
+            Frame frame = new Frame
+            {
+                Padding = new Thickness(0, 0, 0, 0)
+            };
+
+            // Stack
+            StackLayout stack = new StackLayout
+            {
+                Margin = new Thickness(10),
+            };
+
+            // Image
+            Image image = new Image
+            {
+                Source = ImageSource.FromStream(() => new MemoryStream(foodGalleryVM.Image)),
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
+
+            // Title
+            Label title = new Label
+            {
+                Text = foodGalleryVM.ImageName,
+                Margin = new Thickness(0, 6, 0, 0),
+                FontSize = 13
+            };
+
+            stack.Children.Add(image);
+            stack.Children.Add(title);
+
+            frame.Content = stack;
+
+            if (stckLeft.Children.Count < stckRight.Children.Count)
+            {
+                stckLeft.Children.Add(frame);
+            }
+            else if (stckLeft.Children.Count > stckRight.Children.Count)
+            {
+                stckRight.Children.Add(frame);
+
+                SizeRequest columnSizeRequest = frame.Measure(300, 400);
+                height += columnSizeRequest.Request.Height * 6;
+            }
+            else
+            {
+                stckLeft.Children.Add(frame);
+            }
+
+            stckLeft.HeightRequest = height;
+            stckRight.HeightRequest = height;
+
+            scrList.HeightRequest = helper.ScreenHeight - 100;
+            stckParent.HeightRequest = stckParent.HeightRequest * 20;
         }
 
         public void Busy()

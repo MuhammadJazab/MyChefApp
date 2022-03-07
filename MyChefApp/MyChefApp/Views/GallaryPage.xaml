@@ -45,13 +45,17 @@
                                 Grid.Column="0"
                                 Margin="0,0,2,0"
                                 Orientation="Vertical"
-                                VerticalOptions="FillAndExpand" />
+                                VerticalOptions="FillAndExpand" >
+
+                            </StackLayout>
                             <StackLayout
                                 x:Name="stckRight"
                                 Grid.Column="1"
                                 Margin="2,0,0,0"
                                 Orientation="Vertical"
-                                VerticalOptions="FillAndExpand" />
+                                VerticalOptions="FillAndExpand">
+
+                            </StackLayout>
                         </Grid>
                     </StackLayout>
                 </ScrollView>
