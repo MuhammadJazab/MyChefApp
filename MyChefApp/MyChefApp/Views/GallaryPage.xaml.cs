@@ -200,9 +200,9 @@ namespace MyChefApp.Views
 
             Response response = await httpRequests.UploadFoodImage(foodGalleryVM);
 
-            if (response.Status == ResponseStatus.OK)
-                await DisplayAlert("Uploaded", "Profile image uploaded Successfully!", "OK");
-            else await DisplayAlert("Uploaded", response.Message, "OK");
+            if (response?.Status == ResponseStatus.OK)
+                await DisplayAlert("Uploaded Successfull", "Profile image uploaded Successfully!", "OK");
+            else await DisplayAlert("Uploaded Failed", string.IsNullOrWhiteSpace(response?.Message) ? "Error while uploading the image." : response?.Message, "OK");
 
             NotBusy();
         }
