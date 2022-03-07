@@ -86,6 +86,12 @@ namespace MyChefApi.Controllers
         }
 
         [HttpPost]
+        public async Task<Response> UploadFoodImage([FromBody] FoodGalleryVM foodGalleryVM)
+        {
+            return await identityServices.UploadFoodImage(foodGalleryVM);
+        }
+
+        [HttpPost]
         public async Task<Response> SetUserGoalsByUserId([FromBody] GoalsVM goalsVM)
         {
             return await identityServices.SetUserGoalsByUserId(goalsVM);

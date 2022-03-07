@@ -26,6 +26,7 @@ namespace MyChefApi.Services
         Task<Response> SetUserGoalsByUserId(GoalsVM goalsVM);
         Response UpdateGoalByGoalId(long automationId, bool? isChecked);
         Response GetFoodGallery();
+        Task<Response> UploadFoodImage(FoodGalleryVM foodGalleryVM);
     }
 
     public class IdentityServices : IIdentityServices
@@ -605,6 +606,54 @@ namespace MyChefApi.Services
                         Message = "No images found.",
                         ResultData = null,
                         Status = ResponseStatus.Restrected
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Message = "Something went wrong, try again",
+                    ResultData = ex.Message,
+                    Status = ResponseStatus.Error
+                };
+            }
+
+            return response;
+        }
+
+        public async Task<Response> UploadFoodImage(FoodGalleryVM foodGalleryVM)
+        {
+            Response response;
+
+            try
+            {
+                FoodGallery foodGalleryDto = new FoodGallery()
+                {
+                    UserId = foodGalleryVM.UserId,
+                    FoodId = foodGalleryVM.FoodId,
+                    Image = foodGalleryVM.Image,
+                    ImageName = foodGalleryVM.ImageName
+                };
+
+                uow.Repository<FoodGallery>().Add(foodGalleryDto);
+
+                await uow.SaveAsync();
+
+                if (foodGalleryDto.ImageId > 0)
+                {
+                    response = new Response()
+                    {
+                        Message = "Food Image Saved Successfully",
+                        Status = ResponseStatus.OK
+                    };
+                }
+                else
+                {
+                    response = new Response()
+                    {
+                        Message = "Image saving failed. Try again.",
+                        Status = ResponseStatus.OK
                     };
                 }
             }

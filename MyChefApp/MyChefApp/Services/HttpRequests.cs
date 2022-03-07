@@ -222,6 +222,29 @@ namespace MyChefApp.Services
             return response;
         }
 
+        internal async Task<Response> UploadFoodImage(FoodGalleryVM foodGalleryVM)
+        {
+            Response response;
+
+            try
+            {
+                response = JsonConvert.DeserializeObject<Response>(
+                    await httpClient.PostAsync($"{ApiRoutes.Base.BaseUrl}{ApiRoutes.MyChefAPI.UploadFoodImage}", foodGalleryVM)
+                );
+            }
+            catch (Exception ex)
+            {
+                response = new Response()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = ex.Message,
+                    ResultData = null
+                };
+            }
+
+            return response;
+        }
+
         public async Task<Response> GetWeeklyMenu()
         {
             Response response;
